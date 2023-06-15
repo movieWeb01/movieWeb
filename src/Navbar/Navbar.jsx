@@ -1,4 +1,5 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   Collapse,
   Navbar,
@@ -10,7 +11,9 @@ import {
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem } from 'reactstrap';
+  DropdownItem,
+Input,
+Button } from 'reactstrap';
 
 export default class Example extends React.Component {
   constructor(props) {
@@ -35,21 +38,25 @@ export default class Example extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/components/">Components</NavLink>
+                <NavLink href="">Components</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+                <NavLink href="">GitHub</NavLink>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
-                  Selection
+                  類別
                 </DropdownToggle>
+                <Input />
                 <DropdownMenu right>
                   <DropdownItem>
-                    Option 1
+                    科幻
                   </DropdownItem>
                   <DropdownItem>
-                    Option 2
+                    愛情
+                  </DropdownItem>
+                  <DropdownItem>
+                  冒險
                   </DropdownItem>
                   <DropdownItem divider />
                   <DropdownItem>
