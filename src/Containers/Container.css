@@ -5,10 +5,12 @@
 }
 
 .slider_title{
+    border-left: 5px solid #e67832; 
     margin-top: 20px; 
     color: #e67832; 
     font-weight: bold;
     padding-left: 10px; 
+    margin-left: 15px; 
 }
 
 #slider1, #slider2 {
@@ -18,7 +20,7 @@
     overflow: hidden;
     z-index: 10;
     padding-top: 20px; 
-    padding-bottom: 25px; 
+    padding-bottom: 30px; 
 }
 
 .photobanner {
@@ -27,7 +29,7 @@
     animation: bannermove 150s linear infinite;
 }
   
-  @keyframes bannermove {
+@keyframes bannermove {
     0% {
       margin-left: 0;
     }
@@ -71,5 +73,3 @@
     font-size: 20px; 
     text-align: center;
 }
-
-
