@@ -1,9 +1,12 @@
+
+import './App.css';
+import Example from './Navbar/Navbar';
 import axios from "axios";
 import { useState, useEffect } from "react";
-import "./App.css";
 import Carousel1 from "./Componetns/Carousel1";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
+
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -22,6 +25,8 @@ function App() {
   console.log("post", posts);
   return (
     <div className="App">
+
+      <Example />
       hello world
       <Carousel1 posts={posts} />
     </div>
