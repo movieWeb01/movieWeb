@@ -32,7 +32,7 @@ export default class Example extends React.Component {
   }
   render() {
     return (
-      <div style={{backgroundColor:"skyblue", position:"static", left:"0px", fontSize:"30px" }}>
+      <div style={{backgroundColor:"skyblue", position:"static", left:"0px", fontSize:"50px" }}>
         <Navbar  light expand="md" className='container'>
           <NavbarBrand href="/" style={{fontSize:"30px"}}>Love Movie</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
