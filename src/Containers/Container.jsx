@@ -3,7 +3,8 @@ import './Container.css';
 import axios from 'axios';
 
 function Container({ posts }){
-    const  [topRated, setTopRated] = useState([])
+    const [topRated, setTopRated] = useState([]); 
+    const [upComing, setUpComing] = useState([]); 
     useEffect(() => {
         axios
           .get(
@@ -13,29 +14,29 @@ function Container({ posts }){
             console.log(res);
             setTopRated(res.data.results);
           });
+      }, []); 
+      useEffect(() => {
+        axios
+          .get(
+            `https://api.themoviedb.org/3/movie/upcoming?api_key=6a3a9e9a61085d657b30d36d1c7b5ba7`
+          )
+          .then((res) => {
+            console.log(res);
+            setUpComing(res.data.results);
+          });
       }, []);
     
     var slider1holder = document.getElementById("slider1");
     var photobannerholder = document.getElementsByClassName("photobanner")[0];
     document.documentElement.style.setProperty('--bannerwidth', `${topRated.length * 23}vw`);  
     var slider1holder = document.getElementById("slider2");
-    var photobanner2holder = document.getElementsByClassName("photobanner")[1];
-    document.documentElement.style.setProperty('--bannerwidth', `${topRated.length * 23}vw`);  
 
-    function pauseSlider(e) {
+    function pauseSlider() {
         photobannerholder.style.animationPlayState = "paused";
     }
 
-    function runSlider(e) {
+    function runSlider() {
         photobannerholder.style.animationPlayState = "running";
-    }
-    
-    function pauseSlider2(e) {
-        photobanner2holder.style.animationPlayState = "paused";
-    }
-
-    function runSlider2(e) {
-        photobanner2holder.style.animationPlayState = "running";
     }
     
     return(
@@ -57,21 +58,23 @@ function Container({ posts }){
                     ))}
                 </div>
             </div>
-            <h1 className='slider_title'>Popular</h1>
-            <div id="slider2">
-                <div onMouseOver={pauseSlider2} onMouseOut={runSlider2} className='photobanner'>
-                {posts.map((post) => (
-                    <a className='sliderbox' href={`https://image.tmdb.org/t/p/original/${post.poster_path}`} target='_blank'>
-                        <img className='sliderimg' src={`https://image.tmdb.org/t/p/original/${post.poster_path}`} />
-                        <p className='caption'>{`${post.original_title}`}</p>
+            <h1 className='slider_title'>Upcoming</h1>
+            <div>
+                <div className='flex-parent'>
+                {upComing.map((post) => (
+                    <a className='moviebox' href={`https://image.tmdb.org/t/p/original/${post.poster_path}`} target='_blank'>
+                        <img className='movieimg' src={`https://image.tmdb.org/t/p/original/${post.poster_path}`} />
+                        <p className='caption'>{`${post.original_title}`}{(post.vote_average !== 0) && ` - ${post.vote_average}`}</p>
                     </a>
                     ))}
-                {posts.map((post) => (
-                    <a className='sliderbox' href={`https://image.tmdb.org/t/p/original/${post.poster_path}`} target='_blank'>
-                        <img className='sliderimg' src={`https://image.tmdb.org/t/p/original/${post.poster_path}`} />
-                        <p className='caption'>{`${post.original_title}`}</p>
-                    </a>
-                    ))}
+                </div>
+            </div>
+            <div id='movie-container'>
+                <div className=''>
+
+                </div>
+                <div className=''>
+                    
                 </div>
             </div>
         </div>
