@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import './Navbar.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
@@ -20,22 +20,29 @@ import {
 
 const Example = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const [info, setInfo] = useState('');
   const toggle = () => setIsOpen(!isOpen);
-  const [movies, setMovies] = React.useState(null);
+  const [movies, setMovies] = useState([]);
 
-  const baseURL =
-    'https://api.themoviedb.org/3/movie/popular?api_key=2bcdb3df9702bc31542cffaec406fda7';
+  const searchMovies = () => {
+    axios
+      .get(
+        `https://api.themoviedb.org/3/search/movie?api_key=2bcdb3df9702bc31542cffaec406fda7&query=${info}`
+      )
+      .then((response) => {
+        const data = response.data;
+        setMovies(data.results);
+      });
+  };
 
   useEffect(() => {
-    axios.get(baseURL).then((response) => {
-      setMovies(response.data.results);
-    });
-  }, []);
+    if (info) {
+      searchMovies();
+    } else {
+      setMovies([]);
+    }
+  }, [info]);
 
-  if (!movies) {
-    return null;
-  }
   return (
     <div
       style={{
@@ -45,6 +52,7 @@ const Example = () => {
         fontSize: '50px',
       }}
     >
+
 
       <Navbar light expand="md" className="container">
         <NavbarBrand href="/" style={{ fontSize: '30px' }}>
@@ -95,9 +103,12 @@ const Example = () => {
                   fontSize: '25px',
                 }}
                 placeholder="What movie are you looking for?"
+                value={info}
+                onChange={(e) => {
+                  setInfo(e.target.value);
+                }}
               />
             </NavItem>
-
             <UncontrolledDropdown
               nav
               inNavbar
@@ -106,28 +117,48 @@ const Example = () => {
                 rowDirection: 'row',
                 justifyContent: 'space-around',
                 alignItems: 'center',
-                }}
-                >
-                <div style={{ position: 'relative', left: '70px' }}>
-                <DropdownToggle nav caret style={{ fontSize: '25px' }}>
-                <b>類別</b>
-                </DropdownToggle>
-                <DropdownMenu
-              style={{ fontSize: '30px', backgroundColor: 'pink' }}
+              }}
             >
-              <DropdownItem className="item">科幻</DropdownItem>
-              <DropdownItem className="item">愛情</DropdownItem>
-              <DropdownItem className="item">冒險</DropdownItem>
-              <DropdownItem className="item">宗教</DropdownItem>
-              <DropdownItem className="item">動作</DropdownItem>
-              <DropdownItem divider />
-              <DropdownItem>Reset</DropdownItem>
-            </DropdownMenu>
+              <div style={{ position: 'relative', left: '70px' }}>
+                <DropdownToggle nav caret style={{ fontSize: '25px' }}>
+                  <b>類別</b>
+</DropdownToggle>
+<DropdownMenu
+style={{ fontSize: '30px', backgroundColor: 'pink' }}
+>
+<DropdownItem className="item" onClick={() => {}}>
+科幻
+</DropdownItem>
+<DropdownItem className="item" onClick={() => {}}>
+愛情
+</DropdownItem>
+<DropdownItem className="item" onClick={() => {}}>
+冒險
+</DropdownItem>
+<DropdownItem className="item" onClick={() => {}}>
+宗教
+</DropdownItem>
+<DropdownItem className="item" onClick={() => {}}>
+動作
+</DropdownItem>
+<DropdownItem divider />
+<DropdownItem>Reset</DropdownItem>
+</DropdownMenu>
+</div>
+</UncontrolledDropdown>
+</Nav>
+</Collapse>
+</Navbar>
+<div>
+        {movies.map((movie) => (
+          <div key={movie.id} style={{fontSize:"30px"}}>
+          <h1>{movie.id}</h1>
+            <p>{movie.title}</p>
+            <p>{movie.overview}</p>
+            <p>-- -- -- --</p>
           </div>
-        </UncontrolledDropdown>
-      </Nav>
-    </Collapse>
-  </Navbar>
+        ))}
+      </div>
 </div>
 );
 };
