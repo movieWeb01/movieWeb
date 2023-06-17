@@ -69,14 +69,6 @@ function Container({ posts }){
                     ))}
                 </div>
             </div>
-            <div id='movie-container'>
-                <div className=''>
-
-                </div>
-                <div className=''>
-                    
-                </div>
-            </div>
         </div>
     ); 
 }
