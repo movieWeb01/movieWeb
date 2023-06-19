@@ -56,12 +56,12 @@ function Container({ posts }) {
         >
           {topRated.map((post) => (
             <Link
-              style={{ textDecoration: "none", color: "#fff" }}
               to={`/movie/${post.id}`}
+              className="sliderbox"
             >
               <a
                 key={post.index}
-                className="sliderbox"
+                style={{ textDecoration: "none", color: "#fff", fontFamily: "Roboto"}}
                 href={`https://image.tmdb.org/t/p/original/${post.poster_path}`}
                 target="_blank"
               >
@@ -108,6 +108,7 @@ function Container({ posts }) {
               <a
                 href={`https://image.tmdb.org/t/p/original/${post.poster_path}`}
                 target="_blank"
+                style={{ textDecoration: "none", color: "#fff", fontFamily: "Roboto" }}
               >
                 <img
                   className="movieimg"
