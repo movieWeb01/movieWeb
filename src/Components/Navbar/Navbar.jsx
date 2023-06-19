@@ -115,10 +115,9 @@ const Example = () => {
     <div
       style={{
         backgroundColor: 'skyblue',
-        fontSize: '50px',
+        fontSize: '50px'
         
       }}>
-
 
       <Navbar light expand="md">
         <NavbarBrand style={{ fontSize: '30px' }}>
@@ -145,8 +144,12 @@ const Example = () => {
             }}
           >
                         <NavItem>
-            <NavLink onClick={popularMovie} style={{cursor: "pointer", position:"relative", right:"200px", top:"10px"}}>受歡迎</NavLink>
+            <NavLink style={{cursor: "pointer", position:"relative", right:"200px", top:"3px", fontSize:"25px"}}>受歡迎</NavLink>
             </NavItem>
+                        <NavItem>
+            <NavLink style={{cursor: "pointer", position:"relative", right:"150px", top:"3px", fontSize:"25px"}}>Top Rated</NavLink>
+            </NavItem>
+
             <NavItem
               style={{
                 display: 'flex',
@@ -160,10 +163,10 @@ const Example = () => {
                 style={{
                   position: 'relative',
                   left: '00px',
-                  width: '700px',
+                  width: '550px',
                   height: '50px',
                   fontSize: '25px',
-                  paddingLeft: "20px"
+                  paddingRight: "85px"
                 }}
                 placeholder="What movie are you looking for?"
                 value={info}
@@ -217,7 +220,7 @@ const Example = () => {
 
 <div>
       <div style={{display:"flex", flexFlow: "row nowrap",justifyContent:"center", alignItems:"flex-start", height: "auto", width:"100%"}}>{renderItems}</div>
-      <div className="numbers" style={{marginTop: "80px", fontSize:"40px",display:"flex", flexFlow: "row nowrap",justifyContent:"center", alignItems:"center", height: "auto", width:"100%"}}>{renderPageNumbers}</div>
+      <div className="numbers" style={{position:"relative", top:"40px", fontSize:"40px",display:"flex", flexFlow: "row nowrap",justifyContent:"center", alignItems:"center", height: "30px", width:"100%"}}>{renderPageNumbers}</div>
     </div>
 </div>
 );
