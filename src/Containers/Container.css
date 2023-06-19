@@ -5,10 +5,12 @@
 }
 
 .slider_title{
+    border-left: 5px solid #e67832; 
     margin-top: 20px; 
     color: #e67832; 
     font-weight: bold;
     padding-left: 10px; 
+    margin-left: 15px; 
 }
 
 #slider1, #slider2 {
@@ -18,7 +20,7 @@
     overflow: hidden;
     z-index: 10;
     padding-top: 20px; 
-    padding-bottom: 25px; 
+    padding-bottom: 30px; 
 }
 
 .photobanner {
@@ -27,7 +29,7 @@
     animation: bannermove 150s linear infinite;
 }
   
-  @keyframes bannermove {
+@keyframes bannermove {
     0% {
       margin-left: 0;
     }
@@ -49,6 +51,24 @@
     text-decoration: none; 
 }
 
+.moviebox{
+    border-top-left-radius: 2rem; 
+    border-top-right-radius: 2rem; 
+    width: 18vw;
+    margin: 1vw; 
+    transition: 0.45s;
+    border: 1px solid #e67832; 
+    background-color: #e67832; 
+    color: white; 
+    text-decoration: none; 
+}
+
+.moviebox:hover{
+    filter: grayscale(75%);
+    border: 1px solid #00c3ff; 
+    background-color: #00c3ff; 
+}
+
 .sliderbox:hover {
     -webkit-filter: drop-shadow(4px 4px 5px gray);
     -moz-filter: drop-shadow(4px 4px 5px gray);
@@ -61,15 +81,27 @@
 .sliderimg {
     border-top-left-radius: 1rem; 
     border-top-right-radius: 1rem; 
-    width: 20vw; 
+    width: calc(18vw - 2px); 
+    object-fit: cover; 
+}
+
+.movieimg {
+    border-top-left-radius: 2rem; 
+    border-top-right-radius: 2rem; 
+    width: calc(18vw - 2px); 
     object-fit: cover; 
 }
 
 .caption{
     padding: 5px; 
+    margin: 0;
     font-weight: bold; 
     font-size: 20px; 
     text-align: center;
 }
 
-
+.flex-parent{
+    display: flex; 
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
