@@ -13,8 +13,11 @@
     margin-left: 15px; 
 }
 
-#slider1, #slider2 {
+#slider1, .moviebox {
     font-family: "Roboto", sans-serif;
+}
+
+#slider1 {
     border-radius: 1rem;
     max-width: 100%;
     overflow: hidden;
@@ -52,8 +55,8 @@
 }
 
 .moviebox{
-    border-top-left-radius: 2rem; 
-    border-top-right-radius: 2rem; 
+    border-top-left-radius: 3.5rem; 
+    border-top-right-radius: 3.5rem; 
     width: 18vw;
     margin: 1vw; 
     transition: 0.45s;
@@ -61,12 +64,13 @@
     background-color: #e67832; 
     color: white; 
     text-decoration: none; 
+    text-align: center;
+    padding-bottom: 10px; 
 }
 
 .moviebox:hover{
-    filter: grayscale(75%);
-    border: 1px solid #00c3ff; 
-    background-color: #00c3ff; 
+    border: 1px solid #3cacce; 
+    background-color: #3cacce; 
 }
 
 .sliderbox:hover {
@@ -86,10 +90,14 @@
 }
 
 .movieimg {
-    border-top-left-radius: 2rem; 
-    border-top-right-radius: 2rem; 
+    border-top-left-radius: 3.5rem; 
+    border-top-right-radius: 3.5rem; 
     width: calc(18vw - 2px); 
     object-fit: cover; 
+}
+
+.movieimg:hover{
+    filter: grayscale(75%);
 }
 
 .caption{
@@ -102,6 +110,25 @@
 
 .flex-parent{
     display: flex; 
-    justify-content: space-around;
+    justify-content: space-evenly; 
     flex-wrap: wrap;
+}
+
+.star-rating{
+    font-size: 15px;
+}
+
+.heart_btn{
+    background: none; 
+    border: none; 
+    width: 20px; 
+}
+
+.heart_img{
+    width: 20px; 
+    filter: grayscale(100%);
+}
+
+.heart_img:hover{
+    filter: grayscale(0%);
 }
