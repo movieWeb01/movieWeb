@@ -47,7 +47,10 @@ function Container({ posts }) {
 
   return (
     <div>
-      <h1 className="slider_title">Top-rated</h1>
+      <Link to={`/movies/top_rated`} style={{ textDecoration: "none", color: "#fff" }}>
+        <h1 className="slider_title">Top-rated</h1>
+      </Link>
+      
       <div id="slider1">
         <div
           onMouseOver={pauseSlider}
@@ -62,7 +65,6 @@ function Container({ posts }) {
               <a
                 key={post.index}
                 style={{ textDecoration: "none", color: "#fff", fontFamily: "Roboto"}}
-                href={`https://image.tmdb.org/t/p/original/${post.poster_path}`}
                 target="_blank"
               >
                 <img
@@ -100,13 +102,15 @@ function Container({ posts }) {
           ))}
         </div>
       </div>
+      
+      <Link to={`/movies/upcoming`} style={{ textDecoration: "none", color: "#fff" }}>
       <h1 className="slider_title">Upcoming</h1>
+      </Link>
       <div>
         <div className="flex-parent">
           {upComing.map((post) => (
             <Link className="moviebox" to={`/movie/${post.id}`}>
               <a
-                href={`https://image.tmdb.org/t/p/original/${post.poster_path}`}
                 target="_blank"
                 style={{ textDecoration: "none", color: "#fff", fontFamily: "Roboto" }}
               >

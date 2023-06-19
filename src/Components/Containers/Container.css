@@ -29,7 +29,7 @@
 .photobanner {
     display: flex;
     flex-direction: row;
-    animation: bannermove 15s linear infinite;
+    animation: bannermove 120s linear infinite;
 }
   
 @keyframes bannermove {
