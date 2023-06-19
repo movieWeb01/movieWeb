@@ -47,7 +47,7 @@ function Container({ posts }) {
 
   return (
     <div>
-      <h1 className="slider_title">Top Rated</h1>
+      <h1 className="slider_title">Top-rated</h1>
       <div id="slider1">
         <div
           onMouseOver={pauseSlider}

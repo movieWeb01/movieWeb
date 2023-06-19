@@ -16,11 +16,11 @@ const MoviePage = () => {
         console.log(res);
         setMovieList(res.data.results);
       });
-  }, [type]);
+  }, [type]); 
 
   return (
     <div>
-      <h1 className="slider_title">{type.toLocaleUpperCase()}</h1>
+      <h1 className="slider_title">{type.charAt(0).toUpperCase() + type.slice(1).replace("_", "-")}</h1>
       <div>
         <div className="flex-parent">
           {movieList.map((post) => (
@@ -36,8 +36,71 @@ const MoviePage = () => {
                 />
                 <p className="caption">
                   {`${post.original_title}`}
-                  {post.vote_average !== 0 && ` - ${post.vote_average}`}
                 </p>
+                <div className="star-rating">
+                  {post.vote_average >= 2 ? (
+                    <img
+                      width="20px"
+                      src="https://img.uxwing.com/wp-content/themes/uxwing/download/arts-graphic-shapes/star-icon.svg"
+                    />
+                  ) : (
+                    <img
+                      width="20px"
+                      src="https://img.uxwing.com/wp-content/themes/uxwing/download/arts-graphic-shapes/star-full-icon.svg"
+                    />
+                  )}
+                  {post.vote_average >= 4 ? (
+                    <img
+                      width="20px"
+                      src="https://img.uxwing.com/wp-content/themes/uxwing/download/arts-graphic-shapes/star-icon.svg"
+                    />
+                  ) : (
+                    <img
+                      width="20px"
+                      src="https://img.uxwing.com/wp-content/themes/uxwing/download/arts-graphic-shapes/star-full-icon.svg"
+                    />
+                  )}
+                  {post.vote_average >= 6 ? (
+                    <img
+                      width="20px"
+                      src="https://img.uxwing.com/wp-content/themes/uxwing/download/arts-graphic-shapes/star-icon.svg"
+                    />
+                  ) : (
+                    <img
+                      width="20px"
+                      src="https://img.uxwing.com/wp-content/themes/uxwing/download/arts-graphic-shapes/star-full-icon.svg"
+                    />
+                  )}
+                  {post.vote_average >= 8 ? (
+                    <img
+                      width="20px"
+                      src="https://img.uxwing.com/wp-content/themes/uxwing/download/arts-graphic-shapes/star-icon.svg"
+                    />
+                  ) : (
+                    <img
+                      width="20px"
+                      src="https://img.uxwing.com/wp-content/themes/uxwing/download/arts-graphic-shapes/star-full-icon.svg"
+                    />
+                  )}
+                  {post.vote_average >= 10 ? (
+                    <img
+                      width="20px"
+                      src="https://img.uxwing.com/wp-content/themes/uxwing/download/arts-graphic-shapes/star-icon.svg"
+                    />
+                  ) : (
+                    <img
+                      width="20px"
+                      src="https://img.uxwing.com/wp-content/themes/uxwing/download/arts-graphic-shapes/star-full-icon.svg"
+                    />
+                  )}
+                  {post.vote_average !== 0 && ` (${post.vote_average})`}
+                  <button type="button" className="heart_btn">
+                    <img
+                      className="heart_img"
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Love_Heart_SVG.svg/968px-Love_Heart_SVG.svg.png"
+                    />
+                  </button>
+                </div>
               </a>
             </Link>
           ))}
