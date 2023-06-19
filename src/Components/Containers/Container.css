@@ -64,7 +64,7 @@
     background-color: #e67832; 
     color: white; 
     text-decoration: none; 
-    text-align: center;
+    text-align: center; 
     padding-bottom: 10px; 
 }
 
@@ -97,6 +97,10 @@
 }
 
 .movieimg:hover{
+    -webkit-filter: grayscale(75%);
+    -moz-filter: grayscale(75%);
+    -ms-filter: grayscale(75%);
+    -o-filter: grayscale(75%);
     filter: grayscale(75%);
 }
 
@@ -126,9 +130,17 @@
 
 .heart_img{
     width: 20px; 
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
     filter: grayscale(100%);
 }
 
 .heart_img:hover{
-    filter: grayscale(0%);
+    -webkit-filter: grayscale(0%); 
+    -moz-filter: grayscale(0%); 
+    -ms-filter: grayscale(0%); 
+    -o-filter: grayscale(0%); 
+    filter: grayscale(0%); 
 }
