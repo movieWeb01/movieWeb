@@ -13,16 +13,17 @@ function Carousel1({ posts }) {
         showStatus={false}
       >
         {posts.map((post) => (
-          <div className="image-silder">
-            <div>
-              <img
-                src={`https://image.tmdb.org/t/p/original/${post.backdrop_path}`}
-              />
-            </div>
+          <div className="image-silder" key={post.id}>
+            <img
+              src={`https://image.tmdb.org/t/p/original/${post.backdrop_path}`}
+            />
             <div className="image-silder-overlay">
               <div className="post-title">
                 {post.title}
-                <span className="post-rating">Rate: {post.vote_average}</span>
+                <span className="post-rating">
+                  Rate: {post.vote_average}
+                  <i className="fa-solid fa-star-sharp"></i>
+                </span>
               </div>
 
               <div className="post-description">{post.overview}</div>

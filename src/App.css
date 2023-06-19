@@ -1,6 +1,7 @@
 .App {
   color: #ffffff;
   font-family: Arial, Helvetica, sans-serif;
+  background: rgb(37, 37, 37);
 }
 
 body {
@@ -14,6 +15,7 @@ body {
 }
 
 .image-slider img {
+  height: auto;
   margin: auto;
   display: block;
   width: 100%;
