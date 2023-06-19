@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import Carousel1 from "./Componetns/Carousel1";
 import Container from "./Containers/Container"; 
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import Description from "./Des/Des";
+
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -25,7 +27,11 @@ function App() {
     <div className="App">
       <Example />
       <Carousel1 posts={posts} />
+
+      <Description posts={posts} />
+
       <Container posts={posts} />
+
     </div>
   );
 }
