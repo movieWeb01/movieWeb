@@ -43,6 +43,8 @@ function Container({ posts }) {
     photobannerholder.style.animationPlayState = "running";
   }
 
+  function heartFunction() {}
+
   return (
     <div>
       <h1 className="slider_title">Top Rated</h1>
@@ -58,6 +60,7 @@ function Container({ posts }) {
               to={`/movie/${post.id}`}
             >
               <a
+                key={post.index}
                 className="sliderbox"
                 href={`https://image.tmdb.org/t/p/original/${post.poster_path}`}
                 target="_blank"
@@ -66,7 +69,10 @@ function Container({ posts }) {
                   className="sliderimg"
                   src={`https://image.tmdb.org/t/p/original/${post.poster_path}`}
                 />
-                <p className="caption">{`${post.original_title}`}</p>
+                <p className="caption">
+                  {`${post.original_title}`}
+                  {post.vote_average !== 0 && ` - ${post.vote_average}`}
+                </p>
               </a>
             </Link>
           ))}
@@ -76,6 +82,7 @@ function Container({ posts }) {
               to={`/movie/${post.id}`}
             >
               <a
+                key={post.length + post.index}
                 className="sliderbox"
                 href={`https://image.tmdb.org/t/p/original/${post.poster_path}`}
                 target="_blank"
@@ -84,7 +91,10 @@ function Container({ posts }) {
                   className="sliderimg"
                   src={`https://image.tmdb.org/t/p/original/${post.poster_path}`}
                 />
-                <p className="caption">{`${post.original_title}`}</p>
+                <p className="caption">
+                  {`${post.original_title}`}
+                  {post.vote_average !== 0 && ` - ${post.vote_average}`}
+                </p>
               </a>
             </Link>
           ))}
@@ -94,20 +104,83 @@ function Container({ posts }) {
       <div>
         <div className="flex-parent">
           {upComing.map((post) => (
-            <a
-              className="moviebox"
-              href={`https://image.tmdb.org/t/p/original/${post.poster_path}`}
-              target="_blank"
-            >
-              <img
-                className="movieimg"
-                src={`https://image.tmdb.org/t/p/original/${post.poster_path}`}
-              />
-              <p className="caption">
-                {`${post.original_title}`}
-                {post.vote_average !== 0 && ` - ${post.vote_average}`}
-              </p>
-            </a>
+            <Link className="moviebox" to={`/movie/${post.id}`}>
+              <a
+                href={`https://image.tmdb.org/t/p/original/${post.poster_path}`}
+                target="_blank"
+              >
+                <img
+                  className="movieimg"
+                  src={`https://image.tmdb.org/t/p/original/${post.poster_path}`}
+                />
+                <p className="caption">{`${post.original_title}`}</p>
+                <div className="star-rating">
+                  {post.vote_average >= 2 ? (
+                    <img
+                      width="20px"
+                      src="https://img.uxwing.com/wp-content/themes/uxwing/download/arts-graphic-shapes/star-icon.svg"
+                    />
+                  ) : (
+                    <img
+                      width="20px"
+                      src="https://img.uxwing.com/wp-content/themes/uxwing/download/arts-graphic-shapes/star-full-icon.svg"
+                    />
+                  )}
+                  {post.vote_average >= 4 ? (
+                    <img
+                      width="20px"
+                      src="https://img.uxwing.com/wp-content/themes/uxwing/download/arts-graphic-shapes/star-icon.svg"
+                    />
+                  ) : (
+                    <img
+                      width="20px"
+                      src="https://img.uxwing.com/wp-content/themes/uxwing/download/arts-graphic-shapes/star-full-icon.svg"
+                    />
+                  )}
+                  {post.vote_average >= 6 ? (
+                    <img
+                      width="20px"
+                      src="https://img.uxwing.com/wp-content/themes/uxwing/download/arts-graphic-shapes/star-icon.svg"
+                    />
+                  ) : (
+                    <img
+                      width="20px"
+                      src="https://img.uxwing.com/wp-content/themes/uxwing/download/arts-graphic-shapes/star-full-icon.svg"
+                    />
+                  )}
+                  {post.vote_average >= 8 ? (
+                    <img
+                      width="20px"
+                      src="https://img.uxwing.com/wp-content/themes/uxwing/download/arts-graphic-shapes/star-icon.svg"
+                    />
+                  ) : (
+                    <img
+                      width="20px"
+                      src="https://img.uxwing.com/wp-content/themes/uxwing/download/arts-graphic-shapes/star-full-icon.svg"
+                    />
+                  )}
+                  {post.vote_average >= 10 ? (
+                    <img
+                      width="20px"
+                      src="https://img.uxwing.com/wp-content/themes/uxwing/download/arts-graphic-shapes/star-icon.svg"
+                    />
+                  ) : (
+                    <img
+                      width="20px"
+                      src="https://img.uxwing.com/wp-content/themes/uxwing/download/arts-graphic-shapes/star-full-icon.svg"
+                    />
+                  )}
+                  {post.vote_average !== 0 && ` (${post.vote_average})`}
+                  <button type="button" className="heart_btn">
+                    <img
+                      className="heart_img"
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Love_Heart_SVG.svg/968px-Love_Heart_SVG.svg.png"
+                      onClick={heartFunction}
+                    />
+                  </button>
+                </div>
+              </a>
+            </Link>
           ))}
         </div>
       </div>
