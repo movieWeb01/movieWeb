@@ -7,17 +7,6 @@ const MoviePage = () => {
   const [movieList, setMovieList] = useState([]);
   const { type } = useParams();
 
-  //   useEffect(() => {
-  //     axios
-  //       .get(
-  //         `https://api.themoviedb.org/3/movie/${type}?api_key=6a3a9e9a61085d657b30d36d1c7b5ba7`
-  //       )
-  //       .then((res) => {
-  //         console.log(res);
-  //         setMovieList(res.data.results);
-  //       });
-  //   }, []);
-
   useEffect(() => {
     axios
       .get(
