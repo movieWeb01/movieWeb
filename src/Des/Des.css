@@ -1,0 +1,40 @@
+.poster {
+  height: 500px;
+  border-radius: 10px;
+  margin: 5vh;
+}
+
+.backdrop {
+  position: relative;
+}
+
+.mbackground {
+  position: absolute;
+  opacity: 0.8;
+  filter: brightness(0.5);
+}
+
+.mcontent {
+  position: absolute;
+  display: flex;
+}
+.mcright {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5vh;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 900;
+}
+p:first-of-type {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+p:nth-of-type(2) {
+  font-size: 16px;
+  font-weight: 400;
+}

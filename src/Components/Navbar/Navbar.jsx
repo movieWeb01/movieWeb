@@ -50,11 +50,20 @@ const Example = () => {
         position: 'static',
         left: '0px',
         fontSize: '50px',
+        width:"100%"
       }}
     >
+    <div
+      style={{
+        backgroundColor: 'skyblue',
+        position: 'static',
+        left: '0px',
+        fontSize: '50px'
+      }}
+     className="container">
 
 
-      <Navbar light expand="md" className="container">
+      <Navbar light expand="md">
         <NavbarBrand href="/" style={{ fontSize: '30px' }}>
           Love Movie
         </NavbarBrand>
@@ -148,15 +157,23 @@ style={{ fontSize: '30px', backgroundColor: 'pink' }}
 </UncontrolledDropdown>
 </Nav>
 </Collapse>
+
 </Navbar>
-<div>
+
+
+</div>
+
+<div style={{display:"flex", flexFlow: "row wrap",justifyContent:"flex-start", alignItems:"center", height: "auto", width:"100%"}}>
         {movies.map((movie) => (
-          <div key={movie.id} style={{fontSize:"30px"}}>
-          <h1>{movie.id}</h1>
-            <p>{movie.title}</p>
-            <p>{movie.overview}</p>
-            <p>-- -- -- --</p>
+
+          
+          <div style={{position:"relative", display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"flex-start", fontSize:"25px",width:"400px", height: "300px", margin:"15px 0px"}}>
+            <p style={{height: "30px"}}>{movie.title}</p>
+
+            <p style={{height: "300px",width:"350px"}}>{movie.overview}</p>
+
           </div>
+
         ))}
       </div>
 </div>
