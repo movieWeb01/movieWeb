@@ -80,11 +80,13 @@ function Container({ posts }) {
             <Link
               style={{ textDecoration: "none", color: "#fff" }}
               to={`/movie/${post.id}`}
+              className="sliderbox"
             >
               <a
                 key={post.length + post.index}
                 className="sliderbox"
                 href={`https://image.tmdb.org/t/p/original/${post.poster_path}`}
+                style={{ textDecoration: "none", color: "#fff", fontFamily: "Roboto" }}
                 target="_blank"
               >
                 <img
