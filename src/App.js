@@ -27,7 +27,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home posts={posts} />} />
         <Route path="/movies/:type" element={<MoviePage />} />
-        <Route path="/movie/:id" element={<h1>Description</h1>} />
+        <Route path="/movie/:movieId" element={<Description />} />
       </Routes>
     </div>
   );
