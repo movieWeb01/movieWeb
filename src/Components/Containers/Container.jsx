@@ -47,7 +47,10 @@ function Container({ posts }) {
 
   return (
     <div>
-      <h1 className="slider_title">Top Rated</h1>
+      <Link to={`/movies/top_rated`} style={{ textDecoration: "none", color: "#fff" }}>
+        <h1 className="slider_title">Top-rated</h1>
+      </Link>
+      
       <div id="slider1">
         <div
           onMouseOver={pauseSlider}
@@ -56,13 +59,12 @@ function Container({ posts }) {
         >
           {topRated.map((post) => (
             <Link
-              style={{ textDecoration: "none", color: "#fff" }}
               to={`/movie/${post.id}`}
+              className="sliderbox"
             >
               <a
                 key={post.index}
-                className="sliderbox"
-                href={`https://image.tmdb.org/t/p/original/${post.poster_path}`}
+                style={{ textDecoration: "none", color: "#fff", fontFamily: "Roboto"}}
                 target="_blank"
               >
                 <img
@@ -78,12 +80,12 @@ function Container({ posts }) {
           ))}
           {topRated.map((post) => (
             <Link
-              style={{ textDecoration: "none", color: "#fff" }}
               to={`/movie/${post.id}`}
+              className="sliderbox"
             >
               <a
-                key={post.length + post.index}
-                className="sliderbox"
+                key={post.index + 20}
+                style={{ textDecoration: "none", color: "#fff", fontFamily: "Roboto"}}
                 href={`https://image.tmdb.org/t/p/original/${post.poster_path}`}
                 target="_blank"
               >
@@ -100,14 +102,17 @@ function Container({ posts }) {
           ))}
         </div>
       </div>
+      
+      <Link to={`/movies/upcoming`} style={{ textDecoration: "none", color: "#fff" }}>
       <h1 className="slider_title">Upcoming</h1>
+      </Link>
       <div>
         <div className="flex-parent">
           {upComing.map((post) => (
             <Link className="moviebox" to={`/movie/${post.id}`}>
               <a
-                href={`https://image.tmdb.org/t/p/original/${post.poster_path}`}
                 target="_blank"
+                style={{ textDecoration: "none", color: "#fff", fontFamily: "Roboto" }}
               >
                 <img
                   className="movieimg"

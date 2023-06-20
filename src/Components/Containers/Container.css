@@ -13,7 +13,7 @@
     margin-left: 15px; 
 }
 
-#slider1, .moviebox {
+#slider1, .moviebox, .sliderbox {
     font-family: "Roboto", sans-serif;
 }
 
@@ -29,7 +29,7 @@
 .photobanner {
     display: flex;
     flex-direction: row;
-    animation: bannermove 150s linear infinite;
+    animation: bannermove 120s linear infinite;
 }
   
 @keyframes bannermove {
@@ -51,7 +51,8 @@
     transition: 0.3s;
     background-color: #e67832; 
     color: white; 
-    text-decoration: none; 
+    text-decoration: none;
+    text-align: center; 
 }
 
 .moviebox{
@@ -85,8 +86,9 @@
 .sliderimg {
     border-top-left-radius: 1rem; 
     border-top-right-radius: 1rem; 
-    width: calc(18vw - 2px); 
+    width: 20vw; 
     object-fit: cover; 
+    margin: 0;
 }
 
 .movieimg {
