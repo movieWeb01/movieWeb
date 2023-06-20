@@ -1,12 +1,11 @@
 import "./App.css";
-import Example from "./Navbar/Navbar";
+import { Routes, Route } from "react-router-dom";
+import Example from "./Components/Navbar/Navbar";
+import Home from "./Components/Home";
+import Description from "./Components/Des/Des";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import Carousel1 from "./Componetns/Carousel1";
-import Container from "./Containers/Container"; 
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import Description from "./Des/Des";
-
+import MoviePage from "./Components/MoviePage/MoviePage";
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -19,19 +18,17 @@ function App() {
       .then((res) => {
         console.log(res);
         setPosts(res.data.results);
+        console.log("post", posts);
       });
-  }, []); 
-
-  console.log("post", posts);
+  }, []);
   return (
     <div className="App">
       <Example />
-      <Carousel1 posts={posts} />
-
-      <Description posts={posts} />
-
-      <Container posts={posts} />
-
+      <Routes>
+        <Route path="/" element={<Home posts={posts} />} />
+        <Route path="/movies/:type" element={<MoviePage />} />
+        <Route path="/movie/:movieId" element={<Description />} />
+      </Routes>
     </div>
   );
 }

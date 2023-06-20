@@ -1,20 +1,27 @@
 import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
+import "./Carousel1.css";
+import { Link } from "react-router-dom";
 
 function Carousel1({ posts }) {
   return (
-    <div>
-      <Carousel
-        showThumbs={false}
-        autoPlay={true}
-        transitionTime={3}
-        infiniteLoop={true}
-        showStatus={false}
-      >
-        {posts.map((post) => (
+    <Carousel
+      showThumbs={false}
+      autoPlay={true}
+      transitionTime={3}
+      infiniteLoop={true}
+      showStatus={false}
+      autoFocus={true}
+    >
+      {posts.map((post) => (
+        <Link
+          style={{ textDecoration: "none", color: "#fff" }}
+          to={`/movie/${post.id}`}
+        >
           <div className="image-silder" key={post.id}>
             <img
+              alt=""
               src={`https://image.tmdb.org/t/p/original/${post.backdrop_path}`}
             />
             <div className="image-silder-overlay">
@@ -29,9 +36,9 @@ function Carousel1({ posts }) {
               <div className="post-description">{post.overview}</div>
             </div>
           </div>
-        ))}
-      </Carousel>
-    </div>
+        </Link>
+      ))}
+    </Carousel>
   );
 }
 

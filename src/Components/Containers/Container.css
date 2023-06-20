@@ -13,8 +13,11 @@
     margin-left: 15px; 
 }
 
-#slider1, #slider2 {
+#slider1, .moviebox, .sliderbox {
     font-family: "Roboto", sans-serif;
+}
+
+#slider1 {
     border-radius: 1rem;
     max-width: 100%;
     overflow: hidden;
@@ -26,7 +29,7 @@
 .photobanner {
     display: flex;
     flex-direction: row;
-    animation: bannermove 150s linear infinite;
+    animation: bannermove 120s linear infinite;
 }
   
 @keyframes bannermove {
@@ -48,12 +51,13 @@
     transition: 0.3s;
     background-color: #e67832; 
     color: white; 
-    text-decoration: none; 
+    text-decoration: none;
+    text-align: center; 
 }
 
 .moviebox{
-    border-top-left-radius: 2rem; 
-    border-top-right-radius: 2rem; 
+    border-top-left-radius: 3.5rem; 
+    border-top-right-radius: 3.5rem; 
     width: 18vw;
     margin: 1vw; 
     transition: 0.45s;
@@ -61,12 +65,13 @@
     background-color: #e67832; 
     color: white; 
     text-decoration: none; 
+    text-align: center; 
+    padding-bottom: 10px; 
 }
 
 .moviebox:hover{
-    filter: grayscale(75%);
-    border: 1px solid #00c3ff; 
-    background-color: #00c3ff; 
+    border: 1px solid #3cacce; 
+    background-color: #3cacce; 
 }
 
 .sliderbox:hover {
@@ -81,15 +86,24 @@
 .sliderimg {
     border-top-left-radius: 1rem; 
     border-top-right-radius: 1rem; 
+    width: 20vw; 
+    object-fit: cover; 
+    margin: 0;
+}
+
+.movieimg {
+    border-top-left-radius: 3.5rem; 
+    border-top-right-radius: 3.5rem; 
     width: calc(18vw - 2px); 
     object-fit: cover; 
 }
 
-.movieimg {
-    border-top-left-radius: 2rem; 
-    border-top-right-radius: 2rem; 
-    width: calc(18vw - 2px); 
-    object-fit: cover; 
+.movieimg:hover{
+    -webkit-filter: grayscale(75%);
+    -moz-filter: grayscale(75%);
+    -ms-filter: grayscale(75%);
+    -o-filter: grayscale(75%);
+    filter: grayscale(75%);
 }
 
 .caption{
@@ -102,6 +116,33 @@
 
 .flex-parent{
     display: flex; 
-    justify-content: space-around;
+    justify-content: space-evenly; 
     flex-wrap: wrap;
+}
+
+.star-rating{
+    font-size: 15px;
+}
+
+.heart_btn{
+    background: none; 
+    border: none; 
+    width: 20px; 
+}
+
+.heart_img{
+    width: 20px; 
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+
+.heart_img:hover{
+    -webkit-filter: grayscale(0%); 
+    -moz-filter: grayscale(0%); 
+    -ms-filter: grayscale(0%); 
+    -o-filter: grayscale(0%); 
+    filter: grayscale(0%); 
 }
