@@ -1,7 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;900&display=swap");
+
+:root {
+  --font-family-Montserrat: "Montserrat", sans-serif;
+}
+
 .poster {
   height: 500px;
-  border-radius: 10px;
+  border-radius: 10px; 
   margin: 5vh;
+  box-shadow: 0 0 20px 2px rgba(255, 255, 255, 0.5);
 }
 
 .backdrop {
@@ -18,23 +25,53 @@
   position: absolute;
   display: flex;
 }
+
 .mcright {
   display: flex;
   flex-direction: column;
   margin-top: 5vh;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-family-Montserrat);
+  background-color: #06091880; 
+  border-radius: 10px;
+  max-width: 70%;
+  padding: 10px 20px;
 }
 
 h1 {
-  font-size: 32px;
+  font-size: 40px;
   font-weight: 900;
 }
-p:first-of-type {
-  font-size: 24px;
-  font-weight: 700;
+
+.des-title:first-of-type {
+  font-size: 40px;
+  font-weight: 900;
 }
 
 p:nth-of-type(2) {
+  font-size: 24px;
+}
+
+#releaseDate {
+  font-size: 20px;
+}
+
+#rate {
+  display: block;
+  background-color: #061770;
+  border-radius: 50%;
+  padding: 10px;
+  margin-left: 10px;
+  font-size: 24px;
+}
+
+.filmAndRate {
+  display: flex;
+  align-items: center;
+}
+
+#tagline {
+  font-style: italic;
+  color: #f0f8ff80;
   font-size: 16px;
-  font-weight: 400;
+  margin-top: 25px;
 }

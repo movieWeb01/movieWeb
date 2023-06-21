@@ -17,13 +17,14 @@ const Description = () => {
       });
   }, [movieId]);
   console.log("movieDetails", movieDetails);
+  const rate = Math.floor(`${movieDetails.vote_average}` * 10) / 10;
 
   return (
     <div className="backdrop">
       <div className="mbackground">
         <img
           src={`https://image.tmdb.org/t/p/original/${movieDetails.backdrop_path}`}
-          style={{ width: "100vw" }}
+          style={{ width: "100%" }}
           alt="filmBackground"
         />
       </div>
@@ -36,10 +37,13 @@ const Description = () => {
           />
         </div>
         <div className="mcright">
-          <h1>{movieDetails.title}</h1>
-          <span>Release Date:{movieDetails.release_date}</span>
-          <span>{movieDetails.vote_average}</span>
-          <p>MOVIE INFO</p>
+          <div className="filmAndRate">
+            <h1>{movieDetails.title}</h1>
+            <span id="rate">{rate}</span>
+          </div>
+          <span id="releaseDate">Release Date:{movieDetails.release_date}</span>
+          <span id="tagline">{movieDetails.tagline}</span>
+          <p className='des-title'>MOVIE INFO</p>
           <p>{movieDetails.overview}</p>
         </div>
       </div>
@@ -48,3 +52,6 @@ const Description = () => {
 };
 
 export default Description;
+// {movieDetails.genres.map((ge) => (
+//   <span>{ge.name}</span>
+// ))}

@@ -6,6 +6,7 @@ import Description from "./Components/Des/Des";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import MoviePage from "./Components/MoviePage/MoviePage";
+import GenresPage from "./Components/GenresPage/GenresPage";
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -28,6 +29,10 @@ function App() {
         <Route path="/" element={<Home posts={posts} />} />
         <Route path="/movies/:type" element={<MoviePage />} />
         <Route path="/movie/:movieId" element={<Description />} />
+        <Route
+          path="/moviesGenres/:genres"
+          element={<GenresPage posts={posts} />}
+        />
       </Routes>
     </div>
   );
