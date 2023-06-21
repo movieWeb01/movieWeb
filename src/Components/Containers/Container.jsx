@@ -6,10 +6,10 @@ import { Link } from "react-router-dom";
 function Container({ posts }) {
   const [topRated, setTopRated] = useState([]); 
   const [upComing, setUpComing] = useState([]); 
-  const [favorite, setFavorite] = useState(() => JSON.parse(localStorage.getItem("favorite")) || []);
+  const [favorite, setFavorite] = useState(() => localStorage.getItem("favorite") || []);
 
   useEffect(() => {
-    localStorage.setItem("favorite", JSON.stringify(favorite)); 
+    localStorage.setItem("favorite", favorite); 
   }, [favorite]);
 
   useEffect(() => {
@@ -197,13 +197,14 @@ function Container({ posts }) {
             </Link>
             <Link>
               <button className='heart_btn' onClick={() => heartFunction(post.id)}>
+                  
                   {favorite.includes(post.id) ? 
                   <img
-                    className="heart_img_black"
+                    className="heart_img"
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Love_Heart_SVG.svg/968px-Love_Heart_SVG.svg.png"
                   />
                    : <img
-                   className="heart_img"
+                   className="heart_img_black"
                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Love_Heart_SVG.svg/968px-Love_Heart_SVG.svg.png"
                  />}
               </button>
