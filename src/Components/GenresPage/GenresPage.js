@@ -6,7 +6,7 @@ import axios from "axios";
 const GenresPage = ({ moviesGenres }) => {
   const { genres } = useParams();
   const [genreMovies, setGenreMovies] = useState([]); 
-  const [favorite, setFavorite] = useState(() => localStorage.getItem("favorite") || []);
+  const [favorite, setFavorite] = useState(() => JSON.parse(localStorage.getItem("favorite")) || []);
 
   useEffect(() => {
     localStorage.setItem("favorite", JSON.stringify(favorite)); 
@@ -24,16 +24,12 @@ const GenresPage = ({ moviesGenres }) => {
   console.log("genreMovies", genreMovies);
 
   function heartFunction(movieId) {
-    if (Array.isArray(favorite)) {
-      if (favorite.includes(movieId)) {
-        setFavorite(favorite.filter(id => id !== movieId));
-      } else {
-        setFavorite([...favorite, movieId]); 
-      }
+    if (favorite.includes(movieId)) {
+      setFavorite(favorite.filter(id => id !== movieId));
     } else {
-      setFavorite([movieId]);
+      setFavorite([...favorite, movieId]); 
     }
-    localStorage.setItem("favorite", JSON.stringify(favorite)); 
+    localStorage.setItem("favorite", JSON.stringify([...favorite, movieId])); 
   }
 
   return (

@@ -6,13 +6,13 @@ import axios from "axios";
 const MoviePage = () => {
   const [movieList, setMovieList] = useState([]);
   const { type } = useParams(); 
-  const [favorite, setFavorite] = useState(() => localStorage.getItem("favorite") || []);
+  const [favorite, setFavorite] = useState(() => JSON.parse(localStorage.getItem("favorite")) || []);
 
-  useEffect(() => {
+  useEffect(() => { 
     localStorage.setItem("favorite", JSON.stringify(favorite)); 
   }, [favorite]);
 
-  useEffect(() => {
+  useEffect(() => { 
     axios
       .get(
         `https://api.themoviedb.org/3/movie/${type}?api_key=6a3a9e9a61085d657b30d36d1c7b5ba7`
@@ -24,16 +24,12 @@ const MoviePage = () => {
   }, [type]); 
 
   function heartFunction(movieId) {
-    if (Array.isArray(favorite)) {
-      if (favorite.includes(movieId)) {
-        setFavorite(favorite.filter(id => id !== movieId));
-      } else {
-        setFavorite([...favorite, movieId]); 
-      }
+    if (favorite.includes(movieId)) {
+      setFavorite(favorite.filter(id => id !== movieId));
     } else {
-      setFavorite([movieId]);
+      setFavorite([...favorite, movieId]); 
     }
-    localStorage.setItem("favorite", JSON.stringify(favorite)); 
+    localStorage.setItem("favorite", JSON.stringify([...favorite, movieId])); 
   }
 
   return (
