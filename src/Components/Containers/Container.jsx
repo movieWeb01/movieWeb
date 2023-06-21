@@ -22,6 +22,7 @@ function Container({ posts }) {
         setTopRated(res.data.results);
       });
   }, []);
+
   useEffect(() => {
     axios
       .get(
