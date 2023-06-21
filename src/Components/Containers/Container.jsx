@@ -8,9 +8,9 @@ function Container({ posts }) {
   const [upComing, setUpComing] = useState([]); 
   const [favorite, setFavorite] = useState(() => localStorage.getItem("favorite") || []);
 
-  useEffect(() => {
-    localStorage.setItem("favorite", favorite); 
-  }, [favorite]);
+  useEffect(() => { 
+    localStorage.setItem("favorite", JSON.stringify(favorite)); 
+  }, [favorite]); 
 
   useEffect(() => {
     axios
@@ -22,6 +22,7 @@ function Container({ posts }) {
         setTopRated(res.data.results);
       });
   }, []);
+
   useEffect(() => {
     axios
       .get(
@@ -52,12 +53,16 @@ function Container({ posts }) {
   const heartholder = document.getElementsByClassName("heart_img"); 
 
   function heartFunction(movieId) {
-    if (favorite.includes(movieId)) {
-      setFavorite(favorite.filter(id => id !== movieId));
+    if (Array.isArray(favorite)) {
+      if (favorite.includes(movieId)) {
+        setFavorite(favorite.filter(id => id !== movieId));
+      } else {
+        setFavorite([...favorite, movieId]); 
+      }
     } else {
-      setFavorite([...favorite, movieId]); 
+      setFavorite([movieId]);
     }
-    localStorage.setItem("favorite", favorite); 
+    localStorage.setItem("favorite", JSON.stringify(favorite)); 
   }
 
   return (
@@ -197,7 +202,6 @@ function Container({ posts }) {
             </Link>
             <Link>
               <button className='heart_btn' onClick={() => heartFunction(post.id)}>
-                  
                   {favorite.includes(post.id) ? 
                   <img
                     className="heart_img"
