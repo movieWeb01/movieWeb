@@ -16,7 +16,7 @@ import {
   DropdownItem,
   Input,
 } from "reactstrap";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Example = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,7 +24,6 @@ const Example = () => {
   const [category, setCategory] = useState("");
   const toggle = () => setIsOpen(!isOpen);
   const [movies, setMovies] = useState([]);
-  const [moviesGenres, setMoviesGenres] = useState([]);
 
   const searchMovies = () => {
     axios
@@ -60,17 +59,6 @@ const Example = () => {
       });
   };
 
-  const movieGenres = () => {
-    axios
-      .get(
-        "https://api.themoviedb.org/3/genre/movie/list?api_key=6a3a9e9a61085d657b30d36d1c7b5ba7"
-      )
-      .then((res) => {
-        console.log("genres", res.data.genres);
-        setMoviesGenres(res.data.genres);
-      });
-  };
-
   useEffect(() => {
     if (info) {
       searchMovies();
@@ -85,10 +73,6 @@ const Example = () => {
       setMovies([]);
     }
   }, [category]);
-
-  useEffect(() => {
-    movieGenres();
-  }, []);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [todosPerPage, setTodosPerPage] = useState(4);
@@ -131,7 +115,7 @@ const Example = () => {
   return (
     <div
       style={{
-        backgroundColor: "skyblue",
+        backgroundColor: "black",
         position: "sticky",
         top: "0px",
         fontSize: "50px",
@@ -140,14 +124,11 @@ const Example = () => {
       }}
     >
       <div
-        style={{
-          backgroundColor: "skyblue",
-          fontSize: "50px",
-        }}
+        className="Navigation"
       >
-        <Navbar light expand="md">
+        <Navbar light expand="md" className="Navbar">
           <Link to={"/"} style={{ textDecoration: "none", color: "#fff" }}>
-            <NavbarBrand style={{ fontSize: "30px" }}>Love Movie</NavbarBrand>
+            <NavbarBrand className="NavbarBrand">Love Movie</NavbarBrand>
           </Link>
 
           <NavbarToggler onClick={toggle} />
@@ -167,41 +148,28 @@ const Example = () => {
               style={{
                 position: "relative",
                 top: "3px",
-                fontSize: "25px",
+
               }}
             >
-              <NavItem>
+              <div className="NavItemGroup">
+              <NavItem className="NavItem">
                 <Link
                   to={"movies/popular"}
                   style={{ textDecoration: "none", color: "#fff" }}
                 >
                   <NavLink
-                    style={{
-                      cursor: "pointer",
-                      position: "relative",
-                      right: "200px",
-                      top: "3px",
-                      fontSize: "25px",
-                    }}
-                  >
+                  className="popular">
                     受歡迎
                   </NavLink>
                 </Link>
               </NavItem>
-              <NavItem>
+              <NavItem className="NavItem">
                 <Link
                   to={"movies/top_rated"}
                   style={{ textDecoration: "none", color: "#fff" }}
                 >
                   <NavLink
-                    style={{
-                      cursor: "pointer",
-                      position: "relative",
-                      right: "150px",
-                      top: "3px",
-                      fontSize: "25px",
-                    }}
-                  >
+                    className="topRated">
                     Top Rated
                   </NavLink>
                 </Link>
@@ -216,14 +184,7 @@ const Example = () => {
                 }}
               >
                 <Input
-                  style={{
-                    position: "relative",
-                    left: "00px",
-                    width: "550px",
-                    height: "50px",
-                    fontSize: "25px",
-                    paddingRight: "85px",
-                  }}
+                  className="input"
                   placeholder="What movie are you looking for?"
                   value={info}
                   maxLength={100000000}
@@ -232,16 +193,11 @@ const Example = () => {
                   }}
                 />
                 <i
-                  style={{
-                    fontSize: "20px",
-                    position: "relative",
-                    right: "80px",
-                    color: "black",
-                  }}
-                >
+                className="Search">
                   Search
                 </i>
               </NavItem>
+              </div>
               <UncontrolledDropdown
                 nav
                 inNavbar
@@ -252,22 +208,53 @@ const Example = () => {
                   alignItems: "center",
                 }}
               >
-                <div style={{ position: "relative", left: "250px" }}>
-                  <DropdownToggle nav caret style={{ fontSize: "25px" }}>
+                <div className="categoryGroup">
+                  <DropdownToggle nav caret>
                     <b className="category">類別</b>
                   </DropdownToggle>
                   <DropdownMenu
                     style={{ fontSize: "30px", backgroundColor: "pink" }}
                   >
-                    {moviesGenres.map((gen) => (
-                      <Link
-                        to={`/moviesGenres/${gen.id}`}
-                        style={{ textDecoration: "none" }}
-                      >
-                        <DropdownItem className="item">{gen.name}</DropdownItem>
-                      </Link>
-                    ))}
-
+                    <DropdownItem
+                      className="item"
+                      onClick={() => {
+                        setCategory("Science Fiction");
+                      }}
+                    >
+                      科幻
+                    </DropdownItem>
+                    <DropdownItem
+                      className="item"
+                      onClick={() => {
+                        setCategory("Familie");
+                      }}
+                    >
+                      家庭
+                    </DropdownItem>
+                    <DropdownItem
+                      className="item"
+                      onClick={() => {
+                        setCategory("Abenteuer");
+                      }}
+                    >
+                      冒險
+                    </DropdownItem>
+                    <DropdownItem
+                      className="item"
+                      onClick={() => {
+                        setCategory("Animation");
+                      }}
+                    >
+                      動畫
+                    </DropdownItem>
+                    <DropdownItem
+                      className="item"
+                      onClick={() => {
+                        setCategory("Action");
+                      }}
+                    >
+                      動作
+                    </DropdownItem>
                     <DropdownItem divider />
                   </DropdownMenu>
                 </div>

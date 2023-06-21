@@ -1,10 +1,60 @@
-.item:hover {
+.Navigation {
+  background-color: transparent;
+  font-size: 50px;
+}
+.Navigation .Navbar .NavbarBrand {
+  font-size: 30px;
+  padding: 9px 20px;
+  border-radius: 10px;
+}
+.Navigation .Navbar .NavbarBrand:hover {
+  color: white;
+  background-color: rgba(0, 136, 169, 0.8);
+  transition: all 0.3s ease 0s;
+}
+.Navigation .Navbar .ml-auto .NavItemGroup {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.Navigation .Navbar .ml-auto .NavItemGroup .NavItem {
+  font-size: 40px;
+}
+.Navigation .Navbar .ml-auto .NavItemGroup .NavItem .popular {
+  cursor: pointer;
+  position: relative;
+  right: 200px;
+  top: 3px;
+  width: 120px;
+  padding: 9px 20px;
+  border-radius: 10px;
+}
+.Navigation .Navbar .ml-auto .NavItemGroup .NavItem .popular:hover {
+  color: white;
+  background-color: rgba(0, 136, 169, 0.8);
+  transition: all 0.3s ease 0s;
+}
+.Navigation .Navbar .ml-auto .NavItemGroup .NavItem .topRated {
+  cursor: pointer;
+  position: relative;
+  right: 120px;
+  top: 3px;
+  width: 150px;
+  padding: 9px 10px;
+  border-radius: 10px;
+}
+.Navigation .Navbar .ml-auto .NavItemGroup .NavItem .topRated:hover {
+  color: white;
+  background-color: rgba(0, 136, 169, 0.8);
+  transition: all 0.3s ease 0s;
+}
+.Navigation .Navbar .ml-auto .item:hover {
   color: white;
   font-style: initial;
   background-color: red;
 }
-
-.movieItem {
+.Navigation .Navbar .movieItem {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -16,7 +66,7 @@
   top: 50px;
   border-radius: 15px;
 }
-.movieItem:hover {
+.Navigation .Navbar .movieItem:hover {
   border: 6px solid rgb(250, 50, 0);
   scale: 1.1;
   transition: 1s;
@@ -26,16 +76,36 @@
   color: rgb(253, 255, 146);
   background-color: rgb(211, 83, 83);
 }
-.movieItem h4 {
+.Navigation .Navbar .movieItem h4 {
   font-size: 20px;
 }
-
-.category {
-  font-size: 25px;
+.Navigation .Navbar .categoryGroup {
+  position: relative;
+  left: 200px;
 }
-.category:hover {
-  transition: 0.5s;
-  color: #0088a9;
+.Navigation .Navbar .categoryGroup .category {
+  font-size: 25px;
+  padding: 9px 10px;
+  border-radius: 30px;
+}
+.Navigation .Navbar .categoryGroup .category:hover {
+  color: white;
+  background-color: rgba(0, 136, 169, 0.8);
+  transition: all 0.3s ease 0s;
+}
+.Navigation .Navbar .input {
+  position: relative;
+  left: -70px;
+  width: 550px;
+  height: 50px;
+  font-size: 25px;
+  padding-right: 85px;
+}
+.Navigation .Navbar i {
+  font-size: 20px;
+  position: relative;
+  right: 150px;
+  color: black;
 }
 
 .numbers span:hover {
@@ -43,5 +113,210 @@
   font-size: 35px;
   color: black;
   cursor: pointer;
+}
+
+@media (max-width: 1000px) {
+  .Navigation {
+    background-color: red;
+  }
+  .Navigation .Navbar .NavbarBrand {
+    position: relative;
+    top: 5px;
+    font-size: 18px;
+  }
+  .Navigation .Navbar .ml-auto .NavItemGroup {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 130px;
+  }
+  .Navigation .Navbar .ml-auto .NavItemGroup .NavItem {
+    font-size: 25px;
+  }
+  .Navigation .Navbar .ml-auto .NavItemGroup .NavItem .popular {
+    cursor: pointer;
+    position: relative;
+    right: 150px;
+    top: 3px;
+    padding: 9px 5px;
+    border-radius: 30px;
+    width: 100px;
+  }
+  .Navigation .Navbar .ml-auto .NavItemGroup .NavItem .topRated {
+    cursor: pointer;
+    position: relative;
+    right: 170px;
+    top: 3px;
+    padding: 9px 5px;
+    border-radius: 30px;
+    width: 100px;
+  }
+  .Navigation .Navbar .ml-auto .item {
+    color: red;
+  }
+  .Navigation .Navbar .ml-auto .item:hover {
+    color: white;
+    font-style: initial;
+    background-color: red;
+  }
+  .Navigation .Navbar .movieItem {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: auto;
+    margin: 0px 10px;
+    width: 430px;
+    position: relative;
+    top: 50px;
+    border-radius: 15px;
+  }
+  .Navigation .Navbar .movieItem:hover {
+    border: 6px solid rgb(250, 50, 0);
+    scale: 1.1;
+    transition: 1s;
+    font-size: 25px;
+    height: auto;
+    z-index: 99;
+    color: rgb(253, 255, 146);
+    background-color: black;
+  }
+  .Navigation .Navbar .movieItem h4 {
+    font-size: 20px;
+  }
+  .Navigation .Navbar .categoryGroup {
+    position: relative;
+    top: 0px;
+    left: 0px;
+  }
+  .Navigation .Navbar .categoryGroup .category {
+    font-size: 25px;
+    padding: 9px 10px;
+    border-radius: 30px;
+  }
+  .Navigation .Navbar .categoryGroup .category:hover {
+    transition: 0.5s;
+    color: #0088a9;
+  }
+  .Navigation .Navbar .input {
+    color: lightgreen;
+    width: 350px;
+    position: relative;
+    left: -150px;
+  }
+  .Navigation .Navbar i {
+    font-size: 20px;
+    position: relative;
+    right: 225px;
+    color: black;
+  }
+  .numbers span:hover {
+    transition: 0.5s;
+    font-size: 35px;
+    color: black;
+    cursor: pointer;
+  }
+}
+@media (max-width: 750px) {
+  .Navigation {
+    background-color: green;
+    height: 140px;
+  }
+  .Navigation .Navbar .NavbarBrand {
+    position: relative;
+    top: 5px;
+    font-size: 18px;
+  }
+  .Navigation .Navbar .ml-auto .NavItemGroup {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 130px;
+  }
+  .Navigation .Navbar .ml-auto .NavItemGroup .NavItem {
+    font-size: 25px;
+  }
+  .Navigation .Navbar .ml-auto .NavItemGroup .NavItem .popular {
+    cursor: pointer;
+    position: relative;
+    right: 145px;
+    top: 0px;
+    width: 80px;
+    padding: 9px 10px;
+    border-radius: 30px;
+  }
+  .Navigation .Navbar .ml-auto .NavItemGroup .NavItem .topRated {
+    cursor: pointer;
+    position: relative;
+    right: 225px;
+    top: 35px;
+    width: 100px;
+    padding: 10px 10px;
+    border-radius: 30px;
+  }
+  .Navigation .Navbar .ml-auto .item {
+    color: red;
+  }
+  .Navigation .Navbar .ml-auto .item:hover {
+    color: white;
+    font-style: initial;
+    background-color: red;
+  }
+  .Navigation .Navbar .movieItem {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: auto;
+    margin: 0px 10px;
+    width: 430px;
+    position: relative;
+    top: 50px;
+    border-radius: 15px;
+  }
+  .Navigation .Navbar .movieItem:hover {
+    border: 6px solid rgb(250, 50, 0);
+    scale: 1.1;
+    transition: 1s;
+    font-size: 25px;
+    height: auto;
+    z-index: 99;
+    color: rgb(253, 255, 146);
+    background-color: black;
+  }
+  .Navigation .Navbar .movieItem h4 {
+    font-size: 20px;
+  }
+  .Navigation .Navbar .categoryGroup {
+    position: relative;
+    top: -50px;
+    left: 270px;
+  }
+  .Navigation .Navbar .categoryGroup .category {
+    font-size: 25px;
+    padding: 9px 10px;
+    border-radius: 30px;
+  }
+  .Navigation .Navbar .categoryGroup .category:hover {
+    color: white;
+    background-color: rgba(0, 136, 169, 0.8);
+    transition: all 0.3s ease 0s;
+  }
+  .Navigation .Navbar .input {
+    color: lightgreen;
+    width: 350px;
+    position: relative;
+    left: -150px;
+  }
+  .numbers span:hover {
+    transition: 0.5s;
+    font-size: 35px;
+    color: black;
+    cursor: pointer;
+  }
 }
 /*# sourceMappingURL=Navbar.css.map */
