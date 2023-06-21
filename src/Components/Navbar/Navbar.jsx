@@ -18,13 +18,12 @@ import {
 } from "reactstrap";
 import { Link, useParams } from "react-router-dom";
 
-const Example = () => {
+const Example = ({ moviesGenres }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [info, setInfo] = useState("");
   const [category, setCategory] = useState("");
   const toggle = () => setIsOpen(!isOpen);
   const [movies, setMovies] = useState([]);
-  const [moviesGenres, setMoviesGenres] = useState([]);
 
   const searchMovies = () => {
     axios
@@ -60,17 +59,6 @@ const Example = () => {
       });
   };
 
-  const movieGenres = () => {
-    axios
-      .get(
-        "https://api.themoviedb.org/3/genre/movie/list?api_key=6a3a9e9a61085d657b30d36d1c7b5ba7"
-      )
-      .then((res) => {
-        console.log("genres", res.data.genres);
-        setMoviesGenres(res.data.genres);
-      });
-  };
-
   useEffect(() => {
     if (info) {
       searchMovies();
@@ -85,10 +73,6 @@ const Example = () => {
       setMovies([]);
     }
   }, [category]);
-
-  useEffect(() => {
-    movieGenres();
-  }, []);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [todosPerPage, setTodosPerPage] = useState(4);

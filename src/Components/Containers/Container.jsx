@@ -6,7 +6,11 @@ import { Link } from "react-router-dom";
 function Container({ posts }) {
   const [topRated, setTopRated] = useState([]); 
   const [upComing, setUpComing] = useState([]); 
-  const [favorite, setFavorite] = useState([]); 
+  const [favorite, setFavorite] = useState(() => localStorage.getItem("favorite") || []);
+
+  useEffect(() => { 
+    localStorage.setItem("favorite", JSON.stringify(favorite)); 
+  }, [favorite]); 
 
   useEffect(() => {
     axios
@@ -18,6 +22,7 @@ function Container({ posts }) {
         setTopRated(res.data.results);
       });
   }, []);
+
   useEffect(() => {
     axios
       .get(
@@ -48,11 +53,16 @@ function Container({ posts }) {
   const heartholder = document.getElementsByClassName("heart_img"); 
 
   function heartFunction(movieId) {
-    if (favorite.includes(movieId)) {
-      setFavorite(favorite.filter(id => id !== movieId));
+    if (Array.isArray(favorite)) {
+      if (favorite.includes(movieId)) {
+        setFavorite(favorite.filter(id => id !== movieId));
+      } else {
+        setFavorite([...favorite, movieId]); 
+      }
     } else {
-      setFavorite([...favorite, movieId]);
+      setFavorite([movieId]);
     }
+    localStorage.setItem("favorite", JSON.stringify(favorite)); 
   }
 
   return (
@@ -192,11 +202,15 @@ function Container({ posts }) {
             </Link>
             <Link>
               <button className='heart_btn' onClick={() => heartFunction(post.id)}>
+                  {favorite.includes(post.id) ? 
                   <img
                     className="heart_img"
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Love_Heart_SVG.svg/968px-Love_Heart_SVG.svg.png"
                   />
-                  {favorite.includes(post.id) ? 'Remove from favorite' : 'Add to favorite'}
+                   : <img
+                   className="heart_img_black"
+                   src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Love_Heart_SVG.svg/968px-Love_Heart_SVG.svg.png"
+                 />}
               </button>
             </Link>
             </div>
