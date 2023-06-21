@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function Container({ posts }) {
   const [topRated, setTopRated] = useState([]); 
   const [upComing, setUpComing] = useState([]); 
-  const [favorite, setFavorite] = useState(() => localStorage.getItem("favorite") || []);
+  const [favorite, setFavorite] = useState(() => JSON.parse(localStorage.getItem("favorite")) || []);
 
   useEffect(() => { 
     localStorage.setItem("favorite", JSON.stringify(favorite)); 
@@ -53,16 +53,12 @@ function Container({ posts }) {
   const heartholder = document.getElementsByClassName("heart_img"); 
 
   function heartFunction(movieId) {
-    if (Array.isArray(favorite)) {
-      if (favorite.includes(movieId)) {
-        setFavorite(favorite.filter(id => id !== movieId));
-      } else {
-        setFavorite([...favorite, movieId]); 
-      }
+    if (favorite.includes(movieId)) {
+      setFavorite(favorite.filter(id => id !== movieId));
     } else {
-      setFavorite([movieId]);
+      setFavorite([...favorite, movieId]); 
     }
-    localStorage.setItem("favorite", JSON.stringify(favorite)); 
+    localStorage.setItem("favorite", JSON.stringify([...favorite, movieId])); 
   }
 
   return (
