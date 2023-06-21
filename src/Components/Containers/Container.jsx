@@ -4,8 +4,10 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 function Container({ posts }) {
-  const [topRated, setTopRated] = useState([]);
-  const [upComing, setUpComing] = useState([]);
+  const [topRated, setTopRated] = useState([]); 
+  const [upComing, setUpComing] = useState([]); 
+  const [favorite, setFavorite] = useState([]); 
+
   useEffect(() => {
     axios
       .get(
@@ -32,8 +34,8 @@ function Container({ posts }) {
   document.documentElement.style.setProperty(
     "--bannerwidth",
     `${topRated.length * 23}vw`
-  );
-  var slider1holder = document.getElementById("slider2");
+  ); 
+  var slider1holder = document.getElementById("slider2"); 
 
   function pauseSlider() {
     photobannerholder.style.animationPlayState = "paused";
@@ -43,7 +45,15 @@ function Container({ posts }) {
     photobannerholder.style.animationPlayState = "running";
   }
 
-  function heartFunction() {}
+  const heartholder = document.getElementsByClassName("heart_img"); 
+
+  function heartFunction(movieId) {
+    if (favorite.includes(movieId)) {
+      setFavorite(favorite.filter(id => id !== movieId));
+    } else {
+      setFavorite([...favorite, movieId]);
+    }
+  }
 
   return (
     <div>
@@ -109,7 +119,8 @@ function Container({ posts }) {
       <div>
         <div className="flex-parent">
           {upComing.map((post) => (
-            <Link className="moviebox" to={`/movie/${post.id}`}>
+            <div className="moviebox">
+            <Link to={`/movie/${post.id}`} style={{ textDecoration: "none" }}>
               <a
                 target="_blank"
                 style={{ textDecoration: "none", color: "#fff", fontFamily: "Roboto" }}
@@ -176,16 +187,19 @@ function Container({ posts }) {
                     />
                   )}
                   {post.vote_average !== 0 && ` (${post.vote_average})`}
-                  <button type="button" className="heart_btn">
-                    <img
-                      className="heart_img"
-                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Love_Heart_SVG.svg/968px-Love_Heart_SVG.svg.png"
-                      onClick={heartFunction}
-                    />
-                  </button>
                 </div>
               </a>
             </Link>
+            <Link>
+              <button className='heart_btn' onClick={() => heartFunction(post.id)}>
+                  <img
+                    className="heart_img"
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Love_Heart_SVG.svg/968px-Love_Heart_SVG.svg.png"
+                  />
+                  {favorite.includes(post.id) ? 'Remove from favorite' : 'Add to favorite'}
+              </button>
+            </Link>
+            </div>
           ))}
         </div>
       </div>
