@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Des.css";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
 const Description = () => {
@@ -44,7 +44,12 @@ const Description = () => {
           <span id="releaseDate">Release Date:{movieDetails.release_date}</span>
           <div class="des-genres">
             {movieDetails.genres?.map((ge) => (
-              <span id="genres">{ge.name}</span>
+              <Link
+                to={`/moviesGenres/${ge.id}`}
+                style={{ textDecoration: "none", color: "#fff" }}
+              >
+                <span id="genres">{ge.name}</span>
+              </Link>
             ))}
           </div>
           <span id="tagline">{movieDetails.tagline}</span>
