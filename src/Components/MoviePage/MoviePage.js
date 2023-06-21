@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./MoviePage.css";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import Footer from "../Footer/Footer"; 
 
 const MoviePage = () => {
   const [movieList, setMovieList] = useState([]);
@@ -129,6 +130,7 @@ const MoviePage = () => {
           ))}
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
