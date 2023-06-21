@@ -125,24 +125,24 @@
 }
 
 .heart_btn{
-    background: none; 
-    border: none; 
-    width: 20px; 
+    margin-top: 5px;
+    border: none;
+    cursor: default; 
 }
 
 .heart_img{
     width: 20px; 
-    -webkit-filter: grayscale(100%);
-    -moz-filter: grayscale(100%);
-    -ms-filter: grayscale(100%);
-    -o-filter: grayscale(100%);
-    filter: grayscale(100%);
-}
-
-.heart_img:hover{
     -webkit-filter: grayscale(0%); 
     -moz-filter: grayscale(0%); 
     -ms-filter: grayscale(0%); 
     -o-filter: grayscale(0%); 
     filter: grayscale(0%); 
+}
+
+.heart_img:hover{
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    filter: grayscale(100%);
 }
