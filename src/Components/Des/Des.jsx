@@ -43,7 +43,7 @@ const Description = () => {
           </div>
           <span id="releaseDate">Release Date:{movieDetails.release_date}</span>
           <span id="tagline">{movieDetails.tagline}</span>
-          <p>MOVIE INFO</p>
+          <p className='des-title'>MOVIE INFO</p>
           <p>{movieDetails.overview}</p>
         </div>
       </div>

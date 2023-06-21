@@ -6,7 +6,7 @@
 
 .poster {
   height: 500px;
-  border-radius: 10px;
+  border-radius: 10px; 
   margin: 5vh;
   box-shadow: 0 0 20px 2px rgba(255, 255, 255, 0.5);
 }
@@ -25,22 +25,24 @@
   position: absolute;
   display: flex;
 }
+
 .mcright {
   display: flex;
   flex-direction: column;
   margin-top: 5vh;
   font-family: var(--font-family-Montserrat);
-  background-color: #06091880;
+  background-color: #06091880; 
   border-radius: 10px;
   max-width: 70%;
   padding: 10px 20px;
 }
 
 h1 {
-  font-size: 60px;
+  font-size: 40px;
   font-weight: 900;
 }
-p:first-of-type {
+
+.des-title:first-of-type {
   font-size: 40px;
   font-weight: 900;
 }
@@ -61,6 +63,7 @@ p:nth-of-type(2) {
   margin-left: 10px;
   font-size: 24px;
 }
+
 .filmAndRate {
   display: flex;
   align-items: center;
