@@ -6,7 +6,7 @@
 
 .poster {
   height: 500px;
-  border-radius: 10px; 
+  border-radius: 10px;
   margin: 5vh;
   box-shadow: 0 0 20px 2px rgba(255, 255, 255, 0.5);
 }
@@ -31,23 +31,22 @@
   flex-direction: column;
   margin-top: 5vh;
   font-family: var(--font-family-Montserrat);
-  background-color: #06091880; 
+  background-color: #06091880;
   border-radius: 10px;
   max-width: 70%;
   padding: 10px 20px;
 }
 
-h1 {
+.des-title {
   font-size: 40px;
   font-weight: 900;
 }
 
-.des-title:first-of-type {
-  font-size: 40px;
+.des-info {
+  font-size: 32px;
   font-weight: 900;
 }
-
-p:nth-of-type(2) {
+.overview {
   font-size: 24px;
 }
 
@@ -74,4 +73,21 @@ p:nth-of-type(2) {
   color: #f0f8ff80;
   font-size: 16px;
   margin-top: 25px;
+}
+
+.des-genres {
+  display: flex;
+  max-width: 30%;
+}
+
+#genres {
+  display: block;
+  background-color: #06091880;
+  border-radius: 10px;
+  padding: 5px 5px;
+  font-size: 15px;
+}
+
+.des-genres :not(:first-child) {
+  margin-left: 10px;
 }
