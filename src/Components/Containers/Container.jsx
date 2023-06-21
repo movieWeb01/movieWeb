@@ -197,11 +197,15 @@ function Container({ posts }) {
             </Link>
             <Link>
               <button className='heart_btn' onClick={() => heartFunction(post.id)}>
+                  {favorite.includes(post.id) ? 
                   <img
-                    className="heart_img"
+                    className="heart_img_black"
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Love_Heart_SVG.svg/968px-Love_Heart_SVG.svg.png"
                   />
-                  {favorite.includes(post.id) ? 'Remove from favorite' : 'Add to favorite'}
+                   : <img
+                   className="heart_img"
+                   src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Love_Heart_SVG.svg/968px-Love_Heart_SVG.svg.png"
+                 />}
               </button>
             </Link>
             </div>
