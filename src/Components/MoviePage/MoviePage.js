@@ -5,7 +5,12 @@ import axios from "axios";
 
 const MoviePage = () => {
   const [movieList, setMovieList] = useState([]);
-  const { type } = useParams();
+  const { type } = useParams(); 
+  const [favorite, setFavorite] = useState(() => localStorage.getItem("favorite") || []);
+
+  useEffect(() => {
+    localStorage.setItem("favorite", favorite); 
+  }, [favorite]);
 
   useEffect(() => {
     axios
@@ -18,13 +23,23 @@ const MoviePage = () => {
       });
   }, [type]); 
 
+  function heartFunction(movieId) {
+    if (favorite.includes(movieId)) {
+      setFavorite(favorite.filter(id => id !== movieId));
+    } else {
+      setFavorite([...favorite, movieId]); 
+    }
+    localStorage.setItem("favorite", favorite); 
+  }
+
   return (
     <div>
       <h1 className="slider_title">{type.charAt(0).toUpperCase() + type.slice(1).replace("_", "-")}</h1>
       <div>
         <div className="flex-parent">
           {movieList.map((post) => (
-            <Link className="moviebox" to={`/movie/${post.id}`}>
+            <div className="moviebox">
+            <Link to={`/movie/${post.id}`} style={{ textDecoration: "none" }}>
               <a
                 style={{ textDecoration: "none", color: "#fff" }}
                 href={`https://image.tmdb.org/t/p/original/${post.poster_path}`}
@@ -94,15 +109,23 @@ const MoviePage = () => {
                     />
                   )}
                   {post.vote_average !== 0 && ` (${post.vote_average})`}
-                  <button type="button" className="heart_btn">
-                    <img
-                      className="heart_img"
-                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Love_Heart_SVG.svg/968px-Love_Heart_SVG.svg.png"
-                    />
-                  </button>
                 </div>
               </a>
             </Link>
+            <Link>
+            <button className='heart_btn' onClick={() => heartFunction(post.id)}>
+                {favorite.includes(post.id) ? 
+                <img
+                  className="heart_img"
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Love_Heart_SVG.svg/968px-Love_Heart_SVG.svg.png"
+                />
+                 : <img
+                 className="heart_img_black"
+                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Love_Heart_SVG.svg/968px-Love_Heart_SVG.svg.png"
+               />}
+            </button>
+          </Link>
+          </div>
           ))}
         </div>
       </div>
