@@ -6,7 +6,11 @@ import { Link } from "react-router-dom";
 function Container({ posts }) {
   const [topRated, setTopRated] = useState([]); 
   const [upComing, setUpComing] = useState([]); 
-  const [favorite, setFavorite] = useState([]); 
+  const [favorite, setFavorite] = useState(() => JSON.parse(localStorage.getItem("favorite")) || []);
+
+  useEffect(() => {
+    localStorage.setItem("favorite", JSON.stringify(favorite)); 
+  }, [favorite]);
 
   useEffect(() => {
     axios
@@ -51,8 +55,9 @@ function Container({ posts }) {
     if (favorite.includes(movieId)) {
       setFavorite(favorite.filter(id => id !== movieId));
     } else {
-      setFavorite([...favorite, movieId]);
+      setFavorite([...favorite, movieId]); 
     }
+    localStorage.setItem("favorite", favorite); 
   }
 
   return (
