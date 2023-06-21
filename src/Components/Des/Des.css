@@ -77,7 +77,7 @@
 
 .des-genres {
   display: flex;
-  max-width: 30%;
+  max-width: 100%;
 }
 
 #genres {
