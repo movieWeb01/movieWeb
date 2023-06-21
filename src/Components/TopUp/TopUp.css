@@ -10,7 +10,7 @@
     height: 60px; 
     width: 60px; 
     border-radius: 50px;
-    background-color: #e67832; 
+    background-color: #d5653d; 
     bottom: 55px;
     right: 30px;
     color: white;
@@ -21,5 +21,6 @@
     cursor: default;
     border: none;
     z-index: 200;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; 
+    cursor: pointer;
 }

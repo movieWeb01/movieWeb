@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./GenresPage.css";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import Footer from "../Footer/Footer"; 
 
 const GenresPage = ({ moviesGenres }) => {
   const { genres } = useParams();
@@ -138,6 +139,7 @@ const GenresPage = ({ moviesGenres }) => {
           ))}
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

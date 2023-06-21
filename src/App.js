@@ -7,7 +7,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import MoviePage from "./Components/MoviePage/MoviePage";
 import GenresPage from "./Components/GenresPage/GenresPage";
-import TopUp from "./Components/TopUp/TopUp";
+import TopUp from "./Components/TopUp/TopUp"; 
 
 function App() {
   const [posts, setPosts] = useState([]);
