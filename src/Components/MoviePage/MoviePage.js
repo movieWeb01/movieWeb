@@ -9,7 +9,7 @@ const MoviePage = () => {
   const [favorite, setFavorite] = useState(() => localStorage.getItem("favorite") || []);
 
   useEffect(() => {
-    localStorage.setItem("favorite", favorite); 
+    localStorage.setItem("favorite", JSON.stringify(favorite)); 
   }, [favorite]);
 
   useEffect(() => {
@@ -24,12 +24,16 @@ const MoviePage = () => {
   }, [type]); 
 
   function heartFunction(movieId) {
-    if (favorite.includes(movieId)) {
-      setFavorite(favorite.filter(id => id !== movieId));
+    if (Array.isArray(favorite)) {
+      if (favorite.includes(movieId)) {
+        setFavorite(favorite.filter(id => id !== movieId));
+      } else {
+        setFavorite([...favorite, movieId]); 
+      }
     } else {
-      setFavorite([...favorite, movieId]); 
+      setFavorite([movieId]);
     }
-    localStorage.setItem("favorite", favorite); 
+    localStorage.setItem("favorite", JSON.stringify(favorite)); 
   }
 
   return (
