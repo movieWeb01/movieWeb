@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./Des.css";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
 const Description = () => {
-  const [movieDetails, setMovieDetails] = useState({});
   const { movieId } = useParams();
+  const [movieDetails, setMovieDetails] = useState({});
 
   useEffect(() => {
     axios
@@ -38,13 +38,24 @@ const Description = () => {
         </div>
         <div className="mcright">
           <div className="filmAndRate">
-            <h1>{movieDetails.title}</h1>
+            <p class="des-title">{movieDetails.title}</p>
             <span id="rate">{rate}</span>
           </div>
           <span id="releaseDate">Release Date:{movieDetails.release_date}</span>
+          <div class="des-genres">
+            {movieDetails.genres?.map((ge) => (
+              <Link
+                to={`/moviesGenres/${ge.id}`}
+                style={{ textDecoration: "none", color: "#fff" }}
+              >
+                <span id="genres">{ge.name}</span>
+              </Link>
+            ))}
+          </div>
           <span id="tagline">{movieDetails.tagline}</span>
-          <p className='des-title'>MOVIE INFO</p>
-          <p>{movieDetails.overview}</p>
+          <p className="des-info">MOVIE INFO</p>
+          <p class="overview">{movieDetails.overview}</p>
+          <p></p>
         </div>
       </div>
     </div>
@@ -52,6 +63,3 @@ const Description = () => {
 };
 
 export default Description;
-// {movieDetails.genres.map((ge) => (
-//   <span>{ge.name}</span>
-// ))}
