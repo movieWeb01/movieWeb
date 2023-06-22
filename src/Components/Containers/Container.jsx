@@ -8,11 +8,12 @@ function Container({ posts }) {
   const [upComing, setUpComing] = useState([]); 
   const [nowPlaying, setNowPlaying] = useState([]); 
   const [trending, setTrending] = useState([]); 
+  const [search, setSearch] = useState([]); 
   const [pageNum, setPageNum] = useState(1); 
   const [nowPlayingPageNum, setNowPlayingPageNum] = useState(1); 
   const [upComingPageNum, setUpComingPageNum] = useState(1); 
   const [searchPageNum, setSearchPageNum] = useState(1); 
-  const [inputText, setInputText] = useState(''); 
+  const [inputText, setInputText] = useState('movie'); 
 
   const [favorite, setFavorite] = useState(() => JSON.parse(localStorage.getItem("favorite")) || []);
 
@@ -71,7 +72,7 @@ function Container({ posts }) {
       )
       .then((res) => {
         console.log(res);
-        setUpComing(res.data.results);
+        setSearch(res.data.results);
       });
   }, [searchPageNum, inputText]);
 
@@ -482,7 +483,7 @@ function Container({ posts }) {
       
       <div>
         <div className="flex-parent">
-          {upComing.map((post) => (
+          {search.map((post) => (
             <div className="moviebox">
             <Link to={`/movie/${post.id}`} style={{ textDecoration: "none" }}>
               <a
