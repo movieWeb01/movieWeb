@@ -8,6 +8,7 @@ function Container({ posts }) {
   const [upComing, setUpComing] = useState([]); 
   const [nowPlaying, setNowPlaying] = useState([]); 
   const [trending, setTrending] = useState([]); 
+  const [pageNum, setPageNum] = useState(1); 
 
   const [favorite, setFavorite] = useState(() => JSON.parse(localStorage.getItem("favorite")) || []);
 
@@ -51,14 +52,13 @@ function Container({ posts }) {
   useEffect(() => {
     axios
       .get(
-        `https://api.themoviedb.org/3/trending/movie/day?api_key=6a3a9e9a61085d657b30d36d1c7b5ba7`
+        `https://api.themoviedb.org/3/trending/movie/day?api_key=6a3a9e9a61085d657b30d36d1c7b5ba7&page=${pageNum}`
       )
       .then((res) => {
         console.log(res);
         setTrending(res.data.results);
       });
-  }, []);
-
+  }, [pageNum]);
 
   var slider1holder = document.getElementById("slider1");
   var photobannerholder = document.getElementsByClassName("photobanner")[0];
@@ -115,7 +115,7 @@ function Container({ posts }) {
                 />
                 <p className="caption">
                   {`${post.original_title}`}
-                  {post.vote_average !== 0 && ` - ${post.vote_average}`}
+                  {post.vote_average !== 0 && ` - ${Math.floor(post.vote_average * 10) / 10}`}
                 </p>
               </a>
             </Link>
@@ -216,7 +216,7 @@ function Container({ posts }) {
                       src="https://img.uxwing.com/wp-content/themes/uxwing/download/arts-graphic-shapes/star-full-icon.svg"
                     />
                   )}
-                  {post.vote_average !== 0 && ` (${post.vote_average})`}
+                  {post.vote_average !== 0 && ` (${Math.floor(post.vote_average * 10) / 10})`}
                 </div>
               </a>
             </Link>
@@ -235,6 +235,15 @@ function Container({ posts }) {
             </Link>
             </div>
           ))}
+        </div>
+      </div>
+      <div className='prev-next-parent'>
+        <div>
+          {(pageNum > 1) && <button type='button' className='prev-btn' onClick={()=>{setPageNum(pageNum - 1)}}>Prev page</button>}
+        </div>
+        <div><p className='content'>Page {pageNum}</p></div>
+        <div>
+          <button typr='button' className='next-btn' onClick={()=>{setPageNum(pageNum + 1)}}>Next page</button>
         </div>
       </div>
 
@@ -311,7 +320,7 @@ function Container({ posts }) {
                       src="https://img.uxwing.com/wp-content/themes/uxwing/download/arts-graphic-shapes/star-full-icon.svg"
                     />
                   )}
-                  {post.vote_average !== 0 && ` (${post.vote_average})`}
+                  {post.vote_average !== 0 && ` (${Math.floor(post.vote_average * 10) / 10})`}
                 </div>
               </a>
             </Link>
@@ -406,7 +415,7 @@ function Container({ posts }) {
                       src="https://img.uxwing.com/wp-content/themes/uxwing/download/arts-graphic-shapes/star-full-icon.svg"
                     />
                   )}
-                  {post.vote_average !== 0 && ` (${post.vote_average})`}
+                  {post.vote_average !== 0 && ` (${Math.floor(post.vote_average * 10) / 10})`}
                 </div>
               </a>
             </Link>
@@ -427,7 +436,6 @@ function Container({ posts }) {
           ))}
         </div>
       </div>
-      
       
     </div>
   );
