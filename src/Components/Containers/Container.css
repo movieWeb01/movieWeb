@@ -48,6 +48,7 @@
     border-radius: 1rem;
     margin-left: 1.5vw; 
     margin-right: 1.5vw; 
+    margin-bottom: 1.5vw;
     transition: 0.3s;
     background-color: #e67832; 
     color: white; 
@@ -96,6 +97,14 @@
     border-top-right-radius: 3.5rem; 
     width: calc(18vw - 2px); 
     object-fit: cover; 
+}
+
+.noimg{
+    border-top-left-radius: 3.5rem; 
+    border-top-right-radius: 3.5rem; 
+    width: calc(18vw - 2px); 
+    height: 26.5vw; 
+    background-color: gray;
 }
 
 .movieimg:hover{
@@ -158,6 +167,7 @@
 .prev-btn, .next-btn{
     background-color: #e67832;
     border-radius: 1rem; 
+    border: none;
     font-size: 18px; 
     color: white; 
     padding: 5px 10px; 

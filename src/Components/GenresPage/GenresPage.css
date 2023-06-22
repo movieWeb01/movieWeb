@@ -8,8 +8,8 @@
 }
 
 .moviebox {
-  border-top-left-radius: 2rem;
-  border-top-right-radius: 2rem;
+  border-top-left-radius: 3.5rem;
+  border-top-right-radius: 3.5rem;
   width: 18vw;
   margin: 1vw;
   transition: 0.45s;
@@ -19,6 +19,14 @@
   text-decoration: none;
 }
 
+.noimg{
+  border-top-left-radius: 3.5rem; 
+  border-top-right-radius: 3.5rem; 
+  width: calc(18vw - 2px); 
+  height: 26.5vw; 
+  background-color: gray;
+}
+
 .moviebox:hover {
   filter: grayscale(75%);
   border: 1px solid #00c3ff;
@@ -26,8 +34,8 @@
 }
 
 .movieimg {
-  border-top-left-radius: 2rem;
-  border-top-right-radius: 2rem;
+  border-top-left-radius: 3.5rem;
+  border-top-right-radius: 3.5rem;
   width: calc(18vw - 2px);
   object-fit: cover;
 }

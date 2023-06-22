@@ -9,6 +9,8 @@ function Container({ posts }) {
   const [nowPlaying, setNowPlaying] = useState([]); 
   const [trending, setTrending] = useState([]); 
   const [pageNum, setPageNum] = useState(1); 
+  const [nowPlayingPageNum, setNowPlayingPageNum] = useState(1); 
+  const [upComingPageNum, setUpComingPageNum] = useState(1); 
 
   const [favorite, setFavorite] = useState(() => JSON.parse(localStorage.getItem("favorite")) || []);
 
@@ -25,28 +27,6 @@ function Container({ posts }) {
         console.log(res);
         setTopRated(res.data.results);
       });
-  }, []);
-
-  useEffect(() => {
-    axios
-      .get(
-        `https://api.themoviedb.org/3/movie/upcoming?api_key=6a3a9e9a61085d657b30d36d1c7b5ba7`
-      )
-      .then((res) => {
-        console.log(res);
-        setUpComing(res.data.results);
-      });
-  }, []);
-
-  useEffect(() => {
-    axios
-      .get(
-        `https://api.themoviedb.org/3/movie/now_playing?api_key=6a3a9e9a61085d657b30d36d1c7b5ba7`
-      )
-      .then((res) => {
-        console.log(res);
-        setNowPlaying(res.data.results);
-      });
   }, []); 
 
   useEffect(() => {
@@ -58,7 +38,29 @@ function Container({ posts }) {
         console.log(res);
         setTrending(res.data.results);
       });
-  }, [pageNum]);
+  }, [pageNum]); 
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.themoviedb.org/3/movie/now_playing?api_key=6a3a9e9a61085d657b30d36d1c7b5ba7&page=${nowPlayingPageNum}`
+      )
+      .then((res) => {
+        console.log(res);
+        setNowPlaying(res.data.results);
+      });
+  }, [nowPlayingPageNum]); 
+  
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.themoviedb.org/3/movie/upcoming?api_key=6a3a9e9a61085d657b30d36d1c7b5ba7&page=${upComingPageNum}`
+      )
+      .then((res) => {
+        console.log(res);
+        setUpComing(res.data.results);
+      });
+  }, [upComingPageNum]);
 
   var slider1holder = document.getElementById("slider1");
   var photobannerholder = document.getElementsByClassName("photobanner")[0];
@@ -100,13 +102,13 @@ function Container({ posts }) {
           className="photobanner"
         >
           {topRated.map((post) => (
+            <div className="sliderbox">
             <Link
-              to={`/movie/${post.id}`}
-              className="sliderbox"
+                style={{ textDecoration: "none", color: "#fff", fontFamily: "Roboto"}}
+                to={`/movie/${post.id}`}
             >
               <a
                 key={post.index}
-                style={{ textDecoration: "none", color: "#fff", fontFamily: "Roboto"}}
                 target="_blank"
               >
                 <img
@@ -119,12 +121,26 @@ function Container({ posts }) {
                 </p>
               </a>
             </Link>
+            <Link>
+            <button className='heart_btn' onClick={() => heartFunction(post.id)}>
+                {favorite.includes(post.id) ? 
+                <img
+                  className="heart_img"
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Love_Heart_SVG.svg/968px-Love_Heart_SVG.svg.png"
+                />
+                 : <img
+                 className="heart_img_black"
+                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Love_Heart_SVG.svg/968px-Love_Heart_SVG.svg.png"
+               />}
+            </button>
+          </Link>
+          </div>
           ))}
           {topRated.map((post) => (
             <Link
+              style={{ textDecoration: "none", color: "#fff", fontFamily: "Roboto"}}
               to={`/movie/${post.id}`}
-              className="sliderbox"
-            >
+              >
               <a
                 key={post.index + 20}
                 style={{ textDecoration: "none", color: "#fff", fontFamily: "Roboto"}}
@@ -341,6 +357,15 @@ function Container({ posts }) {
           ))}
         </div>
       </div>
+      <div className='prev-next-parent'>
+        <div>
+          {(nowPlayingPageNum > 1) && <button type='button' className='prev-btn' onClick={()=>{setNowPlayingPageNum(nowPlayingPageNum - 1)}}>Prev page</button>}
+        </div>
+        <div><p className='content'>Page {nowPlayingPageNum}</p></div>
+        <div>
+          <button typr='button' className='next-btn' onClick={()=>{setNowPlayingPageNum(nowPlayingPageNum + 1)}}>Next page</button>
+        </div>
+      </div>
       
       <Link to={`/movies/upcoming`} style={{ textDecoration: "none", color: "#fff" }}>
       <h1 className="slider_title">Upcoming</h1>
@@ -354,10 +379,15 @@ function Container({ posts }) {
                 target="_blank"
                 style={{ textDecoration: "none", color: "#fff", fontFamily: "Roboto" }}
               >
-                <img
+                {
+                  (post.poster_path)? 
+                  <img
                   className="movieimg"
                   src={`https://image.tmdb.org/t/p/original/${post.poster_path}`}
                 />
+                : <div className="noimg"></div>
+                }
+                
                 <p className="caption">{`${post.original_title}`}</p>
                 <div className="star-rating">
                   {post.vote_average >= 2 ? (
@@ -434,6 +464,15 @@ function Container({ posts }) {
             </Link>
             </div>
           ))}
+        </div>
+      </div>
+      <div className='prev-next-parent'>
+        <div>
+          {(upComingPageNum > 1) && <button type='button' className='prev-btn' onClick={()=>{setUpComingPageNum(upComingPageNum - 1)}}>Prev page</button>}
+        </div>
+        <div><p className='content'>Page {upComingPageNum}</p></div>
+        <div>
+          <button typr='button' className='next-btn' onClick={()=>{setUpComingPageNum(upComingPageNum + 1)}}>Next page</button>
         </div>
       </div>
       

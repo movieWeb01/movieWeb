@@ -7,6 +7,7 @@ import Footer from "../Footer/Footer";
 const MoviePage = () => {
   const [movieList, setMovieList] = useState([]);
   const { type } = useParams(); 
+  const [pageNum, setPageNum] = useState(1); 
   const [favorite, setFavorite] = useState(() => JSON.parse(localStorage.getItem("favorite")) || []);
 
   useEffect(() => { 
@@ -16,13 +17,13 @@ const MoviePage = () => {
   useEffect(() => { 
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/${type}?api_key=6a3a9e9a61085d657b30d36d1c7b5ba7`
+        `https://api.themoviedb.org/3/movie/${type}?api_key=6a3a9e9a61085d657b30d36d1c7b5ba7&page=${pageNum}`
       )
       .then((res) => {
         console.log(res);
         setMovieList(res.data.results);
       });
-  }, [type]); 
+  }, [type, pageNum]); 
 
   function heartFunction(movieId) {
     if (favorite.includes(movieId)) {
@@ -130,6 +131,16 @@ const MoviePage = () => {
           ))}
         </div>
       </div>
+      <div className='prev-next-parent'>
+        <div>
+          {(pageNum > 1) && <button type='button' className='prev-btn' onClick={()=>{setPageNum(pageNum - 1)}}>Prev page</button>}
+        </div>
+        <div><p className='content'>Page {pageNum}</p></div>
+        <div>
+          <button typr='button' className='next-btn' onClick={()=>{setPageNum(pageNum + 1)}}>Next page</button>
+        </div>
+      </div>
+      
       <Footer />
     </div>
   );
