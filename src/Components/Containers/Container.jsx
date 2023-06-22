@@ -14,7 +14,7 @@ function Container({ posts }) {
   const [upComingPageNum, setUpComingPageNum] = useState(1); 
   const [searchPageNum, setSearchPageNum] = useState(1); 
   const [inputText, setInputText] = useState(() => JSON.parse(localStorage.getItem('inputText')) || 'movie'); 
-  const [adult, setAdult] = useState('false'); 
+  const [adult, setAdult] = useState(() => JSON.parse(localStorage.getItem('adult')) || 'false'); 
 
   const [favorite, setFavorite] = useState(() => JSON.parse(localStorage.getItem("favorite")) || []);
 
@@ -25,6 +25,10 @@ function Container({ posts }) {
   useEffect(() => { 
     localStorage.setItem("inputText", JSON.stringify(inputText)); 
   }, [inputText]); 
+
+  useEffect(() => { 
+    localStorage.setItem("adult", JSON.stringify(adult)); 
+  }, [adult]); 
 
   useEffect(() => {
     axios
@@ -496,7 +500,7 @@ function Container({ posts }) {
       <div className='search-parent'>
         <h1 className="slider_title">Search</h1>
         <input type='text' id='searchbar' value={inputText} onChange={(e)=>{setInputText(e.target.value); setSearchPageNum(1)}} />
-        <select className="adult-dropdown" onChange={(e)=>{setAdult(e.target.value); }}>
+        <select className="adult-dropdown" value={adult} onChange={(e)=>{setAdult(e.target.value); }}>
             <option className="adult-dropdown-item" value="false">Normal</option>
             <option className="adult-dropdown-item" value="true">Adult</option>
           </select>
