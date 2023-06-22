@@ -481,8 +481,8 @@ function Container({ posts }) {
         <h1 className="slider_title">Search</h1>
         <input type='text' id='searchbar'  onChange={(e)=>{setInputText(e.target.value)}} />
         <select className="adult-dropdown" onChange={(e)=>{setAdult(e.target.value); }}>
-            <option className="adult-dropdown" value="false">Normal</option>
-            <option className="adult-dropdown" value="true">Adult</option>
+            <option className="adult-dropdown-item" value="false">Normal</option>
+            <option className="adult-dropdown-item" value="true">Adult</option>
           </select>
       </div>
       

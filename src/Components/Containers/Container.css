@@ -206,6 +206,14 @@
     background-color: rgb(45, 45, 45);
 }
 
-.adult-dropdown{
+.adult-dropdown, .adult-dropdown-item{
     font-size: 18px;
+}
+
+.adult-dropdown{
+    border-radius: 5px;
+    margin-top: 10px;
+    border: 2px solid #d5653d;
+    background-color: rgb(50, 50, 50);
+    color: white;
 }
