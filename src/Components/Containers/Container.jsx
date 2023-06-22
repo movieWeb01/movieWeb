@@ -14,6 +14,7 @@ function Container({ posts }) {
   const [upComingPageNum, setUpComingPageNum] = useState(1); 
   const [searchPageNum, setSearchPageNum] = useState(1); 
   const [inputText, setInputText] = useState('movie'); 
+  const [adult, setAdult] = useState('false'); 
 
   const [favorite, setFavorite] = useState(() => JSON.parse(localStorage.getItem("favorite")) || []);
 
@@ -68,13 +69,13 @@ function Container({ posts }) {
   useEffect(() => {
     axios
       .get(
-        `https://api.themoviedb.org/3/search/movie?api_key=6a3a9e9a61085d657b30d36d1c7b5ba7&page=${searchPageNum}&query=${inputText}?`
+        `https://api.themoviedb.org/3/search/movie?api_key=6a3a9e9a61085d657b30d36d1c7b5ba7&page=${searchPageNum}?&query=${inputText}?&include_adult=${adult}`
       )
       .then((res) => {
         console.log(res);
         setSearch(res.data.results);
       });
-  }, [searchPageNum, inputText]);
+  }, [searchPageNum, adult, inputText]);
 
   var slider1holder = document.getElementById("slider1");
   var photobannerholder = document.getElementsByClassName("photobanner")[0];
@@ -479,6 +480,10 @@ function Container({ posts }) {
       <div className='search-parent'>
         <h1 className="slider_title">Search</h1>
         <input type='text' id='searchbar'  onChange={(e)=>{setInputText(e.target.value)}} />
+        <select className="adult-dropdown" onChange={(e)=>{setAdult(e.target.value); }}>
+            <option className="adult-dropdown" value="false">Normal</option>
+            <option className="adult-dropdown" value="true">Adult</option>
+          </select>
       </div>
       
       <div>
