@@ -102,13 +102,13 @@ function Container({ posts }) {
           className="photobanner"
         >
           {topRated.map((post) => (
-            <div className="sliderbox">
             <Link
-                style={{ textDecoration: "none", color: "#fff", fontFamily: "Roboto"}}
-                to={`/movie/${post.id}`}
+              to={`/movie/${post.id}`}
+              className="sliderbox"
             >
               <a
                 key={post.index}
+                style={{ textDecoration: "none", color: "#fff", fontFamily: "Roboto"}}
                 target="_blank"
               >
                 <img
@@ -121,26 +121,12 @@ function Container({ posts }) {
                 </p>
               </a>
             </Link>
-            <Link>
-            <button className='heart_btn' onClick={() => heartFunction(post.id)}>
-                {favorite.includes(post.id) ? 
-                <img
-                  className="heart_img"
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Love_Heart_SVG.svg/968px-Love_Heart_SVG.svg.png"
-                />
-                 : <img
-                 className="heart_img_black"
-                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Love_Heart_SVG.svg/968px-Love_Heart_SVG.svg.png"
-               />}
-            </button>
-          </Link>
-          </div>
           ))}
           {topRated.map((post) => (
             <Link
-              style={{ textDecoration: "none", color: "#fff", fontFamily: "Roboto"}}
               to={`/movie/${post.id}`}
-              >
+              className="sliderbox"
+            >
               <a
                 key={post.index + 20}
                 style={{ textDecoration: "none", color: "#fff", fontFamily: "Roboto"}}
