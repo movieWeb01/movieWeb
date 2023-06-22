@@ -217,3 +217,16 @@
     background-color: rgb(50, 50, 50);
     color: white;
 }
+
+.pageInput{
+    width: 60px;
+    border: 2px #e67832 solid; 
+    background: none; 
+    color: white;
+    border-radius: 10px;
+}
+
+.pageInput:hover{
+    border: #d5653d 2px solid;
+    background-color: rgb(45, 45, 45);
+}

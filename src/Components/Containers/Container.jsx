@@ -258,7 +258,11 @@ function Container({ posts }) {
         <div>
           {(pageNum > 1) && <button type='button' className='prev-btn' onClick={()=>{setPageNum(pageNum - 1)}}>Prev page</button>}
         </div>
-        <div><p className='content'>Page {pageNum}</p></div>
+        <div>
+          <p className='content'>
+            Page <input type='number'className="pageInput" value={pageNum} onChange={(e)=>{if(e.target.value > 0 && e.target.value < 501){Math.floor(setPageNum(e.target.value))}}} />
+          </p>
+        </div>
         <div>
           <button typr='button' className='next-btn' onClick={()=>{setPageNum(pageNum + 1)}}>Next page</button>
         </div>
@@ -362,7 +366,11 @@ function Container({ posts }) {
         <div>
           {(nowPlayingPageNum > 1) && <button type='button' className='prev-btn' onClick={()=>{setNowPlayingPageNum(nowPlayingPageNum - 1)}}>Prev page</button>}
         </div>
-        <div><p className='content'>Page {nowPlayingPageNum}</p></div>
+        <div>
+          <p className='content'>
+            Page <input type='number'className="pageInput" value={nowPlayingPageNum} onChange={(e)=>{if(e.target.value > 0 && e.target.value < 501){Math.floor(setNowPlayingPageNum(e.target.value))}}} />
+          </p>
+        </div>
         <div>
           <button typr='button' className='next-btn' onClick={()=>{setNowPlayingPageNum(nowPlayingPageNum + 1)}}>Next page</button>
         </div>
@@ -471,7 +479,11 @@ function Container({ posts }) {
         <div>
           {(upComingPageNum > 1) && <button type='button' className='prev-btn' onClick={()=>{setUpComingPageNum(upComingPageNum - 1)}}>Prev page</button>}
         </div>
-        <div><p className='content'>Page {upComingPageNum}</p></div>
+        <div>
+          <p className='content'>
+            Page <input type='number'className="pageInput" value={upComingPageNum} onChange={(e)=>{if(e.target.value > 0 && e.target.value < 501){Math.floor(setUpComingPageNum(e.target.value))}}} />
+          </p>
+        </div>
         <div>
           <button typr='button' className='next-btn' onClick={()=>{setUpComingPageNum(upComingPageNum + 1)}}>Next page</button>
         </div>
@@ -586,7 +598,11 @@ function Container({ posts }) {
         <div>
           {(searchPageNum > 1) && <button type='button' className='prev-btn' onClick={()=>{setSearchPageNum(searchPageNum - 1)}}>Prev page</button>}
         </div>
-        <div><p className='content'>Page {searchPageNum}</p></div>
+        <div>
+          <p className='content'>
+            Page <input type='number'className="pageInput" value={searchPageNum} onChange={(e)=>{if(e.target.value > 0 && e.target.value < 501){Math.floor(setSearchPageNum(e.target.value))}}} />
+          </p>
+        </div>
         <div>
           <button typr='button' className='next-btn' onClick={()=>{setSearchPageNum(searchPageNum + 1)}}>Next page</button>
         </div>

@@ -135,7 +135,11 @@ const MoviePage = () => {
         <div>
           {(pageNum > 1) && <button type='button' className='prev-btn' onClick={()=>{setPageNum(pageNum - 1)}}>Prev page</button>}
         </div>
-        <div><p className='content'>Page {pageNum}</p></div>
+        <div>
+          <p className='content'>
+            Page <input type='number'className="pageInput" value={pageNum} onChange={(e)=>{if(e.target.value > 0 && e.target.value < 501){Math.floor(setPageNum(e.target.value))}}} />
+          </p>
+        </div>
         <div>
           <button typr='button' className='next-btn' onClick={()=>{setPageNum(pageNum + 1)}}>Next page</button>
         </div>
