@@ -183,3 +183,27 @@
     font-size: 16px; 
     color: white;
 }
+
+.search-parent{
+    display: flex; 
+    flex-direction: vertical;
+    align-items: center;
+}
+
+#searchbar{
+    color: white;
+    padding: 0;
+    margin: 30px 20px 20px 20px; 
+    height: 30px; 
+    font-size: 18px;
+    border: 2px #e67832 solid; 
+    background: none; 
+    border-radius: 1rem;
+}
+
+#searchbar:hover{
+    border: #d5653d 2px solid;
+    background-color: rgb(45, 45, 45);
+}
+
+

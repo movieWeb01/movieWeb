@@ -11,6 +11,7 @@ function Container({ posts }) {
   const [pageNum, setPageNum] = useState(1); 
   const [nowPlayingPageNum, setNowPlayingPageNum] = useState(1); 
   const [upComingPageNum, setUpComingPageNum] = useState(1); 
+  const [inputText, setInputText] = useState(''); 
 
   const [favorite, setFavorite] = useState(() => JSON.parse(localStorage.getItem("favorite")) || []);
 
@@ -61,6 +62,17 @@ function Container({ posts }) {
         setUpComing(res.data.results);
       });
   }, [upComingPageNum]);
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.themoviedb.org/3/search/movie?api_key=6a3a9e9a61085d657b30d36d1c7b5ba7&query=${inputText}`
+      )
+      .then((res) => {
+        console.log(res);
+        setUpComing(res.data.results);
+      });
+  }, [inputText]);
 
   var slider1holder = document.getElementById("slider1");
   var photobannerholder = document.getElementsByClassName("photobanner")[0];
@@ -356,6 +368,117 @@ function Container({ posts }) {
       <Link to={`/movies/upcoming`} style={{ textDecoration: "none", color: "#fff" }}>
       <h1 className="slider_title">Upcoming</h1>
       </Link>
+      <div>
+        <div className="flex-parent">
+          {upComing.map((post) => (
+            <div className="moviebox">
+            <Link to={`/movie/${post.id}`} style={{ textDecoration: "none" }}>
+              <a
+                target="_blank"
+                style={{ textDecoration: "none", color: "#fff", fontFamily: "Roboto" }}
+              >
+                {
+                  (post.poster_path)? 
+                  <img
+                  className="movieimg"
+                  src={`https://image.tmdb.org/t/p/original/${post.poster_path}`}
+                />
+                : <div className="noimg"></div>
+                }
+                
+                <p className="caption">{`${post.original_title}`}</p>
+                <div className="star-rating">
+                  {post.vote_average >= 2 ? (
+                    <img
+                      width="20px"
+                      src="https://img.uxwing.com/wp-content/themes/uxwing/download/arts-graphic-shapes/star-icon.svg"
+                    />
+                  ) : (
+                    <img
+                      width="20px"
+                      src="https://img.uxwing.com/wp-content/themes/uxwing/download/arts-graphic-shapes/star-full-icon.svg"
+                    />
+                  )}
+                  {post.vote_average >= 4 ? (
+                    <img
+                      width="20px"
+                      src="https://img.uxwing.com/wp-content/themes/uxwing/download/arts-graphic-shapes/star-icon.svg"
+                    />
+                  ) : (
+                    <img
+                      width="20px"
+                      src="https://img.uxwing.com/wp-content/themes/uxwing/download/arts-graphic-shapes/star-full-icon.svg"
+                    />
+                  )}
+                  {post.vote_average >= 6 ? (
+                    <img
+                      width="20px"
+                      src="https://img.uxwing.com/wp-content/themes/uxwing/download/arts-graphic-shapes/star-icon.svg"
+                    />
+                  ) : (
+                    <img
+                      width="20px"
+                      src="https://img.uxwing.com/wp-content/themes/uxwing/download/arts-graphic-shapes/star-full-icon.svg"
+                    />
+                  )}
+                  {post.vote_average >= 8 ? (
+                    <img
+                      width="20px"
+                      src="https://img.uxwing.com/wp-content/themes/uxwing/download/arts-graphic-shapes/star-icon.svg"
+                    />
+                  ) : (
+                    <img
+                      width="20px"
+                      src="https://img.uxwing.com/wp-content/themes/uxwing/download/arts-graphic-shapes/star-full-icon.svg"
+                    />
+                  )}
+                  {post.vote_average >= 10 ? (
+                    <img
+                      width="20px"
+                      src="https://img.uxwing.com/wp-content/themes/uxwing/download/arts-graphic-shapes/star-icon.svg"
+                    />
+                  ) : (
+                    <img
+                      width="20px"
+                      src="https://img.uxwing.com/wp-content/themes/uxwing/download/arts-graphic-shapes/star-full-icon.svg"
+                    />
+                  )}
+                  {post.vote_average !== 0 && ` (${Math.floor(post.vote_average * 10) / 10})`}
+                </div>
+              </a>
+            </Link>
+            <Link>
+              <button className='heart_btn' onClick={() => heartFunction(post.id)}>
+                  {favorite.includes(post.id) ? 
+                  <img
+                    className="heart_img"
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Love_Heart_SVG.svg/968px-Love_Heart_SVG.svg.png"
+                  />
+                   : <img
+                   className="heart_img_black"
+                   src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Love_Heart_SVG.svg/968px-Love_Heart_SVG.svg.png"
+                 />}
+              </button>
+            </Link>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className='prev-next-parent'>
+        <div>
+          {(upComingPageNum > 1) && <button type='button' className='prev-btn' onClick={()=>{setUpComingPageNum(upComingPageNum - 1)}}>Prev page</button>}
+        </div>
+        <div><p className='content'>Page {upComingPageNum}</p></div>
+        <div>
+          <button typr='button' className='next-btn' onClick={()=>{setUpComingPageNum(upComingPageNum + 1)}}>Next page</button>
+        </div>
+      </div>
+
+      <div className='search-parent'>
+        <h1 className="slider_title">Search</h1>
+        <input type='text' id='searchbar'  onChange={(e)=>{setInputText(e.target.value)}} />
+      </div>
+      
       <div>
         <div className="flex-parent">
           {upComing.map((post) => (
