@@ -148,3 +148,28 @@
     -o-filter: grayscale(100%);
     filter: grayscale(100%);
 }
+
+.prev-next-parent{
+    display: flex; 
+    justify-content: space-between; 
+    margin: 5px 10%; 
+}
+
+.prev-btn, .next-btn{
+    background-color: #e67832;
+    border-radius: 1rem; 
+    font-size: 18px; 
+    color: white; 
+    padding: 5px 10px; 
+    transition: 0.1s;
+}
+
+.prev-btn:hover, .next-btn:hover{
+    background-color: #d5653d;
+    transform: scale(103%);
+}
+
+.content{
+    font-size: 16px; 
+    color: white;
+}
