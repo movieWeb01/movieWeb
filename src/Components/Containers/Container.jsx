@@ -11,6 +11,7 @@ function Container({ posts }) {
   const [pageNum, setPageNum] = useState(1); 
   const [nowPlayingPageNum, setNowPlayingPageNum] = useState(1); 
   const [upComingPageNum, setUpComingPageNum] = useState(1); 
+  const [searchPageNum, setSearchPageNum] = useState(1); 
   const [inputText, setInputText] = useState(''); 
 
   const [favorite, setFavorite] = useState(() => JSON.parse(localStorage.getItem("favorite")) || []);
@@ -66,13 +67,13 @@ function Container({ posts }) {
   useEffect(() => {
     axios
       .get(
-        `https://api.themoviedb.org/3/search/movie?api_key=6a3a9e9a61085d657b30d36d1c7b5ba7&query=${inputText}`
+        `https://api.themoviedb.org/3/search/movie?api_key=6a3a9e9a61085d657b30d36d1c7b5ba7&page=${searchPageNum}&query=${inputText}?`
       )
       .then((res) => {
         console.log(res);
         setUpComing(res.data.results);
       });
-  }, [inputText]);
+  }, [searchPageNum, inputText]);
 
   var slider1holder = document.getElementById("slider1");
   var photobannerholder = document.getElementsByClassName("photobanner")[0];
@@ -577,11 +578,11 @@ function Container({ posts }) {
       </div>
       <div className='prev-next-parent'>
         <div>
-          {(upComingPageNum > 1) && <button type='button' className='prev-btn' onClick={()=>{setUpComingPageNum(upComingPageNum - 1)}}>Prev page</button>}
+          {(searchPageNum > 1) && <button type='button' className='prev-btn' onClick={()=>{setSearchPageNum(searchPageNum - 1)}}>Prev page</button>}
         </div>
-        <div><p className='content'>Page {upComingPageNum}</p></div>
+        <div><p className='content'>Page {searchPageNum}</p></div>
         <div>
-          <button typr='button' className='next-btn' onClick={()=>{setUpComingPageNum(upComingPageNum + 1)}}>Next page</button>
+          <button typr='button' className='next-btn' onClick={()=>{setSearchPageNum(searchPageNum + 1)}}>Next page</button>
         </div>
       </div>
       
