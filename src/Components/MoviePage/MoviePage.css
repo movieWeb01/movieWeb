@@ -8,8 +8,8 @@
 }
 
 .moviebox {
-  border-top-left-radius: 2rem;
-  border-top-right-radius: 2rem;
+  border-top-left-radius: 3.5rem;
+  border-top-right-radius: 3.5rem;
   width: 18vw;
   margin: 1vw;
   transition: 0.45s;
@@ -17,6 +17,7 @@
   background-color: #e67832;
   color: white;
   text-decoration: none;
+  overflow: hidden;
 }
 
 .moviebox:hover {
@@ -26,8 +27,8 @@
 }
 
 .movieimg {
-  border-top-left-radius: 2rem;
-  border-top-right-radius: 2rem;
+  border-top-left-radius: 3.5rem;
+  border-top-right-radius: 3.5rem;
   width: calc(18vw - 2px);
   object-fit: cover;
 }
@@ -46,25 +47,24 @@
   flex-wrap: wrap;
 }
 
-
-.heart_btn{
+.heart_btn {
   margin-top: 5px;
   border: none;
-  cursor: default; 
+  cursor: default;
   background: none;
 }
 
-.heart_img{
-  width: 20px; 
-  -webkit-filter: grayscale(0%); 
-  -moz-filter: grayscale(0%); 
-  -ms-filter: grayscale(0%); 
-  -o-filter: grayscale(0%); 
-  filter: grayscale(0%); 
+.heart_img {
+  width: 20px;
+  -webkit-filter: grayscale(0%);
+  -moz-filter: grayscale(0%);
+  -ms-filter: grayscale(0%);
+  -o-filter: grayscale(0%);
+  filter: grayscale(0%);
 }
 
-.heart_img_black{
-  width: 20px; 
+.heart_img_black {
+  width: 20px;
   -webkit-filter: grayscale(100%);
   -moz-filter: grayscale(100%);
   -ms-filter: grayscale(100%);
