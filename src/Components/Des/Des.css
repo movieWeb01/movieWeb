@@ -91,3 +91,21 @@
 .des-genres :not(:first-child) {
   margin-left: 10px;
 }
+
+.des-button {
+  background-color: #06091880;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 16px;
+  font-family: var(--font-family-Montserrat);
+  font-weight: 900;
+  width: 10%;
+}
+
+.des-flex {
+  display: flex;
+  justify-content: center;
+}
