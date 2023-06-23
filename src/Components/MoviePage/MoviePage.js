@@ -2,21 +2,37 @@ import React, { useEffect, useState } from "react";
 import "./MoviePage.css";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import Footer from "../Footer/Footer"; 
 
 const MoviePage = () => {
   const [movieList, setMovieList] = useState([]);
-  const { type } = useParams();
+  const { type } = useParams(); 
+  const [pageNum, setPageNum] = useState(1); 
+  const [favorite, setFavorite] = useState(() => JSON.parse(localStorage.getItem("favorite")) || []);
 
-  useEffect(() => {
+  useEffect(() => { 
+    localStorage.setItem("favorite", JSON.stringify(favorite)); 
+  }, [favorite]);
+
+  useEffect(() => { 
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/${type}?api_key=6a3a9e9a61085d657b30d36d1c7b5ba7`
+        `https://api.themoviedb.org/3/movie/${type}?api_key=6a3a9e9a61085d657b30d36d1c7b5ba7&page=${pageNum}`
       )
       .then((res) => {
         console.log(res);
         setMovieList(res.data.results);
       });
-  }, [type]); 
+  }, [type, pageNum]); 
+
+  function heartFunction(movieId) {
+    if (favorite.includes(movieId)) {
+      setFavorite(favorite.filter(id => id !== movieId));
+    } else {
+      setFavorite([...favorite, movieId]); 
+    }
+    localStorage.setItem("favorite", JSON.stringify([...favorite, movieId])); 
+  }
 
   return (
     <div>
@@ -24,7 +40,8 @@ const MoviePage = () => {
       <div>
         <div className="flex-parent">
           {movieList.map((post) => (
-            <Link className="moviebox" to={`/movie/${post.id}`}>
+            <div className="moviebox">
+            <Link to={`/movie/${post.id}`} style={{ textDecoration: "none" }}>
               <a
                 style={{ textDecoration: "none", color: "#fff" }}
                 href={`https://image.tmdb.org/t/p/original/${post.poster_path}`}
@@ -94,18 +111,41 @@ const MoviePage = () => {
                     />
                   )}
                   {post.vote_average !== 0 && ` (${post.vote_average})`}
-                  <button type="button" className="heart_btn">
-                    <img
-                      className="heart_img"
-                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Love_Heart_SVG.svg/968px-Love_Heart_SVG.svg.png"
-                    />
-                  </button>
                 </div>
               </a>
             </Link>
+            <Link>
+            <button className='heart_btn' onClick={() => heartFunction(post.id)}>
+                {favorite.includes(post.id) ? 
+                <img
+                  className="heart_img"
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Love_Heart_SVG.svg/968px-Love_Heart_SVG.svg.png"
+                />
+                 : <img
+                 className="heart_img_black"
+                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Love_Heart_SVG.svg/968px-Love_Heart_SVG.svg.png"
+               />}
+            </button>
+          </Link>
+          </div>
           ))}
         </div>
       </div>
+      <div className='prev-next-parent'>
+        <div>
+          {(pageNum > 1) && <button type='button' className='prev-btn' onClick={()=>{setPageNum(pageNum - 1)}}>Prev page</button>}
+        </div>
+        <div>
+          <p className='content'>
+            Page <input type='number'className="pageInput" value={pageNum} onChange={(e)=>{if(e.target.value > 0 && e.target.value < 501){Math.floor(setPageNum(e.target.value))}}} />
+          </p>
+        </div>
+        <div>
+          <button typr='button' className='next-btn' onClick={()=>{setPageNum(pageNum + 1)}}>Next page</button>
+        </div>
+      </div>
+      
+      <Footer />
     </div>
   );
 };

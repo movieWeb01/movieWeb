@@ -18,7 +18,7 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 
-const Example = () => {
+const Example = ({ moviesGenres }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [info, setInfo] = useState("");
   const [category, setCategory] = useState("");

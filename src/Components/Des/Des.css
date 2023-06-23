@@ -25,6 +25,7 @@
   position: absolute;
   display: flex;
 }
+
 .mcright {
   display: flex;
   flex-direction: column;
@@ -36,16 +37,16 @@
   padding: 10px 20px;
 }
 
-h1 {
-  font-size: 60px;
-  font-weight: 900;
-}
-p:first-of-type {
+.des-title {
   font-size: 40px;
   font-weight: 900;
 }
 
-p:nth-of-type(2) {
+.des-info {
+  font-size: 32px;
+  font-weight: 900;
+}
+.overview {
   font-size: 24px;
 }
 
@@ -61,6 +62,7 @@ p:nth-of-type(2) {
   margin-left: 10px;
   font-size: 24px;
 }
+
 .filmAndRate {
   display: flex;
   align-items: center;
@@ -71,4 +73,21 @@ p:nth-of-type(2) {
   color: #f0f8ff80;
   font-size: 16px;
   margin-top: 25px;
+}
+
+.des-genres {
+  display: flex;
+  max-width: 100%;
+}
+
+#genres {
+  display: block;
+  background-color: #06091880;
+  border-radius: 10px;
+  padding: 5px 5px;
+  font-size: 15px;
+}
+
+.des-genres :not(:first-child) {
+  margin-left: 10px;
 }
