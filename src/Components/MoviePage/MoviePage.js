@@ -3,52 +3,58 @@ import "./MoviePage.css";
 import { Link, useParams } from "react-router-dom";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import axios from "axios";
+import Footer from "../Footer/Footer";
 
 const MoviePage = () => {
   const [movieList, setMovieList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { type } = useParams();
-  const [favorite, setFavorite] = useState(
-    () => localStorage.getItem("favorite") || []
-  );
+  const [pageNum, setPageNum] = useState(1);
+
+  // useEffect(() => {
+  //   const getMovie = async () => {
+  //     setIsLoading(true);
+  //     try {
+  //       const res = axios.get(
+  //         `https://api.themoviedb.org/3/movie/${type}?api_key=6a3a9e9a61085d657b30d36d1c7b5ba7`
+  //       );
+  //       setMovieList(res.data.results);
+  //     } catch (error) {}
+  //     setIsLoading(false);
+  //   };
+  //   getMovie();
+  //   // axios
+  //   //   .get(
+  //   //     `https://api.themoviedb.org/3/movie/${type}?api_key=6a3a9e9a61085d657b30d36d1c7b5ba7`
+  //   //   )
+  //   //   .then((res) => {
+  //   //     console.log(res);
+  //   //     setMovieList(res.data.results);
+  //   //   });
+  // }, [type]);
 
   useEffect(() => {
     localStorage.setItem("favorite", JSON.stringify(favorite));
   }, [favorite]);
 
   useEffect(() => {
-    const getMovie = async () => {
-      setIsLoading(true);
-      try {
-        const res = axios.get(
-          `https://api.themoviedb.org/3/movie/${type}?api_key=6a3a9e9a61085d657b30d36d1c7b5ba7`
-        );
+    axios
+      .get(
+        `https://api.themoviedb.org/3/movie/${type}?api_key=6a3a9e9a61085d657b30d36d1c7b5ba7&page=${pageNum}`
+      )
+      .then((res) => {
+        console.log(res);
         setMovieList(res.data.results);
-      } catch (error) {}
-      setIsLoading(false);
-    };
-    getMovie();
-    // axios
-    //   .get(
-    //     `https://api.themoviedb.org/3/movie/${type}?api_key=6a3a9e9a61085d657b30d36d1c7b5ba7`
-    //   )
-    //   .then((res) => {
-    //     console.log(res);
-    //     setMovieList(res.data.results);
-    //   });
-  }, [type]);
+      });
+  }, [type, pageNum]);
 
   function heartFunction(movieId) {
-    if (Array.isArray(favorite)) {
-      if (favorite.includes(movieId)) {
-        setFavorite(favorite.filter((id) => id !== movieId));
-      } else {
-        setFavorite([...favorite, movieId]);
-      }
+    if (favorite.includes(movieId)) {
+      setFavorite(favorite.filter((id) => id !== movieId));
     } else {
-      setFavorite([movieId]);
+      setFavorite([...favorite, movieId]);
     }
-    localStorage.setItem("favorite", JSON.stringify(favorite));
+    localStorage.setItem("favorite", JSON.stringify([...favorite, movieId]));
   }
 
   return (
@@ -164,6 +170,49 @@ const MoviePage = () => {
           )}
         </div>
       </div>
+      <div className="prev-next-parent">
+        <div>
+          {pageNum > 1 && (
+            <button
+              type="button"
+              className="prev-btn"
+              onClick={() => {
+                setPageNum(pageNum - 1);
+              }}
+            >
+              Prev page
+            </button>
+          )}
+        </div>
+        <div>
+          <p className="content">
+            Page{" "}
+            <input
+              type="number"
+              className="pageInput"
+              value={pageNum}
+              onChange={(e) => {
+                if (e.target.value > 0 && e.target.value < 501) {
+                  Math.floor(setPageNum(e.target.value));
+                }
+              }}
+            />
+          </p>
+        </div>
+        <div>
+          <button
+            typr="button"
+            className="next-btn"
+            onClick={() => {
+              setPageNum(pageNum + 1);
+            }}
+          >
+            Next page
+          </button>
+        </div>
+      </div>
+
+      <Footer />
     </div>
   );
 };

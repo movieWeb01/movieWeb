@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import "./GenresPage.css";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import Footer from "../Footer/Footer"; 
 
 const GenresPage = ({ moviesGenres }) => {
   const { genres } = useParams();
   const [genreMovies, setGenreMovies] = useState([]); 
-  const [favorite, setFavorite] = useState(() => localStorage.getItem("favorite") || []);
+  const [pageNum, setPageNum] = useState(1); 
+  const [favorite, setFavorite] = useState(() => JSON.parse(localStorage.getItem("favorite")) || []);
 
   useEffect(() => {
     localStorage.setItem("favorite", JSON.stringify(favorite)); 
@@ -15,25 +17,21 @@ const GenresPage = ({ moviesGenres }) => {
   useEffect(() => {
     axios
       .get(
-        `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${genres}&api_key=6a3a9e9a61085d657b30d36d1c7b5ba7`
+        `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${genres}&api_key=6a3a9e9a61085d657b30d36d1c7b5ba7&page=${pageNum}`
       )
       .then((res) => {
         setGenreMovies(res.data.results);
       });
-  }, [genres]);
+  }, [genres, pageNum]);
   console.log("genreMovies", genreMovies);
 
   function heartFunction(movieId) {
-    if (Array.isArray(favorite)) {
-      if (favorite.includes(movieId)) {
-        setFavorite(favorite.filter(id => id !== movieId));
-      } else {
-        setFavorite([...favorite, movieId]); 
-      }
+    if (favorite.includes(movieId)) {
+      setFavorite(favorite.filter(id => id !== movieId));
     } else {
-      setFavorite([movieId]);
+      setFavorite([...favorite, movieId]); 
     }
-    localStorage.setItem("favorite", JSON.stringify(favorite)); 
+    localStorage.setItem("favorite", JSON.stringify([...favorite, movieId])); 
   }
 
   return (
@@ -49,11 +47,14 @@ const GenresPage = ({ moviesGenres }) => {
                 href={`https://image.tmdb.org/t/p/original/${post.poster_path}`}
                 target="_blank"
               >
-                <img
-                  alt=""
+                {
+                  (post.poster_path)? 
+                  <img
                   className="movieimg"
                   src={`https://image.tmdb.org/t/p/original/${post.poster_path}`}
                 />
+                : <div className="noimg"></div>
+                }
                 <p className="caption">{`${post.original_title}`}</p>
                 <div className="star-rating">
                   {post.vote_average >= 2 ? (
@@ -142,6 +143,20 @@ const GenresPage = ({ moviesGenres }) => {
           ))}
         </div>
       </div>
+      <div className='prev-next-parent'>
+        <div>
+          {(pageNum > 1) && <button type='button' className='prev-btn' onClick={()=>{setPageNum(pageNum - 1)}}>Prev page</button>}
+        </div>
+        <div>
+          <p className='content'>
+            Page <input type='number'className="pageInput" value={pageNum} onChange={(e)=>{if(e.target.value > 0 && e.target.value < 501){Math.floor(setPageNum(e.target.value))}}} />
+          </p>
+        </div>
+        <div>
+          <button typr='button' className='next-btn' onClick={()=>{setPageNum(pageNum + 1)}}>Next page</button>
+        </div>
+      </div>
+      <Footer />
     </div>
   );
 };
