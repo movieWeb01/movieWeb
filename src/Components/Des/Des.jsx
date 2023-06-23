@@ -6,6 +6,8 @@ import axios from "axios";
 const Description = () => {
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState({});
+  const [movieTrailer, setmovieTrailer] = useState({});
+  const rate = Math.floor(`${movieDetails.vote_average}` * 10) / 10;
 
   useEffect(() => {
     axios
@@ -17,7 +19,17 @@ const Description = () => {
       });
   }, [movieId]);
   console.log("movieDetails", movieDetails);
-  const rate = Math.floor(`${movieDetails.vote_average}` * 10) / 10;
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=6a3a9e9a61085d657b30d36d1c7b5ba7`
+      )
+      .then((res) => {
+        setmovieTrailer(res.data);
+      });
+  }, [movieId]);
+  console.log("movieTailer", movieTrailer);
 
   return (
     <div className="backdrop">
@@ -40,6 +52,7 @@ const Description = () => {
           <div className="filmAndRate">
             <p class="des-title">{movieDetails.title}</p>
             <span id="rate">{rate}</span>
+            {/* <span>{movieDetails.production_countries[0].name}</span> */}
           </div>
           <span id="releaseDate">Release Date:{movieDetails.release_date}</span>
           <div class="des-genres">
@@ -55,7 +68,15 @@ const Description = () => {
           <span id="tagline">{movieDetails.tagline}</span>
           <p className="des-info">MOVIE INFO</p>
           <p class="overview">{movieDetails.overview}</p>
-          <p></p>
+          <iframe
+            width="560"
+            height="315"
+            src={`https://www.youtube.com/embed/${movieTrailer.results?.[0]?.key}`}
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
         </div>
       </div>
     </div>
