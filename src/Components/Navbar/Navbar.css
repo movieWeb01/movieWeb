@@ -1,10 +1,64 @@
-.item:hover {
+.Navigation {
+  background-color: white;
+  font-size: 50px;
+}
+.Navigation .Navbar .NavbarBrand {
+  font-size: 30px;
+  padding: 9px 20px;
+  border-radius: 10px;
+}
+.Navigation .Navbar .NavbarBrand:hover {
+  color: white;
+  background-color: rgba(0, 136, 169, 0.8);
+  transition: all 0.3s ease 0s;
+}
+.Navigation .Navbar .ml-auto {
+  position: relative;
+  top: 3px;
+}
+.Navigation .Navbar .ml-auto .NavItemGroup {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.Navigation .Navbar .ml-auto .NavItemGroup .NavItem {
+  font-size: 40px;
+}
+.Navigation .Navbar .ml-auto .NavItemGroup .NavItem .popular {
+  cursor: pointer;
+  position: relative;
+  right: 200px;
+  top: 3px;
+  width: 120px;
+  padding: 9px 20px;
+  border-radius: 10px;
+}
+.Navigation .Navbar .ml-auto .NavItemGroup .NavItem .popular:hover {
+  color: white;
+  background-color: rgba(0, 136, 169, 0.8);
+  transition: all 0.3s ease 0s;
+}
+.Navigation .Navbar .ml-auto .NavItemGroup .NavItem .topRated {
+  cursor: pointer;
+  position: relative;
+  right: 120px;
+  top: 3px;
+  width: 150px;
+  padding: 9px 10px;
+  border-radius: 10px;
+}
+.Navigation .Navbar .ml-auto .NavItemGroup .NavItem .topRated:hover {
+  color: white;
+  background-color: rgba(0, 136, 169, 0.8);
+  transition: all 0.3s ease 0s;
+}
+.Navigation .Navbar .ml-auto .item:hover {
   color: white;
   font-style: initial;
   background-color: red;
 }
-
-.movieItem {
+.Navigation .Navbar .movieItem {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -16,7 +70,11 @@
   top: 50px;
   border-radius: 15px;
 }
-.movieItem:hover {
+.Navigation .Navbar .movieItem .image {
+  width: 180px;
+  height: 200px;
+}
+.Navigation .Navbar .movieItem:hover {
   border: 6px solid rgb(250, 50, 0);
   scale: 1.1;
   transition: 1s;
@@ -26,16 +84,36 @@
   color: rgb(253, 255, 146);
   background-color: rgb(211, 83, 83);
 }
-.movieItem h4 {
+.Navigation .Navbar .movieItem h4 {
   font-size: 20px;
 }
-
-.category {
-  font-size: 25px;
+.Navigation .Navbar .categoryGroup {
+  position: relative;
+  left: 200px;
 }
-.category:hover {
-  transition: 0.5s;
-  color: #0088a9;
+.Navigation .Navbar .categoryGroup .category {
+  font-size: 25px;
+  padding: 9px 10px;
+  border-radius: 30px;
+}
+.Navigation .Navbar .categoryGroup .category:hover {
+  color: white;
+  background-color: rgba(0, 136, 169, 0.8);
+  transition: all 0.3s ease 0s;
+}
+.Navigation .Navbar .input {
+  position: relative;
+  left: -70px;
+  width: 550px;
+  height: 50px;
+  font-size: 25px;
+  padding-right: 85px;
+}
+.Navigation .Navbar i {
+  font-size: 20px;
+  position: relative;
+  right: 150px;
+  color: black;
 }
 
 .numbers span:hover {
@@ -43,5 +121,259 @@
   font-size: 35px;
   color: black;
   cursor: pointer;
+}
+
+@media (max-width: 1450px) {
+  .Navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+  }
+  .Navigation .Navbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 100px;
+  }
+  .Navigation .Navbar .ml-auto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .Navigation .Navbar .ml-auto .NavItemGroup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    bottom: 100px;
+    left: 400px;
+  }
+  .Navigation .Navbar .ml-auto .NavItemGroup .NavbarBrand {
+    position: relative;
+    bottom: 0px;
+    right: 120px;
+    font-size: 25px;
+  }
+  .Navigation .Navbar .ml-auto .NavItemGroup .popular {
+    cursor: pointer;
+    position: relative;
+    left: -100px;
+    top: 3px;
+    width: 120px;
+    font-size: 25px;
+    padding: 9px 20px;
+    border-radius: 10px;
+  }
+  .Navigation .Navbar .ml-auto .NavItemGroup .popular:hover {
+    color: white;
+    background-color: rgba(0, 136, 169, 0.8);
+    transition: all 0.3s ease 0s;
+  }
+  .Navigation .Navbar .ml-auto .NavItemGroup .topRated {
+    cursor: pointer;
+    position: relative;
+    right: 20px;
+    top: 3px;
+    width: 150px;
+    font-size: 25px;
+    padding: 9px 10px;
+    border-radius: 10px;
+  }
+  .Navigation .Navbar .ml-auto .NavItemGroup .topRated:hover {
+    color: white;
+    background-color: rgba(0, 136, 169, 0.8);
+    transition: all 0.3s ease 0s;
+  }
+  .Navigation .Navbar .ml-auto .input {
+    position: relative;
+    bottom: 100px;
+    width: 300px;
+    left: 300px;
+  }
+  .Navigation .Navbar .ml-auto .Search {
+    position: relative;
+    bottom: 100px;
+    width: 300px;
+    left: 220px;
+  }
+  .Navigation .Navbar .ml-auto .categoryGroup {
+    position: relative;
+    bottom: 150px;
+    width: 300px;
+    left: 80px;
+  }
+  .showMovie {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: "center";
+    height: auto;
+    width: 400px;
+    position: absolute;
+    left: 950px;
+    bottom: -300px;
+  }
+  .showMovie .movieItem {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: auto;
+    margin: 0px 10px;
+    width: 200px;
+    position: relative;
+    top: -100px;
+    border-radius: 15px;
+  }
+  .showMovie .movieItem .image {
+    width: 180px;
+    height: 200px;
+  }
+  .showMovie .movieItem h4 {
+    font-size: 15px;
+  }
+  .numbers {
+    position: relative;
+    bottom: -280px;
+    right: 100px;
+    font-size: 40px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    background-color: black;
+  }
+}
+@media (max-width: 700px) {
+  .Navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: green;
+    height: 180px;
+  }
+  .Navigation .Navbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 120px;
+  }
+  .Navigation .Navbar .ml-auto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .Navigation .Navbar .ml-auto .NavItemGroup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+    bottom: 100px;
+    left: 0px;
+  }
+  .Navigation .Navbar .ml-auto .NavItemGroup .NavbarBrand {
+    position: relative;
+    top: 10px;
+    right: 200px;
+    font-size: 20px;
+  }
+  .Navigation .Navbar .ml-auto .NavItemGroup .popular {
+    cursor: pointer;
+    position: relative;
+    left: -200px;
+    top: 3px;
+    width: 120px;
+    font-size: 20px;
+    padding: 9px 20px;
+    border-radius: 10px;
+  }
+  .Navigation .Navbar .ml-auto .NavItemGroup .popular:hover {
+    color: white;
+    background-color: rgba(0, 136, 169, 0.8);
+    transition: all 0.3s ease 0s;
+  }
+  .Navigation .Navbar .ml-auto .NavItemGroup .topRated {
+    cursor: pointer;
+    position: relative;
+    left: -190px;
+    top: 3px;
+    width: 150px;
+    font-size: 20px;
+    padding: 9px 10px;
+    border-radius: 10px;
+  }
+  .Navigation .Navbar .ml-auto .NavItemGroup .topRated:hover {
+    color: white;
+    background-color: rgba(0, 136, 169, 0.8);
+    transition: all 0.3s ease 0s;
+  }
+  .Navigation .Navbar .ml-auto .input {
+    position: relative;
+    bottom: 200px;
+    width: 350px;
+    left: 200px;
+  }
+  .Navigation .Navbar .ml-auto .Search {
+    position: relative;
+    bottom: 200px;
+    width: 300px;
+    left: 120px;
+  }
+  .Navigation .Navbar .ml-auto .categoryGroup {
+    position: relative;
+    bottom: 250px;
+    width: 300px;
+    left: 400px;
+  }
+  .showMovie {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: "center";
+    height: auto;
+    width: 400px;
+    position: absolute;
+    left: 800px;
+    bottom: -220px;
+  }
+  .showMovie .movieItem {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: auto;
+    margin: 0px 10px;
+    width: 200px;
+    position: relative;
+    top: -30px;
+    border-radius: 15px;
+  }
+  .showMovie .movieItem h4 {
+    font-size: 15px;
+  }
+  .showMovie .movieItem .image {
+    width: 180px;
+    height: 200px;
+  }
+  .numbers {
+    position: relative;
+    bottom: -220px;
+    right: 100px;
+    font-size: 40px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: auto;
+  }
 }
 /*# sourceMappingURL=Navbar.css.map */
