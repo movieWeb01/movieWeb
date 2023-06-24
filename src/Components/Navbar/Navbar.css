@@ -18,14 +18,15 @@
   border-radius: 10px;
   position: relative;
   bottom: 40px;
-  color: #e67832;
+  color: white;
   font-weight: bold;
 }
 .Navigation .Navbar .NavbarBrand:hover {
-  color: white;
-  background-color: rgba(230, 120, 50, 0.8);
+  color: #d5653d;
+  font-size: 41px;
   transition: all 0.3s ease 0s;
 }
+
 .Navigation .Navbar .ml-auto .NavItemGroup {
   display: flex;
   flex-direction: row;

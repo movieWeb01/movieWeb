@@ -172,8 +172,8 @@ const renderPageNumbers = pageNumbers.map((number, index) => {
             }}
           >
             <div className="NavItemGroup">
-                      <Link to={"/"} style={{ textDecoration: "none", color: "#fff" }}>
-          <NavbarBrand className="NavbarBrand">Love Movie</NavbarBrand>
+                      <Link to={"/"} style={{ textDecoration: "none" }}>
+          <NavbarBrand className="NavbarBrand">LoveMovie</NavbarBrand>
         </Link>
             <NavItem className="NavItem">
               <Link
@@ -320,7 +320,7 @@ const renderPageNumbers = pageNumbers.map((number, index) => {
   >
     <Navbar light expand="md" className="Navbar">
       <Link to={"/"} style={{ textDecoration: "none", color: "#fff" }}>
-        <NavbarBrand className="NavbarBrand">Love Movie</NavbarBrand>
+        <NavbarBrand className="NavbarBrand">Love<span style={{ color: "orange" }}>Movie</span></NavbarBrand>
       </Link>
       <NavbarToggler onClick={toggle} />
       <Collapse
