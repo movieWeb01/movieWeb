@@ -1,5 +1,5 @@
 .Navigation{
-    background-color: transparent;
+    background-color: white;
     font-size: 50px;
 .Navbar{
     .NavbarBrand{
@@ -13,7 +13,8 @@
         }
     }
     .ml-auto{
-
+        position:relative;
+        top: 3px;
         .NavItemGroup{
             display:flex;
     flex-direction: row;
@@ -73,6 +74,10 @@ transition: all 0.3s ease 0s;
     position: relative;
     top: 50px;
     border-radius: 15px;
+    .image{
+        width: 180px;
+        height: 200px;
+    }
     &:hover{
         border: 6px solid rgb(250, 50, 0);
         scale: 1.1;
@@ -128,228 +133,268 @@ i{
     }
 }
 
-@media (max-width: 1000px) {
-    .Navigation{
-          background-color: red;
-          .Navbar{
-            .NavbarBrand{
-                position: relative;
-                top:5px;
-                font-size: 18px;
-            }
-        .ml-auto{
-            .NavItemGroup{
-        display:flex;
-        flex-direction: row;
-        justify-content:center;
+
+@media (max-width: 1450px) {
+.Navigation{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+background-color: red;
+    .Navbar{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         align-items: center;
         position: relative;
-        left: 130px;
-        .NavItem{
-            font-size: 25px;
-            .popular{
-                cursor: pointer;
-                position: relative;
-                right: 150px;
-                top: 3px;
-                padding: 9px 5px;
-                border-radius: 30px;
-                width: 100px;
-            }
-            .topRated{
-                cursor: pointer;
-                position: relative;
-                right: 170px;
-                top: 3px;
-                padding: 9px 5px;
-                border-radius: 30px;
-                width:100px;
-            }
-        }
-    }
-        
-        .item{
-            color: red;
-            &:hover{
-                color: white;
-            font-style: initial;
-            background-color: red;
-        }
-        
-    }}
-    .movieItem{
-        display:flex;
-        flex-direction: column;
-        justify-content:flex-start;
-        align-items:flex-start;
-        height: auto;
-        margin:0px 10px;
-        width:430px;
-        position: relative;
-        top: 50px;
-        border-radius: 15px;
-        &:hover{
-            border: 6px solid rgb(250, 50, 0);
-            scale: 1.1;
-            transition: 1s;
-            font-size: 25px;
-            height: auto;
-            z-index: 99;
-            color: rgb(253, 255, 146);
-            background-color: black;
-        }
-              h4{
-    font-size: 20px;
-        }  
-    }
-    .categoryGroup{
-        position: relative;
- top: 0px ;
- left: 0px;
-    .category{
-        font-size: 25px;
-        padding: 9px 10px;
-        border-radius: 30px;
-        &:hover{
-            transition: 0.5s;
-            color: #0088a9;
-        }
-    }
-}
-    .input {
-        color: lightgreen;
-        width: 350px;
-        position: relative;
-        left: -150px;
-    }
-    i{
-        font-size: 20px;
-        position: relative;
-        right: 225px;
-        color: black;
-    }
-}}
-.numbers{
-    span{
-        
-        &:hover{
-            transition: 0.5s;
-font-size: 35px;
-            color: black;
-            cursor: pointer;
-        }
-    }
-}
+        top: 100px;
 
-}
-
-@media (max-width: 750px) {
-    .Navigation{
-          background-color: green;
-          height: 140px;
-          .Navbar{
-            .NavbarBrand{
-                position: relative;
-                top:5px;
-                font-size: 18px;
-            }
         .ml-auto{
+            display: flex;
+            justify-content: center;
+            align-items: center;
             .NavItemGroup{
-        display:flex;
-        flex-direction: row;
-        justify-content:center;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                bottom: 100px;
+
+                left: 400px;
+                        .NavbarBrand{
+            position: relative;
+            bottom: 00px;
+            right: 120px;
+            font-size: 25px;
+        }
+        .popular{
+            cursor: pointer;
+            position: relative;
+            left: -100px;
+            top: 3px;
+            width: 120px;
+            font-size: 25px;
+padding: 9px 20px;
+border-radius: 10px;
+&:hover{
+color: white;
+background-color: rgba(0, 136, 169, 0.8);
+transition: all 0.3s ease 0s;
+}
+        }
+        .topRated{
+            cursor: pointer;
+            position: relative;
+            right: 20px;
+            top: 3px;
+            width: 150px;
+            font-size: 25px;
+padding: 9px 10px;
+border-radius: 10px;
+&:hover{
+ color: white;
+ background-color: rgba(0, 136, 169, 0.8);
+transition: all 0.3s ease 0s;   
+}
+        }
+            }
+            .input{
+                position: relative;
+                bottom: 100px;
+                width: 300px;
+                left: 300px;
+            }
+            .Search{
+                position: relative;
+                bottom: 100px;
+                width: 300px;
+                left: 220px;
+            }
+            .categoryGroup{
+                position: relative;
+                bottom: 150px;
+                width: 300px;
+                left: 80px;
+            }
+        }
+    }    
+}
+.showMovie{
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: "center";
+        height: auto;
+        width: 400px;
+        position:absolute;
+        left:950px;
+        bottom: -300px;
+
+    .movieItem{        
+display:flex;
+flex-direction: column;
+justify-content:flex-start;
+align-items:flex-start;
+height: auto;
+margin:0px 10px;
+width:200px;
+position: relative;
+top: -100px;
+border-radius: 15px;
+.image{
+    width: 180px;
+    height: 200px;
+}
+h4{
+    font-size: 15px;
+}
+    }
+    }
+    .numbers{
+        position: relative;
+        bottom: -280px;
+        right:100px;
+        font-size: 40px;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+
+        width: auto;
+        background-color: black;
+    }
+}
+@media (max-width: 700px) {
+.Navigation{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+background-color: green;
+height: 180px;
+    .Navbar{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         align-items: center;
         position: relative;
-        left: 130px;
-        .NavItem{
-            font-size: 25px;
-            .popular{
-                cursor: pointer;
-                position: relative;
-                right: 145px;
-                top: 0px;
-                width: 80px;
-                padding: 9px 10px;
-                border-radius: 30px;
-            }
-            .topRated{
-                cursor: pointer;
-                position: relative;
-                right: 225px;
-                top: 35px;
-                width:100px;
-                padding: 10px 10px;
-                border-radius: 30px;
-            }
-        }
-    }
-        
-        .item{
-            color: red;
-            &:hover{
-                color: white;
-            font-style: initial;
-            background-color: red;
-        }
-        
-    }}
-    .movieItem{
-        display:flex;
-        flex-direction: column;
-        justify-content:flex-start;
-        align-items:flex-start;
-        height: auto;
-        margin:0px 10px;
-        width:430px;
-        position: relative;
-        top: 50px;
-        border-radius: 15px;
-        &:hover{
-            border: 6px solid rgb(250, 50, 0);
-            scale: 1.1;
-            transition: 1s;
-            font-size: 25px;
-            height: auto;
-            z-index: 99;
-            color: rgb(253, 255, 146);
-            background-color: black;
-        }
-              h4{
-    font-size: 20px;
-        }  
-    }
-    .categoryGroup{
-        position: relative;
- top: -50px ;
- left: 270px;
-    .category{
-        font-size: 25px;
-        padding: 9px 10px;
-        border-radius: 30px;
-            &:hover{
-                color: white;
-                background-color: rgba(0, 136, 169, 0.8);
-               transition: all 0.3s ease 0s;   
-            }
-    }
-}
-    .input {
-        color: lightgreen;
-        width: 350px;
-        position: relative;
-        left: -150px;
-    }
-}}
-.numbers{
-    span{
-        
-        &:hover{
-            transition: 0.5s;
-font-size: 35px;
-            color: black;
-            cursor: pointer;
-        }
-    }
-}
+        top: 120px;
 
+        .ml-auto{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .NavItemGroup{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                position: relative;
+                bottom: 100px;
+
+                left: 00px;
+                        .NavbarBrand{
+            position: relative;
+            top: 10px;
+            right: 200px;
+            font-size: 20px;
+        }
+        .popular{
+            cursor: pointer;
+            position: relative;
+            left: -200px;
+            top: 3px;
+            width: 120px;
+            font-size: 20px;
+padding: 9px 20px;
+border-radius: 10px;
+&:hover{
+color: white;
+background-color: rgba(0, 136, 169, 0.8);
+transition: all 0.3s ease 0s;
+}
+        }
+        .topRated{
+            cursor: pointer;
+            position: relative;
+            left: -190px;
+            top: 3px;
+            width: 150px;
+            font-size: 20px;
+padding: 9px 10px;
+border-radius: 10px;
+&:hover{
+ color: white;
+ background-color: rgba(0, 136, 169, 0.8);
+transition: all 0.3s ease 0s;   
+}
+        }
+            }
+
+            .input{
+                position: relative;
+                bottom: 200px;
+                width: 350px;
+                left: 200px;
+            }
+            .Search{
+                position: relative;
+                bottom: 200px;
+                width: 300px;
+                left: 120px;
+            }
+            .categoryGroup{
+                position: relative;
+                bottom: 250px;
+                width: 300px;
+                left: 400px;
+            }
+        }
+    }
+
+
+}
+    .showMovie{
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: "center";
+        height: auto;
+        width: 400px;
+        position:absolute;
+        left:800px;
+        bottom: -220px;
+
+            .movieItem{        
+display:flex;
+flex-direction: column;
+justify-content:flex-start;
+align-items:flex-start;
+height: auto;
+margin:0px 10px;
+width:200px;
+position: relative;
+top: -30px;
+
+border-radius: 15px;
+h4{
+    font-size: 15px;
+}        .image{
+            width: 180px;
+            height: 200px;
+        }
+    }
+    }
+    .numbers{
+        position: relative;
+        bottom: -220px;
+        right:100px;
+        font-size: 40px;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+        height: 30px;
+        width: auto;
+
+    }
 }
