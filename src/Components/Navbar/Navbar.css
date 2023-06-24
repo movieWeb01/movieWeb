@@ -1,20 +1,27 @@
 .Navigation {
-  background-color: white;
+  background-color: black;
   font-size: 50px;
+}
+.Navigation .Navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 10px;
 }
 .Navigation .Navbar .NavbarBrand {
   font-size: 30px;
   padding: 9px 20px;
   border-radius: 10px;
+  position: relative;
+  bottom: 40px;
+  color: yellow;
 }
 .Navigation .Navbar .NavbarBrand:hover {
   color: white;
   background-color: rgba(0, 136, 169, 0.8);
   transition: all 0.3s ease 0s;
-}
-.Navigation .Navbar .ml-auto {
-  position: relative;
-  top: 3px;
 }
 .Navigation .Navbar .ml-auto .NavItemGroup {
   display: flex;
@@ -28,8 +35,8 @@
 .Navigation .Navbar .ml-auto .NavItemGroup .NavItem .popular {
   cursor: pointer;
   position: relative;
-  right: 200px;
-  top: 3px;
+  right: 150px;
+  color: yellow;
   width: 120px;
   padding: 9px 20px;
   border-radius: 10px;
@@ -43,8 +50,9 @@
   cursor: pointer;
   position: relative;
   right: 120px;
-  top: 3px;
+  color: yellow;
   width: 150px;
+  top: 5px;
   padding: 9px 10px;
   border-radius: 10px;
 }
@@ -58,43 +66,18 @@
   font-style: initial;
   background-color: red;
 }
-.Navigation .Navbar .movieItem {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  height: auto;
-  margin: 0px 10px;
-  width: 430px;
-  position: relative;
-  top: 50px;
-  border-radius: 15px;
-}
-.Navigation .Navbar .movieItem .image {
-  width: 180px;
-  height: 200px;
-}
-.Navigation .Navbar .movieItem:hover {
-  border: 6px solid rgb(250, 50, 0);
-  scale: 1.1;
-  transition: 1s;
-  font-size: 25px;
-  height: auto;
-  z-index: 99;
-  color: rgb(253, 255, 146);
-  background-color: rgb(211, 83, 83);
-}
-.Navigation .Navbar .movieItem h4 {
-  font-size: 20px;
-}
 .Navigation .Navbar .categoryGroup {
   position: relative;
-  left: 200px;
+  left: 100px;
+  bottom: 30px;
 }
 .Navigation .Navbar .categoryGroup .category {
   font-size: 25px;
   padding: 9px 10px;
   border-radius: 30px;
+  position: relative;
+  bottom: 0px;
+  color: yellow;
 }
 .Navigation .Navbar .categoryGroup .category:hover {
   color: white;
@@ -129,6 +112,7 @@
     justify-content: center;
     align-items: center;
     background-color: red;
+    height: 200px;
   }
   .Navigation .Navbar {
     display: flex;
@@ -136,7 +120,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    top: 100px;
+    top: 80px;
   }
   .Navigation .Navbar .ml-auto {
     display: flex;
@@ -167,6 +151,7 @@
     font-size: 25px;
     padding: 9px 20px;
     border-radius: 10px;
+    color: black;
   }
   .Navigation .Navbar .ml-auto .NavItemGroup .popular:hover {
     color: white;
@@ -177,11 +162,12 @@
     cursor: pointer;
     position: relative;
     right: 20px;
-    top: 3px;
+    bottom: 100px;
     width: 150px;
     font-size: 25px;
     padding: 9px 10px;
     border-radius: 10px;
+    color: black;
   }
   .Navigation .Navbar .ml-auto .NavItemGroup .topRated:hover {
     color: white;
@@ -202,9 +188,10 @@
   }
   .Navigation .Navbar .ml-auto .categoryGroup {
     position: relative;
-    bottom: 150px;
+    bottom: 100px;
     width: 300px;
     left: 80px;
+    color: yellow;
   }
   .showMovie {
     display: flex;
@@ -212,41 +199,42 @@
     justify-content: center;
     align-items: "center";
     height: auto;
-    width: 400px;
+    width: 100px;
     position: absolute;
-    left: 950px;
+    left: 100%;
     bottom: -300px;
+    margin-top: 10px;
   }
   .showMovie .movieItem {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
     height: auto;
-    margin: 0px 10px;
-    width: 200px;
+    margin: 0px 5px;
     position: relative;
-    top: -100px;
+    top: -115px;
     border-radius: 15px;
+    background-color: black;
   }
   .showMovie .movieItem .image {
-    width: 180px;
-    height: 200px;
+    width: 200px;
+    height: 220px;
   }
   .showMovie .movieItem h4 {
     font-size: 15px;
+    text-align: center;
   }
   .numbers {
     position: relative;
-    bottom: -280px;
-    right: 100px;
+    bottom: 90px;
+    right: -90px;
     font-size: 40px;
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
     width: auto;
-    background-color: black;
   }
 }
 @media (max-width: 700px) {
@@ -294,6 +282,7 @@
     font-size: 20px;
     padding: 9px 20px;
     border-radius: 10px;
+    color: black;
   }
   .Navigation .Navbar .ml-auto .NavItemGroup .popular:hover {
     color: white;
@@ -309,6 +298,7 @@
     font-size: 20px;
     padding: 9px 10px;
     border-radius: 10px;
+    color: black;
   }
   .Navigation .Navbar .ml-auto .NavItemGroup .topRated:hover {
     color: white;
@@ -332,6 +322,7 @@
     bottom: 250px;
     width: 300px;
     left: 400px;
+    color: yellow;
   }
   .showMovie {
     display: flex;
@@ -342,31 +333,32 @@
     width: 400px;
     position: absolute;
     left: 800px;
-    bottom: -220px;
+    bottom: -230px;
   }
   .showMovie .movieItem {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
     height: auto;
-    margin: 0px 10px;
-    width: 200px;
+    margin: 0px 5px;
     position: relative;
-    top: -30px;
+    top: -60px;
+    background-color: black;
     border-radius: 15px;
   }
   .showMovie .movieItem h4 {
     font-size: 15px;
+    text-align: center;
   }
   .showMovie .movieItem .image {
-    width: 180px;
-    height: 200px;
+    width: 135px;
+    height: 160px;
   }
   .numbers {
     position: relative;
-    bottom: -220px;
-    right: 100px;
+    bottom: 80px;
+    right: -40px;
     font-size: 40px;
     display: flex;
     flex-flow: row nowrap;

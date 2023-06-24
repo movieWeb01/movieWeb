@@ -129,7 +129,7 @@ const renderPageNumbers = pageNumbers.map((number, index) => {
       onClick={() => setCurrentPage(number)}
       key={index}
     >
-      {number}
+      P.{number}
     </span>
   );
 });
@@ -138,7 +138,6 @@ const renderPageNumbers = pageNumbers.map((number, index) => {
   if (sm, md) {
     return     <div
     style={{
-      backgroundColor: "black",
       position: "sticky",
       top: "0px",
       fontSize: "50px",
@@ -289,213 +288,22 @@ const renderPageNumbers = pageNumbers.map((number, index) => {
       </Navbar>
 
     </div>
-<div>
-      <div className="showMovie"
-      >
-        {renderItems}
-      </div>
+<div        >
+
       <div
         className="numbers"
-        style={{
 
-        }}
       >
         {renderPageNumbers}
+      </div>
+            <div className="showMovie"
+      >
+        {renderItems}
       </div>
     </div>
 
   </div>;
   }
-  // if (md) {
-  //   return     <div
-  //   style={{
-  //     backgroundColor: "black",
-  //     position: "sticky",
-  //     top: "0px",
-  //     fontSize: "50px",
-  //     width: "100%",
-  //     zIndex: 99,
-  //   }}
-  // >
-  //   <div
-  //     className="Navigation"
-  //   >
-  //     <Navbar light expand="md" className="Navbar">
-  //       <Link to={"/"} style={{ textDecoration: "none", color: "#fff" }}>
-  //         <NavbarBrand className="NavbarBrand">Love Movie</NavbarBrand>
-  //       </Link>
-
-  //       <NavbarToggler onClick={toggle} />
-  //       <Collapse
-  //         isOpen={isOpen}
-  //         navbar
-  //         style={{
-  //           display: "flex",
-  //           rowDirection: "row",
-  //           justifyContent: "space-around",
-  //           alignItems: "center",
-  //         }}
-  //       >
-  //         <Nav
-  //           className="ml-auto"
-  //           navbar
-  //           style={{
-  //             position: "relative",
-  //             top: "3px",
-
-  //           }}
-  //         >
-  //           <div className="NavItemGroup">
-  //           <NavItem className="NavItem">
-  //             <Link
-  //               to={"movies/popular"}
-  //               style={{ textDecoration: "none", color: "#fff" }}
-  //             >
-  //               <NavLink
-  //               className="popular">
-  //                 受歡迎
-  //               </NavLink>
-  //             </Link>
-  //           </NavItem>
-
-
-  //           <NavItem
-  //             style={{
-  //               display: "flex",
-  //               rowDirection: "row",
-  //               justifyContent: "space-around",
-  //               alignItems: "center",
-  //             }}
-  //           >
-  //             <Input
-  //               className="input"
-  //               placeholder="What movie are you looking for?"
-  //               value={info}
-  //               maxLength={100000000}
-  //               onChange={(e) => {
-  //                 setInfo(e.target.value);
-  //               }}
-  //             />
-  //             <i
-  //             className="Search">
-  //               Search
-  //             </i>
-  //           </NavItem>
-
-  //           <NavItem className="NavItem">
-  //             <Link
-  //               to={"movies/top_rated"}
-  //               style={{ textDecoration: "none", color: "#fff" }}
-  //             >
-  //               <NavLink
-  //                 className="topRated">
-  //                 Top Rated
-  //               </NavLink>
-  //             </Link>
-  //           </NavItem>
-  //           </div>
-  //           <UncontrolledDropdown
-  //             nav
-  //             inNavbar
-  //             style={{
-  //               display: "flex",
-  //               rowDirection: "row",
-  //               justifyContent: "space-around",
-  //               alignItems: "center",
-  //             }}
-  //           >
-  //             <div className="categoryGroup">
-  //               <DropdownToggle nav caret>
-  //                 <b className="category">類別</b>
-  //               </DropdownToggle>
-  //               <DropdownMenu
-  //                 style={{ fontSize: "30px", backgroundColor: "pink" }}
-  //               >
-  //                 <DropdownItem
-  //                   className="item"
-  //                   onClick={() => {
-  //                     setCategory("Science Fiction");
-  //                   }}
-  //                 >
-  //                   科幻
-  //                 </DropdownItem>
-  //                 <DropdownItem
-  //                   className="item"
-  //                   onClick={() => {
-  //                     setCategory("Familie");
-  //                   }}
-  //                 >
-  //                   家庭
-  //                 </DropdownItem>
-  //                 <DropdownItem
-  //                   className="item"
-  //                   onClick={() => {
-  //                     setCategory("Abenteuer");
-  //                   }}
-  //                 >
-  //                   冒險
-  //                 </DropdownItem>
-  //                 <DropdownItem
-  //                   className="item"
-  //                   onClick={() => {
-  //                     setCategory("Animation");
-  //                   }}
-  //                 >
-  //                   動畫
-  //                 </DropdownItem>
-  //                 <DropdownItem
-  //                   className="item"
-  //                   onClick={() => {
-  //                     setCategory("Action");
-  //                   }}
-  //                 >
-  //                   動作
-  //                 </DropdownItem>
-  //                 <DropdownItem divider />
-  //               </DropdownMenu>
-  //             </div>
-  //           </UncontrolledDropdown>
-  //         </Nav>
-  //       </Collapse>
-  //       <div>
-  //     <div
-  //       style={{
-  //         display: "flex",
-  //         flexFlow: "row nowrap",
-  //         justifyContent: "center",
-  //         alignItems: "center",
-  //         height: "auto",
-  //         width: "100%",
-  //         position:"relative",
-  //         left:"500px"
-  //       }}
-  //     >
-  //       {renderItems}
-  //     </div>
-  //     <div
-  //       className="numbers"
-  //       style={{
-  //         position: "relative",
-  //         top: "40px",
-  //         fontSize: "40px",
-  //         display: "flex",
-  //         flexFlow: "row nowrap",
-  //         justifyContent: "center",
-  //         alignItems: "center",
-  //         height: "30px",
-  //         width: "100%",
-  //       }}
-  //     >
-  //       {renderPageNumbers}
-  //     </div>
-  //   </div>
-  //     </Navbar>
-
-  //   </div>
-
-
-  // </div>;
-  // }
 
   return     <div
   style={{
@@ -529,11 +337,6 @@ const renderPageNumbers = pageNumbers.map((number, index) => {
         <Nav
           className="ml-auto"
           navbar
-          style={{
-            position: "relative",
-            top: "3px",
-
-          }}
         >
           <div className="NavItemGroup">
           <NavItem className="NavItem">
@@ -587,8 +390,8 @@ const renderPageNumbers = pageNumbers.map((number, index) => {
               to={"movies/top_rated"}
               style={{ textDecoration: "none", color: "#fff" }}
             >
-                <div height="130px" width="100px">
-          <Button style={{position:"relative", top:"10px"}}onClick={() => setShow((s) => !s)}>Open</Button>
+                <div style={{height:"130px", width:"100px",  }}>
+          <Button style={{position:"relative", top:"10px", fontSize: "23px", width:"80px", height:"40px", backgroundColor: "lightgreen"}}onClick={() => setShow((s) => !s)}>Open</Button>
       <Modal Pro={info} Ca={category}show={show} closeModal={()=>setShow(false)}/>
     </div>
             </Link>
