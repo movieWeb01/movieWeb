@@ -411,7 +411,7 @@ const renderPageNumbers = pageNumbers.map((number, index) => {
                 <b className="category">Category</b>
               </DropdownToggle>
               <DropdownMenu
-                style={{ fontSize: "30px", backgroundColor: "pink" }}
+                style={{ fontSize: "30px", backgroundColor: "rgb(255, 205, 185)" }}
               >
                 <DropdownItem
                   className="item"
