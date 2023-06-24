@@ -41,27 +41,24 @@
   right: 150px;
   color: #e67832;
   width: 120px;
-  padding: 9px 20px;
-  border-radius: 10px;
+  text-align: center;
 }
 .Navigation .Navbar .ml-auto .NavItemGroup .NavItem .popular:hover {
   color: white;
-  background-color: rgba(230, 120, 50, 0.8);
+  border-bottom: 4px solid rgba(230, 120, 50, 0.8);
   transition: all 0.3s ease 0s;
 }
 .Navigation .Navbar .ml-auto .NavItemGroup .NavItem .topRated {
   cursor: pointer;
   position: relative;
+  text-align: center;
   right: 120px;
   color: #e67832;
   width: 150px;
-  top: 5px;
-  padding: 9px 10px;
-  border-radius: 10px;
 }
 .Navigation .Navbar .ml-auto .NavItemGroup .NavItem .topRated:hover {
   color: white;
-  background-color: rgba(230, 120, 50, 0.8);
+  border-bottom: 4px solid rgba(230, 120, 50, 0.8);
   transition: all 0.3s ease 0s;
 }
 .Navigation .Navbar .ml-auto .item:hover {
@@ -77,14 +74,13 @@
 .Navigation .Navbar .categoryGroup .category {
   font-size: 25px;
   padding: 9px 10px;
-  border-radius: 30px;
   position: relative;
   bottom: 0px;
   color: #e67832;
 }
 .Navigation .Navbar .categoryGroup .category:hover {
   color: white;
-  background-color: rgba(230, 120, 50, 0.8);
+  border-bottom: 4px solid rgba(230, 120, 50, 0.8);
   transition: all 0.3s ease 0s;
 }
 .Navigation .Navbar .input {
