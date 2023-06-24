@@ -173,7 +173,7 @@ const renderPageNumbers = pageNumbers.map((number, index) => {
           >
             <div className="NavItemGroup">
                       <Link to={"/"} style={{ textDecoration: "none" }}>
-          <NavbarBrand className="NavbarBrand">LoveMovie</NavbarBrand>
+                      <NavbarBrand className="NavbarBrand">Love<span style={{ color: "orange" }}>Movie</span></NavbarBrand>
         </Link>
             <NavItem className="NavItem">
               <Link
