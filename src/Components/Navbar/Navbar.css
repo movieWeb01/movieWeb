@@ -1,8 +1,8 @@
 .Navigation {
+  top: -40px;
   background-color: rgb(28, 28, 28);
   font-size: 50px;
-  border-bottom: #d5653d 6px solid; 
-  height: 95px; 
+  height: 90px; 
 }
 .Navigation .Navbar {
   display: flex;
@@ -14,10 +14,11 @@
 }
 .Navigation .Navbar .NavbarBrand {
   font-size: 30px;
-  padding: 9px 20px;
+  bottom: 40px;
+  height: 40px; 
+  padding: 0px 20px;
   border-radius: 10px;
   position: relative;
-  bottom: 40px;
   color: white;
   font-weight: bold;
 }
