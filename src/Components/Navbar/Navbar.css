@@ -245,7 +245,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #d5653d;
+    background-color: rgb(28, 28, 28);
     height: 180px;
   }
   .Navigation .Navbar {
