@@ -15,6 +15,8 @@ function Container({ posts }) {
   const [searchPageNum, setSearchPageNum] = useState(1); 
   const [inputText, setInputText] = useState(() => JSON.parse(localStorage.getItem('inputText')) || 'movie'); 
   const [adult, setAdult] = useState(() => JSON.parse(localStorage.getItem('adult')) || 'false'); 
+  const [language, setLanguage] = useState(() => JSON.parse(localStorage.getItem('language')) || 'en'); 
+  const [region, setRegion] = useState(() => JSON.parse(localStorage.getItem('region')) || 'US'); 
 
   const [favorite, setFavorite] = useState(() => JSON.parse(localStorage.getItem("favorite")) || []);
 
@@ -30,6 +32,14 @@ function Container({ posts }) {
     localStorage.setItem("adult", JSON.stringify(adult)); 
   }, [adult]); 
 
+  useEffect(() => { 
+    localStorage.setItem("language", JSON.stringify(language)); 
+  }, [language]); 
+
+  useEffect(() => { 
+    localStorage.setItem("region", JSON.stringify(region)); 
+  }, [region]); 
+  
   useEffect(() => {
     axios
       .get(
@@ -77,13 +87,13 @@ function Container({ posts }) {
   useEffect(() => {
     axios
       .get(
-        `https://api.themoviedb.org/3/search/movie?api_key=6a3a9e9a61085d657b30d36d1c7b5ba7&page=${searchPageNum}?&query=${inputText}?&include_adult=${adult}`
+        `https://api.themoviedb.org/3/search/movie?api_key=6a3a9e9a61085d657b30d36d1c7b5ba7&page=${searchPageNum}?&query=${inputText}?&include_adult=${adult}&language=${language}&region=${region}`
       )
       .then((res) => {
         console.log(res);
         setSearch(res.data.results);
       });
-  }, [searchPageNum, adult, inputText]);
+  }, [searchPageNum, adult, language, region, inputText]);
 
   var slider1holder = document.getElementById("slider1");
   var photobannerholder = document.getElementsByClassName("photobanner")[0];
@@ -498,12 +508,30 @@ function Container({ posts }) {
       </div>
 
       <div className='search-parent'>
-        <h1 className="slider_title">Search</h1>
+        <h1 className="slider_title">Filter</h1>
         <input type='text' id='searchbar' value={inputText} onChange={(e)=>{setInputText(e.target.value); setSearchPageNum(1)}} />
-        <select className="adult-dropdown" value={adult} onChange={(e)=>{setAdult(e.target.value); }}>
-            <option className="adult-dropdown-item" value="false">Normal</option>
-            <option className="adult-dropdown-item" value="true">Adult</option>
-          </select>
+        <select className="filter-dropdown" value={adult} onChange={(e)=>{setAdult(e.target.value); setSearchPageNum(1)}}>
+          <option className="filter-dropdown-item" value="false">Normal</option>
+          <option className="filter-dropdown-item" value="true">Adult</option>
+        </select>
+        <select className="filter-dropdown" value={language} onChange={(e)=>{setLanguage(e.target.value); setSearchPageNum(1)}}>
+          <option className="filter-dropdown-item" value="en-US">English</option>
+          <option className="filter-dropdown-item" value="zh-HK">Cantonese</option>
+          <option className="filter-dropdown-item" value="zh-TW">Taiwanese Mandarin</option>
+          <option className="filter-dropdown-item" value="cn-CN">Mainland Mandarin</option>
+          <option className="filter-dropdown-item" value="ja-JP">Japanese</option>
+          <option className="filter-dropdown-item" value="ko-KR">Korean</option>
+          <option className="filter-dropdown-item" value="en-GB">UK</option>
+        </select>
+        <select className="filter-dropdown" value={region} onChange={(e)=>{setRegion(e.target.value); setSearchPageNum(1)}}>
+          <option className="filter-dropdown-item" value="US">US</option>
+          <option className="filter-dropdown-item" value="HK">Hong Kong</option>
+          <option className="filter-dropdown-item" value="TW">Taiwan</option>
+          <option className="filter-dropdown-item" value="CN">China</option>
+          <option className="filter-dropdown-item" value="JP">Japan</option>
+          <option className="filter-dropdown-item" value="KR">Korea</option>
+          <option className="filter-dropdown-item" value="GB">UK</option>
+        </select>
       </div>
       
       <div>
