@@ -1,6 +1,7 @@
 .Navigation {
-  background-color: black;
+  background-color: rgb(28, 28, 28);
   font-size: 50px;
+  border-bottom: #d5653d 6px solid; 
 }
 .Navigation .Navbar {
   display: flex;
@@ -16,11 +17,12 @@
   border-radius: 10px;
   position: relative;
   bottom: 40px;
-  color: yellow;
+  color: #e67832;
+  font-weight: bold;
 }
 .Navigation .Navbar .NavbarBrand:hover {
   color: white;
-  background-color: rgba(0, 136, 169, 0.8);
+  background-color: rgba(230, 120, 50, 0.8);
   transition: all 0.3s ease 0s;
 }
 .Navigation .Navbar .ml-auto .NavItemGroup {
@@ -36,21 +38,21 @@
   cursor: pointer;
   position: relative;
   right: 150px;
-  color: yellow;
+  color: #e67832;
   width: 120px;
   padding: 9px 20px;
   border-radius: 10px;
 }
 .Navigation .Navbar .ml-auto .NavItemGroup .NavItem .popular:hover {
   color: white;
-  background-color: rgba(0, 136, 169, 0.8);
+  background-color: rgba(230, 120, 50, 0.8);
   transition: all 0.3s ease 0s;
 }
 .Navigation .Navbar .ml-auto .NavItemGroup .NavItem .topRated {
   cursor: pointer;
   position: relative;
   right: 120px;
-  color: yellow;
+  color: #e67832;
   width: 150px;
   top: 5px;
   padding: 9px 10px;
@@ -58,13 +60,13 @@
 }
 .Navigation .Navbar .ml-auto .NavItemGroup .NavItem .topRated:hover {
   color: white;
-  background-color: rgba(0, 136, 169, 0.8);
+  background-color: rgba(230, 120, 50, 0.8);
   transition: all 0.3s ease 0s;
 }
 .Navigation .Navbar .ml-auto .item:hover {
   color: white;
   font-style: initial;
-  background-color: red;
+  background-color: #d5653d;
 }
 .Navigation .Navbar .categoryGroup {
   position: relative;
@@ -77,11 +79,11 @@
   border-radius: 30px;
   position: relative;
   bottom: 0px;
-  color: yellow;
+  color: #e67832;
 }
 .Navigation .Navbar .categoryGroup .category:hover {
   color: white;
-  background-color: rgba(0, 136, 169, 0.8);
+  background-color: rgba(230, 120, 50, 0.8);
   transition: all 0.3s ease 0s;
 }
 .Navigation .Navbar .input {
@@ -111,7 +113,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: red;
+    background-color: #d5653d;
     height: 200px;
   }
   .Navigation .Navbar {
@@ -155,7 +157,7 @@
   }
   .Navigation .Navbar .ml-auto .NavItemGroup .popular:hover {
     color: white;
-    background-color: rgba(0, 136, 169, 0.8);
+    background-color: rgba(230, 120, 50, 0.8);
     transition: all 0.3s ease 0s;
   }
   .Navigation .Navbar .ml-auto .NavItemGroup .topRated {
@@ -171,7 +173,7 @@
   }
   .Navigation .Navbar .ml-auto .NavItemGroup .topRated:hover {
     color: white;
-    background-color: rgba(0, 136, 169, 0.8);
+    background-color: rgba(230, 120, 50, 0.8);
     transition: all 0.3s ease 0s;
   }
   .Navigation .Navbar .ml-auto .input {
@@ -191,7 +193,7 @@
     bottom: 100px;
     width: 300px;
     left: 80px;
-    color: yellow;
+    color: #e67832;
   }
   .showMovie {
     display: flex;
@@ -242,7 +244,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: green;
+    background-color: #d5653d;
     height: 180px;
   }
   .Navigation .Navbar {
@@ -286,7 +288,7 @@
   }
   .Navigation .Navbar .ml-auto .NavItemGroup .popular:hover {
     color: white;
-    background-color: rgba(0, 136, 169, 0.8);
+    background-color: rgba(230, 120, 50, 0.8);
     transition: all 0.3s ease 0s;
   }
   .Navigation .Navbar .ml-auto .NavItemGroup .topRated {
@@ -302,7 +304,7 @@
   }
   .Navigation .Navbar .ml-auto .NavItemGroup .topRated:hover {
     color: white;
-    background-color: rgba(0, 136, 169, 0.8);
+    background-color: rgba(230, 120, 50, 0.8);
     transition: all 0.3s ease 0s;
   }
   .Navigation .Navbar .ml-auto .input {
@@ -322,7 +324,7 @@
     bottom: 250px;
     width: 300px;
     left: 400px;
-    color: yellow;
+    color: #e67832;
   }
   .showMovie {
     display: flex;

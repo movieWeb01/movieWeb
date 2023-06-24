@@ -182,7 +182,7 @@ const renderPageNumbers = pageNumbers.map((number, index) => {
               >
                 <NavLink
                 className="popular">
-                  受歡迎
+                  Popular
                 </NavLink>
               </Link>
             </NavItem>
@@ -322,7 +322,6 @@ const renderPageNumbers = pageNumbers.map((number, index) => {
       <Link to={"/"} style={{ textDecoration: "none", color: "#fff" }}>
         <NavbarBrand className="NavbarBrand">Love Movie</NavbarBrand>
       </Link>
-
       <NavbarToggler onClick={toggle} />
       <Collapse
         isOpen={isOpen}
@@ -346,7 +345,18 @@ const renderPageNumbers = pageNumbers.map((number, index) => {
             >
               <NavLink
               className="popular">
-                受歡迎
+                Popular
+              </NavLink>
+            </Link>
+          </NavItem>
+          <NavItem className="NavItem">
+            <Link
+              to={"movies/top_rated"}
+              style={{ textDecoration: "none", color: "#fff" }}
+            >
+              <NavLink
+                className="topRated">
+                Top-rated
               </NavLink>
             </Link>
           </NavItem>
@@ -372,19 +382,6 @@ const renderPageNumbers = pageNumbers.map((number, index) => {
               Search
             </i>
           </NavItem>
-
-          <NavItem className="NavItem">
-            <Link
-              to={"movies/top_rated"}
-              style={{ textDecoration: "none", color: "#fff" }}
-            >
-              <NavLink
-                className="topRated">
-                Top Rated
-              </NavLink>
-            </Link>
-          </NavItem>
-
           <NavItem className="NavItem">
             <Link
               to={"movies/top_rated"}
@@ -411,7 +408,7 @@ const renderPageNumbers = pageNumbers.map((number, index) => {
           >
             <div className="categoryGroup">
               <DropdownToggle nav caret>
-                <b className="category">類別</b>
+                <b className="category">Category</b>
               </DropdownToggle>
               <DropdownMenu
                 style={{ fontSize: "30px", backgroundColor: "pink" }}

@@ -78,7 +78,9 @@ const Description = () => {
             allowfullscreen
           ></iframe>
           <div class="des-flex">
-            <button className="des-button">BACK</button>
+            <Link to={`/`}>
+              <button className="des-button">BACK</button>
+            </Link>
           </div>
         </div>
       </div>
