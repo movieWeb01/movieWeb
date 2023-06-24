@@ -92,15 +92,12 @@ function Modal({Pro, Ca, show, closeModal}){
             height: "400px",
             width: "100%",
             left: "700px",
-            position:"relative"
+            position:"relative",
           }}
         >
           {renderItems}
           
         </div>
-
-
-            <button style={{position:"fixed", bottom:"00px" }}onClick={closeModal}>Close</button>
         </div>
 
     </div>,
