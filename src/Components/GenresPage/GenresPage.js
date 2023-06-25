@@ -42,9 +42,11 @@ const GenresPage = ({ moviesGenres }) => {
     localStorage.setItem("favorite", JSON.stringify([...favorite, movieId]));
   }
 
+  const filtermoviesGenres = moviesGenres.filter((genre) => genre.id == genres);
+
   return (
     <div>
-      <h1 className="slider_title">{moviesGenres.name}</h1>
+      <h1 className="slider_title">{filtermoviesGenres[0].name}</h1>
       <div>
         <div className="flex-parent">
           {genreMovies.map((post) =>
