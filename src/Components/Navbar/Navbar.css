@@ -14,7 +14,7 @@
   top: 10px;
 }
 .Navigation .Navbar .NavbarBrand {
-  font-size: 30px;
+  font-size: 25px;
   padding: 0;
   border-radius: 10px;
   position: relative;
@@ -23,6 +23,7 @@
   margin: 0;
   color: gray;
   letter-spacing: -0.3rem;
+  left: 10px;
 }
 .Navigation .Navbar .NavbarBrand::after {
   content: attr(data-spotlight);
