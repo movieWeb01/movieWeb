@@ -127,7 +127,7 @@ i{
     display: flex;
     justify-content: center;
     align-items: center;
-background-color: red;
+background-color: black;
 height: 200px;
     .Navbar{
         display: flex;
@@ -220,7 +220,7 @@ transition: all 0.3s ease 0s;
         width: 100px;
         position:absolute;
         left:100%;
-        bottom: -500px;
+        bottom: -520px;
 margin-top: 10px;
     .movieItem{        
 display:flex;
@@ -261,7 +261,7 @@ h4{
     display: flex;
     justify-content: center;
     align-items: center;
-background-color: green;
+background-color: black;
 height: 180px;
     .Navbar{
         display: flex;
@@ -357,7 +357,7 @@ transition: all 0.3s ease 0s;
         width: 400px;
         position:absolute;
         left:800px;
-        bottom: -400px;
+        bottom: -450px;
             .movieItem{        
 display:flex;
 flex-direction: column;
