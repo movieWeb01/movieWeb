@@ -68,7 +68,7 @@ width: 100%;
             right: 150px;
             color: yellow;
             width: 120px;
-padding: 9px 20px;
+padding: 9px 10px;
 border-radius: 10px;
 top: 4px;
 &:hover{
@@ -92,6 +92,22 @@ border-radius: 10px;
 transition: all 0.3s ease 0s;   
 }
         }
+        .open{
+            position: relative;
+            top: 10px;
+            margin-left:  -50px;
+            font-size: 23px;
+            width: 120px;
+            padding: 0px 10px;
+            border-radius: 10px;
+            height: 40px;
+            color: yellow;
+            &:hover{
+                color: white;
+                background-color: rgba(0, 136, 169, 0.8);
+               transition: all 0.3s ease 0s;   
+               }
+        }
     }
 }
     .item{
@@ -107,10 +123,12 @@ transition: all 0.3s ease 0s;
     position: relative;
     left: 100px; 
     bottom: 35px;
+    
 .category{
     font-size: 25px;
-    padding: 9px 10px;
-border-radius: 30px;
+    padding: 9px 20px;
+border-radius: 10px;
+
 position: relative;
 bottom: 0px;
 color: yellow;
@@ -118,6 +136,7 @@ color: yellow;
         color: white;
         background-color: rgba(0, 136, 169, 0.8);
        transition: all 0.3s ease 0s;   
+       
     }
 }}
 .input {

@@ -64,7 +64,7 @@
   right: 150px;
   color: yellow;
   width: 120px;
-  padding: 9px 20px;
+  padding: 9px 10px;
   border-radius: 10px;
   top: 4px;
 }
@@ -88,6 +88,22 @@
   background-color: rgba(0, 136, 169, 0.8);
   transition: all 0.3s ease 0s;
 }
+.Navigation .Navbar .ml-auto .NavItemGroup .NavItem .open {
+  position: relative;
+  top: 10px;
+  margin-left: -50px;
+  font-size: 23px;
+  width: 120px;
+  padding: 0px 10px;
+  border-radius: 10px;
+  height: 40px;
+  color: yellow;
+}
+.Navigation .Navbar .ml-auto .NavItemGroup .NavItem .open:hover {
+  color: white;
+  background-color: rgba(0, 136, 169, 0.8);
+  transition: all 0.3s ease 0s;
+}
 .Navigation .Navbar .ml-auto .item:hover {
   color: white;
   font-style: initial;
@@ -100,8 +116,8 @@
 }
 .Navigation .Navbar .categoryGroup .category {
   font-size: 25px;
-  padding: 9px 10px;
-  border-radius: 30px;
+  padding: 9px 20px;
+  border-radius: 10px;
   position: relative;
   bottom: 0px;
   color: yellow;
