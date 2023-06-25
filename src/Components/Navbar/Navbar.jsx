@@ -188,7 +188,7 @@ const renderItems = todosForDisplay.map((todo, index) => {
           >
             <div className="NavItemGroup">
                       <Link to={"/"} style={{ textDecoration: "none", color: "#fff" }}>
-          <NavbarBrand className="NavbarBrand">Love Movie</NavbarBrand>
+          <NavbarBrand className="NavbarBrand">C I N E P H I L E</NavbarBrand>
         </Link>
             <NavItem className="NavItem">
               <Link

@@ -12,7 +12,7 @@ width: 100%;
     position:relative;
     top: 10px;
     .NavbarBrand{
-        font-size: 30px;
+        font-size: 25px;
         padding: 0;
         border-radius: 10px;
         position: relative;
@@ -21,6 +21,7 @@ width: 100%;
         margin: 0;
         color: gray;
         letter-spacing: -0.3rem;
+        left: 10px;
         &::after{
             content: attr(data-spotlight);
             color: yellow;
