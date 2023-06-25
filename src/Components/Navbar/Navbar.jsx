@@ -347,7 +347,6 @@ const renderItems = todosForDisplay.map((todo, index) => {
                 </NavItem>
                 <NavItem className="NavItem">
                   <Link
-                    to={"movies/top_rated"}
                     style={{ textDecoration: "none", color: "#fff" }}
                   >
                     <div style={{ height: "130px", width: "100px" }}>
