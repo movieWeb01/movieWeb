@@ -17,7 +17,7 @@ import {
   Input,
   Button,
 } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Modal from "./Model";
 
 function useMediaQuery(query) {
@@ -41,76 +41,92 @@ function useMediaQueries() {
   return { sm, md };
 }
 
-function ResponsiveComponent({ moviesGenres }) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [info, setInfo] = useState("");
-  const [category, setCategory] = useState("");
-  const toggle = () => setIsOpen(!isOpen);
-  const [movies, setMovies] = useState([]);
-  const [show, setShow] = useState(false);
-  const searchMovies = () => {
-    axios
-      .get(
-        `https://api.themoviedb.org/3/search/movie?api_key=2bcdb3df9702bc31542cffaec406fda7&query=${info}`
-      )
-      .then((response) => {
-        const data = response.data;
-        console.log(response);
-        setMovies(data.results);
-      });
-  };
-  const searchCategory = () => {
-    axios
-      .get(
-        `https://api.themoviedb.org/3/search/movie?api_key=2bcdb3df9702bc31542cffaec406fda7&query=${category}`
-      )
-      .then((response) => {
-        const data = response.data;
-        console.log(response);
-        setMovies(data.results);
-      });
-  };
-  const popularMovie = () => {
-    axios
-      .get(
-        "https://api.themoviedb.org/3/movie/popular?api_key=2bcdb3df9702bc31542cffaec406fda7&language=en-US&page=1"
-      )
-      .then((response) => {
-        const data = response.data;
-        console.log(response);
-        setMovies(data.results);
-      });
-  };
 
-  useEffect(() => {
-    if (info) {
-      searchMovies();
-    } else {
-      setMovies([]);
-    }
-  }, [info]);
-  useEffect(() => {
-    if (category) {
-      searchCategory();
-    } else {
-      setMovies([]);
-    }
-  }, [category]);
+function ResponsiveComponent() {
+    const [isOpen, setIsOpen] = useState(false);
+const [info, setInfo] = useState("");
+const [category, setCategory] = useState("");
+const toggle = () => setIsOpen(!isOpen);
+const [movies, setMovies] = useState([]);
+const [moviesGenres, setMoviesGenres] = useState([]);
+const [show, setShow] = useState(false);
+const searchMovies = () => {
+  axios
+    .get(
+      `https://api.themoviedb.org/3/search/movie?api_key=2bcdb3df9702bc31542cffaec406fda7&query=${info}`
+    )
+    .then((response) => {
+      const data = response.data;
+      console.log(response);
+      setMovies(data.results);
+    });
+};
+const searchCategory = () => {
+  axios
+    .get(
+      `https://api.themoviedb.org/3/search/movie?api_key=2bcdb3df9702bc31542cffaec406fda7&query=${category}`
+    )
+    .then((response) => {
+      const data = response.data;
+      console.log(response);
+      setMovies(data.results);
+    });
+};
+const popularMovie = () => {
+  axios
+    .get(
+      "https://api.themoviedb.org/3/movie/popular?api_key=2bcdb3df9702bc31542cffaec406fda7&language=en-US&page=1"
+    )
+    .then((response) => {
+      const data = response.data;
+      console.log(response);
+      setMovies(data.results);
+    });
+};
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [todosPerPage, setTodosPerPage] = useState(4);
-  const lastTodoInView = currentPage * todosPerPage;
-  const firstTodoInView = lastTodoInView - todosPerPage;
-  const todosForDisplay = movies.slice(firstTodoInView, lastTodoInView);
-  const renderItems = todosForDisplay.map((todo, index) => {
-    return (
-      <div className="movieItem">
-        <div>
-          <h4 key={index}>{todo.title}</h4>
+const movieGenres = () => {
+  axios
+    .get(
+      "https://api.themoviedb.org/3/genre/movie/list?api_key=6a3a9e9a61085d657b30d36d1c7b5ba7"
+    )
+    .then((res) => {
+      console.log("genres", res.data.genres);
+      setMoviesGenres(res.data.genres);
+    });
+};
+useEffect(() => {
+  if (info) {
+    searchMovies();
+  } else {
+    setMovies([]);
+  }
+}, [info]);
+useEffect(() => {
+  if (category) {
+    searchCategory();
+  } else {
+    setMovies([]);
+  }
+}, [category]);
+useEffect(() => {
+  movieGenres();
+}, []);
+const [currentPage, setCurrentPage] = useState(1);
+const [todosPerPage, setTodosPerPage] = useState(4);
+const lastTodoInView = currentPage * todosPerPage;
+const firstTodoInView = lastTodoInView - todosPerPage;
+const todosForDisplay = movies.slice(firstTodoInView, lastTodoInView);
+const renderItems = todosForDisplay.map((todo, index) => {
+  return (
+    <div className="movieItem">
+      <div>
+      <h4 key={index}>{todo.title}</h4>
+
         </div>
         <img
-          className="image"
-          src={`https://image.tmdb.org/t/p/w500/${todo.poster_path}`}
+        className="image"
+
+          src={`https://image.tmdb.org/t/p/original/${todo.poster_path}`}
         />
       </div>
     );
@@ -132,23 +148,98 @@ function ResponsiveComponent({ moviesGenres }) {
   });
   const { md, sm } = useMediaQueries();
 
-  if ((sm, md)) {
-    return (
-      <div
-        style={{
-          position: "sticky",
-          top: "0px",
-          fontSize: "50px",
-          width: "100%",
-          zIndex: 99,
-        }}
-      >
-        <div className="Navigation">
-          <Navbar light expand="md" className="Navbar">
-            <NavbarToggler onClick={toggle} />
-            <Collapse
-              isOpen={isOpen}
-              navbar
+
+  if (sm, md) {
+    return     <div
+    style={{
+      position: "fixed",/*為何用sticky會令版面跑出邊界,但用fixed就不會?*/
+      top: "-00px",
+      fontSize: "50px",
+      width: "100%",
+      zIndex: 99,
+
+    }}
+  >
+    <div
+      className="Navigation"      
+    >
+      <Navbar light expand="md" className="Navbar">
+
+
+
+        <NavbarToggler onClick={toggle} />
+        <Collapse
+          isOpen={isOpen}
+          navbar
+          style={{
+            display: "flex",
+            rowDirection: "row",
+            justifyContent: "space-around",
+            alignItems: "center",
+          }}
+        >
+          <Nav
+            className="ml-auto"
+            navbar
+            style={{
+
+
+            }}
+          >
+            <div className="NavItemGroup">
+                      <Link to={"/"} style={{ textDecoration: "none", color: "#fff" }}>
+          <NavbarBrand className="NavbarBrand">Love Movie</NavbarBrand>
+        </Link>
+            <NavItem className="NavItem">
+              <Link
+                to={"movies/popular"}
+                style={{ textDecoration: "none", color: "#fff" }}
+              >
+                <NavLink
+                className="popular">
+                  受歡迎
+                </NavLink>
+              </Link>
+            </NavItem>
+
+            <NavItem className="NavItem">
+              <Link
+                to={"movies/top_rated"}
+                style={{ textDecoration: "none", color: "#fff" }}
+              >
+                <NavLink
+                  className="topRated">
+                  Top Rated
+                </NavLink>
+              </Link>
+            </NavItem>
+            </div>
+            <NavItem
+              style={{
+                display: "flex",
+                rowDirection: "row",
+                justifyContent: "space-around",
+                alignItems: "center",
+              }}
+            >
+              <Input
+                className="input"
+                placeholder="What movie are you looking for?"
+                value={info}
+                maxLength={100000000}
+                onChange={(e) => {
+                  setInfo(e.target.value);
+                }}
+              />
+              <i
+              className="Search">
+                Search
+              </i>
+            </NavItem>
+            <UncontrolledDropdown
+              nav
+              inNavbar
+
               style={{
                 display: "flex",
                 rowDirection: "row",
@@ -189,6 +280,7 @@ function ResponsiveComponent({ moviesGenres }) {
                     alignItems: "center",
                   }}
                 >
+
                   <Input
                     className="input"
                     placeholder="What movie are you looking for?"
@@ -239,6 +331,7 @@ function ResponsiveComponent({ moviesGenres }) {
           <div className="numbers">{renderPageNumbers}</div>
           <div className="showMovie">{renderItems}</div>
         </div>
+
       </div>
     );
   }
@@ -272,6 +365,7 @@ function ResponsiveComponent({ moviesGenres }) {
               alignItems: "center",
             }}
           >
+
             <Nav className="ml-auto" navbar>
               <div className="NavItemGroup">
                 <NavItem className="NavItem">
@@ -319,7 +413,7 @@ function ResponsiveComponent({ moviesGenres }) {
                         style={{
                           position: "relative",
                           top: "10px",
-                          marginLeft:  "-100px", 
+                          marginLeft:  "-30px", 
                           fontSize: "23px",
                           width: "80px",
                           height: "40px",
@@ -361,6 +455,7 @@ function ResponsiveComponent({ moviesGenres }) {
                     }}
                   >
                     {moviesGenres.map((gen) => (
+
                       <Link
                         to={`/moviesGenres/${gen.id}`}
                         style={{ textDecoration: "none" }}
@@ -368,15 +463,28 @@ function ResponsiveComponent({ moviesGenres }) {
                         <DropdownItem className="item">{gen.name}</DropdownItem>
                       </Link>
                     ))}
-                    <DropdownItem divider />
-                  </DropdownMenu>
-                </div>
-              </UncontrolledDropdown>
-            </Nav>
-          </Collapse>
-        </Navbar>
-      </div>
-    </div>
+
+                <DropdownItem divider />
+              </DropdownMenu>
+            </div>
+          </UncontrolledDropdown>
+        </Nav>
+      </Collapse>
+    </Navbar>
+
+    
+  </div>
+
+
+  
+</div>;
+}
+const Example = () => {
+
+
+  return (
+    <ResponsiveComponent />
+
   );
 }
 const Example = ({ moviesGenres }) => {

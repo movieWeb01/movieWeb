@@ -22,13 +22,11 @@ function Modal({Pro, Ca, show, closeModal}){
           <div className="movieItem">
               <img
                 style={{ width: "180px", height: "200px" }}
-                src={`https://image.tmdb.org/t/p/w500/${todo.poster_path}`}
+                src={`https://image.tmdb.org/t/p/original/${todo.poster_path}`}
               />
             <div>
                             <h4 key={index}>{todo.title}</h4>
             </div>
-
-
           </div>
         );
       });
