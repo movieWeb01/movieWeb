@@ -152,7 +152,7 @@ const renderItems = todosForDisplay.map((todo, index) => {
   if (sm, md) {
     return     <div
     style={{
-      position: "fixed",/*為何用sticky會令版面跑出邊界,但用fixed就不會?*/
+      position: "fixed",
       top: "-00px",
       fontSize: "50px",
       width: "100%",
@@ -197,7 +197,7 @@ const renderItems = todosForDisplay.map((todo, index) => {
               >
                 <NavLink
                 className="popular">
-                  受歡迎
+                  Popular
                 </NavLink>
               </Link>
             </NavItem>
@@ -239,7 +239,6 @@ const renderItems = todosForDisplay.map((todo, index) => {
             <UncontrolledDropdown
               nav
               inNavbar
-
               style={{
                 display: "flex",
                 rowDirection: "row",
@@ -247,97 +246,40 @@ const renderItems = todosForDisplay.map((todo, index) => {
                 alignItems: "center",
               }}
             >
-              <Nav className="ml-auto" navbar style={{}}>
-                <div className="NavItemGroup">
-                  <Link to={"/"} style={{ textDecoration: "none" }}>
-                    <NavbarBrand className="NavbarBrand">
-                      Love<span style={{ color: "orange" }}>Movie</span>
-                    </NavbarBrand>
-                  </Link>
-                  <NavItem className="NavItem">
-                    <Link
-                      to={"movies/popular"}
-                      style={{ textDecoration: "none", color: "#fff" }}
-                    >
-                      <NavLink className="popular">Popular</NavLink>
-                    </Link>
-                  </NavItem>
-
-                  <NavItem className="NavItem">
-                    <Link
-                      to={"movies/top_rated"}
-                      style={{ textDecoration: "none", color: "#fff" }}
-                    >
-                      <NavLink className="topRated">Top Rated</NavLink>
-                    </Link>
-                  </NavItem>
-                </div>
-                <NavItem
-                  style={{
-                    display: "flex",
-                    rowDirection: "row",
-                    justifyContent: "space-around",
-                    alignItems: "center",
-                  }}
+              <div className="categoryGroup">
+                <DropdownToggle nav caret>
+                  <b className="category">Genres</b>
+                </DropdownToggle>
+                <DropdownMenu
+                  style={{ fontSize: "30px", backgroundColor: "pink" }}
                 >
+                                      {moviesGenres.map((gen) => (
+                      <Link
+                        to={`/moviesGenres/${gen.id}`}
+                        style={{ textDecoration: "none" }}
+                      >
+                        <DropdownItem className="item">{gen.name}</DropdownItem>
+                      </Link>
+                    ))}
+                  <DropdownItem divider />
+                </DropdownMenu>
+              </div>
+            </UncontrolledDropdown>
+          </Nav>
+        </Collapse>
+        
+      </Navbar>
 
-                  <Input
-                    className="input"
-                    placeholder="What movie are you looking for?"
-                    value={info}
-                    maxLength={100000000}
-                    onChange={(e) => {
-                      setInfo(e.target.value);
-                    }}
-                  />
-                  <i className="Search">Search</i>
-                </NavItem>
-                <UncontrolledDropdown
-                  nav
-                  inNavbar
-                  style={{
-                    display: "flex",
-                    rowDirection: "row",
-                    justifyContent: "space-around",
-                    alignItems: "center",
-                  }}
-                >
-                  <div className="categoryGroup">
-                    <DropdownToggle nav caret>
-                      <b className="category">Genres</b>
-                    </DropdownToggle>
-                    <DropdownMenu
-                      style={{ fontSize: "30px", backgroundColor: "pink" }}
-                    >
-                      {moviesGenres.map((gen) => (
-                        <Link
-                          to={`/moviesGenres/${gen.id}`}
-                          style={{ textDecoration: "none" }}
-                        >
-                          <DropdownItem className="item">
-                            {gen.name}
-                          </DropdownItem>
-                        </Link>
-                      ))}
-                      <DropdownItem divider />
-                    </DropdownMenu>
-                  </div>
-                </UncontrolledDropdown>
-              </Nav>
-            </Collapse>
-          </Navbar>
-        </div>
-        <div>
+    </div>
+    <div>
           <div className="numbers">{renderPageNumbers}</div>
           <div className="showMovie">{renderItems}</div>
         </div>
 
-      </div>
-    );
+  </div>;
   }
 
-  return (
-    <div
+  return <div
       style={{
         backgroundColor: "black",
         position: "sticky",
@@ -479,16 +421,12 @@ const renderItems = todosForDisplay.map((todo, index) => {
   
 </div>;
 }
-const Example = () => {
+const Example = ({ moviesGenres }) => {
 
 
   return (
-    <ResponsiveComponent />
-
+    <ResponsiveComponent moviesGenres={moviesGenres} />
   );
-}
-const Example = ({ moviesGenres }) => {
-  return <ResponsiveComponent moviesGenres={moviesGenres} />;
 };
 
 export default Example;
