@@ -347,19 +347,11 @@ const renderItems = todosForDisplay.map((todo, index) => {
                 </NavItem>
                 <NavItem className="NavItem">
                   <Link
-                    style={{ textDecoration: "none", color: "#fff" }}
+                    style={{ textDecoration: "none" }}
                   >
                     <div style={{ height: "130px", width: "100px" }}>
                       <Button
-                        style={{
-                          position: "relative",
-                          top: "10px",
-                          marginLeft:  "-30px", 
-                          fontSize: "23px",
-                          width: "80px",
-                          height: "40px",
-                          backgroundColor: "lightgreen",
-                        }}
+                      className="open"
                         onClick={() => setShow((s) => !s)}
                       >
                         Open
