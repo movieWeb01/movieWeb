@@ -292,8 +292,8 @@ const renderItems = todosForDisplay.map((todo, index) => {
       <div className="Navigation">
         <Navbar light expand="md" className="Navbar">
           <Link to={"/"} style={{ textDecoration: "none", color: "#fff" }}>
-            <NavbarBrand className="NavbarBrand">
-              Love<span style={{ color: "orange" }}>Movie</span>
+            <NavbarBrand className="NavbarBrand" data-spotlight="C I N E P H I L E">
+            C I N E P H I L E
             </NavbarBrand>
           </Link>
           <NavbarToggler onClick={toggle} />
