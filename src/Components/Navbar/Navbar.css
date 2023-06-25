@@ -30,12 +30,14 @@
 
 .Navigation .Navbar .ml-auto .NavItemGroup {
   display: flex;
+  margin-left: 6%; 
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
 }
 .Navigation .Navbar .ml-auto .NavItemGroup .NavItem {
-  font-size: 40px;
+  margin-top: 8px; 
+  font-size: 35px;
 }
 .Navigation .Navbar .ml-auto .NavItemGroup .NavItem .popular {
   cursor: pointer;
