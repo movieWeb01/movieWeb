@@ -15,16 +15,38 @@
 }
 .Navigation .Navbar .NavbarBrand {
   font-size: 30px;
-  padding: 9px 20px;
+  padding: 0;
   border-radius: 10px;
   position: relative;
-  bottom: 40px;
-  color: yellow;
+  bottom: 33px;
+  font-family: Helvetica;
+  margin: 0;
+  color: gray;
+  letter-spacing: -0.3rem;
 }
-.Navigation .Navbar .NavbarBrand:hover {
-  color: white;
-  background-color: rgba(0, 136, 169, 0.8);
-  transition: all 0.3s ease 0s;
+.Navigation .Navbar .NavbarBrand::after {
+  content: attr(data-spotlight);
+  color: yellow;
+  position: absolute;
+  top: -6.5px;
+  left: 0;
+  -webkit-clip-path: ellipse(100px 100px at 0% 50%);
+  clip-path: ellipse(100px 100px at 0% 50%);
+  animation: spotlight 5s infinite;
+}
+@keyframes spotlight {
+  0% {
+    -webkit-clip-path: ellipse(50px 50px at 50% 0%);
+    clip-path: ellipse(28px 28px at 0% 50%);
+  }
+  50% {
+    -webkit-clip-path: ellipse(100px 100px at 100% 100%);
+    clip-path: ellipse(28px 28px at 100% 50%);
+  }
+  100% {
+    -webkit-clip-path: ellipse(100px 100px at 0% 50%);
+    clip-path: ellipse(28px 28px at 0% 50%);
+  }
 }
 .Navigation .Navbar .ml-auto .NavItemGroup {
   display: flex;
@@ -43,6 +65,7 @@
   width: 120px;
   padding: 9px 20px;
   border-radius: 10px;
+  top: 4px;
 }
 .Navigation .Navbar .ml-auto .NavItemGroup .NavItem .popular:hover {
   color: white;
@@ -72,7 +95,7 @@
 .Navigation .Navbar .categoryGroup {
   position: relative;
   left: 100px;
-  bottom: 30px;
+  bottom: 35px;
 }
 .Navigation .Navbar .categoryGroup .category {
   font-size: 25px;
@@ -144,6 +167,13 @@
     bottom: 0px;
     right: 120px;
     font-size: 25px;
+    color: yellow;
+    padding: 9px 20px;
+  }
+  .Navigation .Navbar .ml-auto .NavItemGroup .NavbarBrand:hover {
+    color: white;
+    background-color: rgba(0, 136, 169, 0.8);
+    transition: all 0.3s ease 0s;
   }
   .Navigation .Navbar .ml-auto .NavItemGroup .popular {
     cursor: pointer;
@@ -195,6 +225,22 @@
     width: 300px;
     left: 80px;
     color: yellow;
+    padding: 9px 10px;
+    border-radius: 10px;
+  }
+  .Navigation .Navbar .ml-auto .categoryGroup .category {
+    cursor: pointer;
+    position: relative;
+    width: 120px;
+    font-size: 25px;
+    padding: 9px 20px;
+    border-radius: 10px;
+    color: yellow;
+  }
+  .Navigation .Navbar .ml-auto .categoryGroup .category:hover {
+    color: white;
+    background-color: rgba(0, 136, 169, 0.8);
+    transition: all 0.3s ease 0s;
   }
   .showMovie {
     display: flex;
@@ -275,6 +321,13 @@
     top: 10px;
     right: 200px;
     font-size: 20px;
+    color: yellow;
+    padding: 9px 20px;
+  }
+  .Navigation .Navbar .ml-auto .NavItemGroup .NavbarBrand:hover {
+    color: white;
+    background-color: rgba(0, 136, 169, 0.8);
+    transition: all 0.3s ease 0s;
   }
   .Navigation .Navbar .ml-auto .NavItemGroup .popular {
     cursor: pointer;
@@ -324,8 +377,21 @@
     position: absolute;
     top: -250px;
     width: 300px;
-    left: 250px;
+    left: 215px;
     color: yellow;
+  }
+  .Navigation .Navbar .ml-auto .categoryGroup .category {
+    cursor: pointer;
+    position: relative;
+    font-size: 20px;
+    padding: 9px 15px;
+    border-radius: 10px;
+    color: yellow;
+  }
+  .Navigation .Navbar .ml-auto .categoryGroup .category:hover {
+    color: white;
+    background-color: rgba(0, 136, 169, 0.8);
+    transition: all 0.3s ease 0s;
   }
   .showMovie {
     display: flex;
@@ -370,5 +436,4 @@
     height: 30px;
     width: auto;
   }
-}
-/*# sourceMappingURL=Navbar.css.map */
+}/*# sourceMappingURL=Navbar.css.map */
