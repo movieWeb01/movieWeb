@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useMemo } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import "./Navbar.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
@@ -15,7 +15,7 @@ import {
   DropdownMenu,
   DropdownItem,
   Input,
-  Button
+  Button,
 } from "reactstrap";
 import { Link, useParams } from "react-router-dom";
 import Modal from "./Model";
@@ -35,12 +35,12 @@ function useMediaQuery(query) {
 }
 
 function useMediaQueries() {
-
   const sm = useMediaQuery("(max-width: 650px)");
   const md = useMediaQuery("(max-width: 1450px)");
 
   return { sm, md };
 }
+
 
 function ResponsiveComponent() {
     const [isOpen, setIsOpen] = useState(false);
@@ -122,31 +122,32 @@ const renderItems = todosForDisplay.map((todo, index) => {
       <div>
       <h4 key={index}>{todo.title}</h4>
 
-      </div>
+        </div>
         <img
         className="image"
 
           src={`https://image.tmdb.org/t/p/original/${todo.poster_path}`}
         />
-    </div>
-  );
-});
-const pageNumbers = [];
-for (let n = 1; n <= Math.ceil(movies.length / todosPerPage); n++) {
-  pageNumbers.push(n);
-}
-const renderPageNumbers = pageNumbers.map((number, index) => {
-  return (
-    <span
-      style={{ margin: "10px 20px" }}
-      onClick={() => setCurrentPage(number)}
-      key={index}
-    >
-      P.{number}
-    </span>
-  );
-});
+      </div>
+    );
+  });
+  const pageNumbers = [];
+  for (let n = 1; n <= Math.ceil(movies.length / todosPerPage); n++) {
+    pageNumbers.push(n);
+  }
+  const renderPageNumbers = pageNumbers.map((number, index) => {
+    return (
+      <span
+        style={{ margin: "10px 20px" }}
+        onClick={() => setCurrentPage(number)}
+        key={index}
+      >
+        P.{number}
+      </span>
+    );
+  });
   const { md, sm } = useMediaQueries();
+
 
   if (sm, md) {
     return     <div
@@ -238,6 +239,7 @@ const renderPageNumbers = pageNumbers.map((number, index) => {
             <UncontrolledDropdown
               nav
               inNavbar
+
               style={{
                 display: "flex",
                 rowDirection: "row",
@@ -245,94 +247,117 @@ const renderPageNumbers = pageNumbers.map((number, index) => {
                 alignItems: "center",
               }}
             >
-              <div className="categoryGroup">
-                <DropdownToggle nav caret>
-                  <b className="category">類別</b>
-                </DropdownToggle>
-                <DropdownMenu
-                  style={{ fontSize: "30px", backgroundColor: "pink" }}
+              <Nav className="ml-auto" navbar style={{}}>
+                <div className="NavItemGroup">
+                  <Link to={"/"} style={{ textDecoration: "none" }}>
+                    <NavbarBrand className="NavbarBrand">
+                      Love<span style={{ color: "orange" }}>Movie</span>
+                    </NavbarBrand>
+                  </Link>
+                  <NavItem className="NavItem">
+                    <Link
+                      to={"movies/popular"}
+                      style={{ textDecoration: "none", color: "#fff" }}
+                    >
+                      <NavLink className="popular">Popular</NavLink>
+                    </Link>
+                  </NavItem>
+
+                  <NavItem className="NavItem">
+                    <Link
+                      to={"movies/top_rated"}
+                      style={{ textDecoration: "none", color: "#fff" }}
+                    >
+                      <NavLink className="topRated">Top Rated</NavLink>
+                    </Link>
+                  </NavItem>
+                </div>
+                <NavItem
+                  style={{
+                    display: "flex",
+                    rowDirection: "row",
+                    justifyContent: "space-around",
+                    alignItems: "center",
+                  }}
                 >
-                                      {moviesGenres.map((gen) => (
-                      <Link
-                        to={`/moviesGenres/${gen.id}`}
-                        style={{ textDecoration: "none" }}
-                      >
-                        <DropdownItem className="item">{gen.name}</DropdownItem>
-                      </Link>
-                    ))}
-                  <DropdownItem divider />
-                </DropdownMenu>
-              </div>
-            </UncontrolledDropdown>
-          </Nav>
-        </Collapse>
-        
-      </Navbar>
 
-    </div>
-<div        >
+                  <Input
+                    className="input"
+                    placeholder="What movie are you looking for?"
+                    value={info}
+                    maxLength={100000000}
+                    onChange={(e) => {
+                      setInfo(e.target.value);
+                    }}
+                  />
+                  <i className="Search">Search</i>
+                </NavItem>
+                <UncontrolledDropdown
+                  nav
+                  inNavbar
+                  style={{
+                    display: "flex",
+                    rowDirection: "row",
+                    justifyContent: "space-around",
+                    alignItems: "center",
+                  }}
+                >
+                  <div className="categoryGroup">
+                    <DropdownToggle nav caret>
+                      <b className="category">Genres</b>
+                    </DropdownToggle>
+                    <DropdownMenu
+                      style={{ fontSize: "30px", backgroundColor: "pink" }}
+                    >
+                      {moviesGenres.map((gen) => (
+                        <Link
+                          to={`/moviesGenres/${gen.id}`}
+                          style={{ textDecoration: "none" }}
+                        >
+                          <DropdownItem className="item">
+                            {gen.name}
+                          </DropdownItem>
+                        </Link>
+                      ))}
+                      <DropdownItem divider />
+                    </DropdownMenu>
+                  </div>
+                </UncontrolledDropdown>
+              </Nav>
+            </Collapse>
+          </Navbar>
+        </div>
+        <div>
+          <div className="numbers">{renderPageNumbers}</div>
+          <div className="showMovie">{renderItems}</div>
+        </div>
 
-      <div
-        className="numbers"
-
-      >
-        {renderPageNumbers}
       </div>
-            <div className="showMovie"
-      >
-        {renderItems}
-      </div>
-    </div>
-
-  </div>;
+    );
   }
 
-  return     <div
-  style={{
-    backgroundColor: "black",
-    position: "sticky",
-    top: "0px",
-    fontSize: "50px",
-    width: "100%",
-    zIndex: 99,
-  }}
->
-  <div
-    className="Navigation"
-  >
-    <Navbar light expand="md" className="Navbar">
-      <Link to={"/"} style={{ textDecoration: "none", color: "#fff" }}>
-        <NavbarBrand className="NavbarBrand">Love Movie</NavbarBrand>
-      </Link>
-
-      <NavbarToggler onClick={toggle} />
-      <Collapse
-        isOpen={isOpen}
-        navbar
-        style={{
-          display: "flex",
-          rowDirection: "row",
-          justifyContent: "space-around",
-          alignItems: "center",
-        }}
-      >
-        <Nav
-          className="ml-auto"
-          navbar
-        >
-          <div className="NavItemGroup">
-          <NavItem className="NavItem">
-            <Link
-              to={"movies/popular"}
-              style={{ textDecoration: "none", color: "#fff" }}
-            >
-              <NavLink
-              className="popular">
-                受歡迎
-              </NavLink>
-            </Link>
-          </NavItem>
-          <NavItem
+  return (
+    <div
+      style={{
+        backgroundColor: "black",
+        position: "sticky",
+        top: "0px",
+        fontSize: "50px",
+        width: "100%",
+        zIndex: 99,
+      }}
+    >
+      <div className="Navigation">
+        <Navbar light expand="md" className="Navbar">
+          <Link to={"/"} style={{ textDecoration: "none", color: "#fff" }}>
+            <NavbarBrand className="NavbarBrand">
+              Love<span style={{ color: "orange" }}>Movie</span>
+            </NavbarBrand>
+          </Link>
+          <NavbarToggler onClick={toggle} />
+          <Collapse
+            isOpen={isOpen}
+            navbar
             style={{
               display: "flex",
               rowDirection: "row",
@@ -340,65 +365,97 @@ const renderPageNumbers = pageNumbers.map((number, index) => {
               alignItems: "center",
             }}
           >
-            <Input
-              className="input"
-              placeholder="What movie are you looking for?"
-              value={info}
-              maxLength={100000000}
-              onChange={(e) => {
-                setInfo(e.target.value);
-              }}
-            />
-            <i
-            className="Search">
-              Search
-            </i>
-          </NavItem>
 
-          <NavItem className="NavItem">
-            <Link
-              to={"movies/top_rated"}
-              style={{ textDecoration: "none", color: "#fff" }}
-            >
-              <NavLink
-                className="topRated">
-                Top Rated
-              </NavLink>
-            </Link>
-          </NavItem>
-
-          <NavItem className="NavItem">
-            <Link
-              to={"movies/top_rated"}
-              style={{ textDecoration: "none", color: "#fff" }}
-            >
-                <div style={{height:"130px", width:"100px",  }}>
-          <Button style={{position:"relative", top:"10px", fontSize: "23px", width:"80px", height:"40px", backgroundColor: "lightgreen"}}onClick={() => setShow((s) => !s)}>Open</Button>
-      <Modal Pro={info} Ca={category}show={show} closeModal={()=>setShow(false)}/>
-    </div>
-            </Link>
-          </NavItem>
-
-
-          </div>
-          <UncontrolledDropdown
-            nav
-            inNavbar
-            style={{
-              display: "flex",
-              rowDirection: "row",
-              justifyContent: "space-around",
-              alignItems: "center",
-            }}
-          >
-            <div className="categoryGroup">
-              <DropdownToggle nav caret>
-                <b className="category">類別</b>
-              </DropdownToggle>
-              <DropdownMenu
-                style={{ fontSize: "30px", backgroundColor: "pink" }}
+            <Nav className="ml-auto" navbar>
+              <div className="NavItemGroup">
+                <NavItem className="NavItem">
+                  <Link
+                    to={"movies/popular"}
+                    style={{ textDecoration: "none", color: "#fff" }}
+                  >
+                    <NavLink className="popular">Popular</NavLink>
+                  </Link>
+                </NavItem>
+                <NavItem className="NavItem">
+                  <Link
+                    to={"movies/top_rated"}
+                    style={{ textDecoration: "none", color: "#fff" }}
+                  >
+                    <NavLink className="topRated">Top-rated</NavLink>
+                  </Link>
+                </NavItem>
+                <NavItem
+                  style={{
+                    display: "flex",
+                    rowDirection: "row",
+                    justifyContent: "space-around",
+                    alignItems: "center",
+                  }}
+                >
+                  <Input
+                    className="input"
+                    placeholder="What movie are you looking for?"
+                    value={info}
+                    maxLength={100000000}
+                    onChange={(e) => {
+                      setInfo(e.target.value);
+                    }}
+                  />
+                  <i className="Search">Search</i>
+                </NavItem>
+                <NavItem className="NavItem">
+                  <Link
+                    to={"movies/top_rated"}
+                    style={{ textDecoration: "none", color: "#fff" }}
+                  >
+                    <div style={{ height: "130px", width: "100px" }}>
+                      <Button
+                        style={{
+                          position: "relative",
+                          top: "10px",
+                          marginLeft:  "-30px", 
+                          fontSize: "23px",
+                          width: "80px",
+                          height: "40px",
+                          backgroundColor: "lightgreen",
+                        }}
+                        onClick={() => setShow((s) => !s)}
+                      >
+                        Open
+                      </Button>
+                      <Modal
+                        Pro={info}
+                        Ca={category}
+                        show={show}
+                        closeModal={() => setShow(false)}
+                      />
+                    </div>
+                  </Link>
+                </NavItem>
+              </div>
+              <UncontrolledDropdown
+                nav
+                inNavbar
+                style={{
+                  display: "flex",
+                  rowDirection: "row",
+                  marginLeft: "-100px", 
+                  justifyContent: "space-around",
+                  alignItems: "center",
+                }}
               >
-                                    {moviesGenres.map((gen) => (
+                <div className="categoryGroup">
+                  <DropdownToggle nav caret>
+                    <b className="category">Genres</b>
+                  </DropdownToggle>
+                  <DropdownMenu
+                    style={{
+                      fontSize: "30px",
+                      backgroundColor: "rgb(255, 205, 185)",
+                    }}
+                  >
+                    {moviesGenres.map((gen) => (
+
                       <Link
                         to={`/moviesGenres/${gen.id}`}
                         style={{ textDecoration: "none" }}
@@ -406,6 +463,7 @@ const renderPageNumbers = pageNumbers.map((number, index) => {
                         <DropdownItem className="item">{gen.name}</DropdownItem>
                       </Link>
                     ))}
+
                 <DropdownItem divider />
               </DropdownMenu>
             </div>
@@ -426,7 +484,11 @@ const Example = () => {
 
   return (
     <ResponsiveComponent />
+
   );
+}
+const Example = ({ moviesGenres }) => {
+  return <ResponsiveComponent moviesGenres={moviesGenres} />;
 };
 
 export default Example;

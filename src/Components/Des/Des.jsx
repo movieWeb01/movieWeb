@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Des.css";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 const Description = () => {
@@ -8,6 +8,7 @@ const Description = () => {
   const [movieDetails, setMovieDetails] = useState({});
   const [movieTrailer, setmovieTrailer] = useState({});
   const rate = Math.floor(`${movieDetails.vote_average}` * 10) / 10;
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -78,7 +79,11 @@ const Description = () => {
             allowfullscreen
           ></iframe>
           <div class="des-flex">
-            <button className="des-button">BACK</button>
+            <Link to={`/`}>
+              <button className="des-button" onClick={() => navigate(-2)}>
+                BACK
+              </button>
+            </Link>
           </div>
         </div>
       </div>
