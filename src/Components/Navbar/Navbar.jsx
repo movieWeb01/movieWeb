@@ -319,6 +319,7 @@ function ResponsiveComponent({ moviesGenres }) {
                         style={{
                           position: "relative",
                           top: "10px",
+                          marginLeft:  "-30px", 
                           fontSize: "23px",
                           width: "80px",
                           height: "40px",
@@ -344,6 +345,7 @@ function ResponsiveComponent({ moviesGenres }) {
                 style={{
                   display: "flex",
                   rowDirection: "row",
+                  marginLeft: "-100px", 
                   justifyContent: "space-around",
                   alignItems: "center",
                 }}
