@@ -2,6 +2,8 @@
   color: #ffffff;
   font-family: Arial, Helvetica, sans-serif;
   background: rgb(37, 37, 37);
+  position: relative;
+  padding-top: 200px;
 }
 
 body {

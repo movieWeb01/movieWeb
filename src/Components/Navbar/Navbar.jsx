@@ -17,7 +17,7 @@ import {
   Input,
   Button
 } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Modal from "./Model";
 
 function useMediaQuery(query) {
@@ -48,6 +48,7 @@ const [info, setInfo] = useState("");
 const [category, setCategory] = useState("");
 const toggle = () => setIsOpen(!isOpen);
 const [movies, setMovies] = useState([]);
+const [moviesGenres, setMoviesGenres] = useState([]);
 const [show, setShow] = useState(false);
 const searchMovies = () => {
   axios
@@ -83,6 +84,16 @@ const popularMovie = () => {
     });
 };
 
+const movieGenres = () => {
+  axios
+    .get(
+      "https://api.themoviedb.org/3/genre/movie/list?api_key=6a3a9e9a61085d657b30d36d1c7b5ba7"
+    )
+    .then((res) => {
+      console.log("genres", res.data.genres);
+      setMoviesGenres(res.data.genres);
+    });
+};
 useEffect(() => {
   if (info) {
     searchMovies();
@@ -97,7 +108,9 @@ useEffect(() => {
     setMovies([]);
   }
 }, [category]);
-
+useEffect(() => {
+  movieGenres();
+}, []);
 const [currentPage, setCurrentPage] = useState(1);
 const [todosPerPage, setTodosPerPage] = useState(4);
 const lastTodoInView = currentPage * todosPerPage;
@@ -113,7 +126,7 @@ const renderItems = todosForDisplay.map((todo, index) => {
         <img
         className="image"
 
-          src={`https://image.tmdb.org/t/p/w500/${todo.poster_path}`}
+          src={`https://image.tmdb.org/t/p/original/${todo.poster_path}`}
         />
     </div>
   );
@@ -138,15 +151,16 @@ const renderPageNumbers = pageNumbers.map((number, index) => {
   if (sm, md) {
     return     <div
     style={{
-      position: "sticky",
-      top: "0px",
+      position: "fixed",/*為何用sticky會令版面跑出邊界,但用fixed就不會?*/
+      top: "-00px",
       fontSize: "50px",
       width: "100%",
       zIndex: 99,
+
     }}
   >
     <div
-      className="Navigation"
+      className="Navigation"      
     >
       <Navbar light expand="md" className="Navbar">
 
@@ -238,46 +252,14 @@ const renderPageNumbers = pageNumbers.map((number, index) => {
                 <DropdownMenu
                   style={{ fontSize: "30px", backgroundColor: "pink" }}
                 >
-                  <DropdownItem
-                    className="item"
-                    onClick={() => {
-                      setCategory("Science Fiction");
-                    }}
-                  >
-                    科幻
-                  </DropdownItem>
-                  <DropdownItem
-                    className="item"
-                    onClick={() => {
-                      setCategory("Familie");
-                    }}
-                  >
-                    家庭
-                  </DropdownItem>
-                  <DropdownItem
-                    className="item"
-                    onClick={() => {
-                      setCategory("Abenteuer");
-                    }}
-                  >
-                    冒險
-                  </DropdownItem>
-                  <DropdownItem
-                    className="item"
-                    onClick={() => {
-                      setCategory("Animation");
-                    }}
-                  >
-                    動畫
-                  </DropdownItem>
-                  <DropdownItem
-                    className="item"
-                    onClick={() => {
-                      setCategory("Action");
-                    }}
-                  >
-                    動作
-                  </DropdownItem>
+                                      {moviesGenres.map((gen) => (
+                      <Link
+                        to={`/moviesGenres/${gen.id}`}
+                        style={{ textDecoration: "none" }}
+                      >
+                        <DropdownItem className="item">{gen.name}</DropdownItem>
+                      </Link>
+                    ))}
                   <DropdownItem divider />
                 </DropdownMenu>
               </div>
@@ -416,54 +398,14 @@ const renderPageNumbers = pageNumbers.map((number, index) => {
               <DropdownMenu
                 style={{ fontSize: "30px", backgroundColor: "pink" }}
               >
-                <DropdownItem
-                  className="item"
-                  onClick={() => {
-                    setCategory("Science Fiction");
-                  }}
-                >
-                  科幻
-                </DropdownItem>
-                <DropdownItem
-                  className="item"
-                  onClick={() => {
-                    setCategory("Familie");
-                  }}
-                >
-                  家庭
-                </DropdownItem>
-                <DropdownItem
-                  className="item"
-                  onClick={() => {
-                    setCategory("Abenteuer");
-                  }}
-                >
-                  冒險
-                </DropdownItem>
-                <DropdownItem
-                  className="item"
-                  onClick={() => {
-                    setCategory("Animation");
-                  }}
-                >
-                  動畫
-                </DropdownItem>
-                <DropdownItem
-                  className="item"
-                  onClick={() => {
-                    setCategory("Action");
-                  }}
-                >
-                  動作
-                </DropdownItem>
-                <DropdownItem
-                  className="item"
-                  onClick={() => {
-                    setCategory("Action");
-                  }}
-                >
-
-                </DropdownItem>
+                                    {moviesGenres.map((gen) => (
+                      <Link
+                        to={`/moviesGenres/${gen.id}`}
+                        style={{ textDecoration: "none" }}
+                      >
+                        <DropdownItem className="item">{gen.name}</DropdownItem>
+                      </Link>
+                    ))}
                 <DropdownItem divider />
               </DropdownMenu>
             </div>
