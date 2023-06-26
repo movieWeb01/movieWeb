@@ -79,11 +79,9 @@ const Description = () => {
             allowfullscreen
           ></iframe>
           <div class="des-flex">
-            <Link to={`/`}>
-              <button className="des-button" onClick={() => navigate(-2)}>
-                BACK
-              </button>
-            </Link>
+            <button className="des-button" onClick={() => navigate(-2)}>
+              BACK
+            </button>
           </div>
         </div>
       </div>
