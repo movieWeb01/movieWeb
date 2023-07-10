@@ -229,6 +229,7 @@ const renderItems = todosForDisplay.map((todo, index) => {
                 maxLength={100000000}
                 onChange={(e) => {
                   setInfo(e.target.value);
+                 
                 }}
               />
               <i
@@ -341,6 +342,7 @@ const renderItems = todosForDisplay.map((todo, index) => {
                     maxLength={100000000}
                     onChange={(e) => {
                       setInfo(e.target.value);
+                      setShow(true);
                     }}
                   />
                   <i className="Search">Search</i>
@@ -349,12 +351,12 @@ const renderItems = todosForDisplay.map((todo, index) => {
                   <Link
                     style={{ textDecoration: "none" }}
                   >
-                    <div style={{ height: "130px", width: "100px" }}>
+                    <div style={{ height: "130px", width: "100px"}}>
                       <Button
                       className="open"
                         onClick={() => setShow((s) => !s)}
                       >
-                        Open
+                        Show Search
                       </Button>
                       <Modal
                         Pro={info}

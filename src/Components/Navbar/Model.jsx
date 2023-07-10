@@ -31,10 +31,6 @@ function Modal({Pro, Ca, show, closeModal}){
         );
       });
 
-      const pageNumbers = [];
-      for (let n = 1; n <= Math.ceil(movies.length / todosPerPage); n++) {
-        pageNumbers.push(n);
-      }
           const searchMovies = () => {
         axios
           .get(
